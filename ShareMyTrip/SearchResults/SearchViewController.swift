@@ -12,10 +12,6 @@ import SnapKit
 import Toast
 import PanModal
 
-protocol HandleSearchResultsDelegate {
-    func locationInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
-}
-
 class SearchViewController: BaseViewController {
 
     // MARK: - Properties
@@ -36,8 +32,8 @@ class SearchViewController: BaseViewController {
     
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
-    var delegate: HandleSearchResultsDelegate?
     var onDoneBlock : ((Bool) -> Void)?
+    var mapViewModel: MapViewModel?
     
     
     // MARK: - Init
@@ -110,7 +106,7 @@ extension SearchViewController: UITableViewDelegate {
             print(lat)
             print(lon)
             
-            self.delegate?.locationInfo(latitude: lat, longitude: lon)
+            self.mapViewModel?.location.value = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             self.onDoneBlock?(true)
         }
         dismiss(animated: true)

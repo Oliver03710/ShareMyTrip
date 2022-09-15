@@ -39,6 +39,7 @@ final class MapViewController: BaseViewController {
     
     private var currentPlace: CLPlacemark?
     private var sourceLocation = CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262)
+    private let mapViewModel = MapViewModel()
     
     
     // MARK: - Init
@@ -53,10 +54,10 @@ final class MapViewController: BaseViewController {
     
     @objc func searchButtonTapped() {
         let vc = SearchViewController()
-        vc.delegate = self
+        vc.mapViewModel = mapViewModel
         vc.onDoneBlock = { _ in
-            self.removeAnnotations()
-            self.setRegionAndAnnotation(center: self.sourceLocation)
+            self.mapViewModel.removeAnnotations(self.mapView)
+            self.mapViewModel.setRegionAndAnnotation(self.mapView, center: self.mapViewModel.location.value)
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
         }
         presentPanModal(vc)
@@ -172,18 +173,5 @@ extension MapViewController: CLLocationManagerDelegate {
 // MARK: - Extension: MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
-    
-}
-
-
-// MARK: - Extension: HandleSearchResultsDelegate
-
-extension MapViewController: HandleSearchResultsDelegate {
-    
-    func locationInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        sourceLocation.latitude = latitude
-        sourceLocation.longitude = longitude
-    }
-    
     
 }
