@@ -23,12 +23,13 @@ final class MainTapBarController: UITabBarController {
     // MARK: - Helper Functions
     
     private func configureTabBars() {
-            viewControllers = [
-                createNavController(for: MapViewController(), title: "지도", image: UIImage(systemName: "map.fill")),
-                createNavController(for: SharingListViewController(), title: "같이 가는 사람들", image: UIImage(systemName: "person.3.fill")),
-                createNavController(for: SettingsViewController(), title: "설정", image: UIImage(systemName: "gear"))
-            ]
-        }
+        viewControllers = [
+            createNavController(for: MapViewController(), title: TabBarTitles.mapVC.rawValue, image: UIImage(systemName: TabBarImages.mapVC.rawValue)),
+            createNavController(for: SharingListViewController(), title: TabBarTitles.sharingListVC.rawValue, image: UIImage(systemName: TabBarImages.sharingListVC.rawValue)),
+            createNavController(for: HistoriesViewController(), title: TabBarTitles.historiesVC.rawValue, image: UIImage(systemName: TabBarImages.historiesVC.rawValue)),
+            createNavController(for: SettingsViewController(), title: TabBarTitles.SettingsVC.rawValue, image: UIImage(systemName: TabBarImages.SettingsVC.rawValue))
+        ]
+    }
     
     private func createNavController(for rootViewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
@@ -37,7 +38,6 @@ final class MainTapBarController: UITabBarController {
         rootViewController.navigationItem.title = title
         return navController
     }
-    
     
 }
 
