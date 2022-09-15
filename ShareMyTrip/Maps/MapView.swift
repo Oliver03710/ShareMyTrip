@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
 
 
 class MapView: BaseView {
@@ -28,12 +26,15 @@ class MapView: BaseView {
     
     override func configureUI() {
         
-        
     }
     
     override func setConstraints() {
         
-        
     }
+    
+    
 
 }
+
+
+

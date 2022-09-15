@@ -6,19 +6,30 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class MapViewController: BaseViewController {
+import SnapKit
+
+final class MapViewController: BaseViewController {
 
     // MARK: - Properties
     
-    let mapView = MapView()
+    lazy var mapView: MKMapView = {
+        let mv = MKMapView()
+        mv.delegate = self
+        mv.showsUserLocation = true
+        return mv
+    }()
+    
+    lazy var locationManager: CLLocationManager = {
+        let lm = CLLocationManager()
+        lm.delegate = self
+        return lm
+    }()
     
     
     // MARK: - Init
-    
-    override func loadView() {
-        self.view = mapView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +40,97 @@ class MapViewController: BaseViewController {
     // MARK: - Helper Functions
     
     override func configureUI() {
+        [mapView].forEach { view.addSubview($0) }
         
     }
+    
+    override func setContraints() {
+        mapView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
+        
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = center
+        annotation.title = "Test"
+        
+        mapView.addAnnotation(annotation)
+        
+    }
+    
+}
 
+
+// MARK: - Extension: Location Authorization
+
+extension MapViewController {
+    
+    func checkUserDeviceLocationServiceAuthorization() {
+        
+        let authorizationStatus: CLAuthorizationStatus
+        if #available(iOS 14.0, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            checkUserCurrentLocationAuthorization(authorizationStatus)
+        } else {
+            print("위치 서비스가 꺼져 있습니다.")
+        }
+    }
+    
+    func checkUserCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
+        
+        switch authorizationStatus {
+        case .notDetermined:
+            print("NOT Determined")
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("Denied")
+            showRequestLocationServiceAlert()
+        case .authorizedWhenInUse:
+            print("When In Use")
+            locationManager.startUpdatingLocation()
+        default:
+            print("Default")
+        }
+    }
+}
+
+
+// MARK: - Extension: CLLocationManagerDelegate
+
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let coordinate = locations.last?.coordinate {
+            print(coordinate)
+            setRegionAndAnnotation(center: coordinate)
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(#function)
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkUserDeviceLocationServiceAuthorization()
+    }
+    
+}
+
+
+// MARK: - Extension: MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+    
 }
