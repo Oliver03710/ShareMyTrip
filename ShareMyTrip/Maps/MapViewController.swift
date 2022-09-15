@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 
 import SnapKit
+import PanModal
 
 final class MapViewController: BaseViewController {
 
@@ -28,6 +29,17 @@ final class MapViewController: BaseViewController {
         return lm
     }()
     
+    lazy var searchButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("검색", for: .normal)
+        btn.setTitleColor(.label, for: .normal)
+        btn.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        return btn
+    }()
+    
+    private var currentPlace: CLPlacemark?
+    private var sourceLocation = CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262)
+    
     
     // MARK: - Init
     
@@ -37,16 +49,36 @@ final class MapViewController: BaseViewController {
     }
     
     
+    // MARK: - Selectors
+    
+    @objc func searchButtonTapped() {
+        let vc = SearchViewController()
+        vc.delegate = self
+        vc.onDoneBlock = { _ in
+            self.removeAnnotations()
+            self.setRegionAndAnnotation(center: self.sourceLocation)
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        }
+        presentPanModal(vc)
+    }
+    
+    
     // MARK: - Helper Functions
     
     override func configureUI() {
         [mapView].forEach { view.addSubview($0) }
-        
+        mapView.addSubview(searchButton)
     }
     
     override func setContraints() {
         mapView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        searchButton.snp.makeConstraints { make in
+            make.trailing.equalTo(mapView.snp.trailing).inset(20)
+            make.bottom.equalTo(mapView.snp.bottom).inset(20)
+            make.height.width.equalTo(44)
         }
     }
     
@@ -61,6 +93,14 @@ final class MapViewController: BaseViewController {
         
         mapView.addAnnotation(annotation)
         
+    }
+    
+    func removeAnnotations() {
+        mapView.annotations.forEach { (annotation) in
+            if let annotation = annotation as? MKPointAnnotation {
+                mapView.removeAnnotation(annotation)
+            }
+        }
     }
     
 }
@@ -132,5 +172,18 @@ extension MapViewController: CLLocationManagerDelegate {
 // MARK: - Extension: MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
+    
+}
+
+
+// MARK: - Extension: HandleSearchResultsDelegate
+
+extension MapViewController: HandleSearchResultsDelegate {
+    
+    func locationInfo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        sourceLocation.latitude = latitude
+        sourceLocation.longitude = longitude
+    }
+    
     
 }
