@@ -13,12 +13,7 @@ class SettingsTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
-    let backUpLabel: SettingsVCLabel = {
-        let label = SettingsVCLabel()
-        return label
-    }()
-    
-    let versionLabel: SettingsVCLabel = {
+    let settingLabel: SettingsVCLabel = {
         let label = SettingsVCLabel()
         return label
     }()
@@ -39,25 +34,19 @@ class SettingsTableViewCell: BaseTableViewCell {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        [backUpLabel, versionLabel].forEach { self.addSubview($0) }
+        [settingLabel].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
-        backUpLabel.snp.makeConstraints { make in
+        
+        settingLabel.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide).inset(16)
         }
         
-        versionLabel.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide).inset(16)
-        }
     }
     
     func setCellComponents(index: Int) {
-        switch index {
-        case 0: backUpLabel.text = SettingsLabelTexts.backUp.rawValue
-        case 1: versionLabel.text = SettingsLabelTexts.version.rawValue
-        default: break
-        }
+        settingLabel.text = SettingsLabelTexts.allCases[index].rawValue
     }
     
 }

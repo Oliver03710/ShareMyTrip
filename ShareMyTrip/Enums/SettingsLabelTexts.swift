@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SettingsLabelTexts: String {
+enum SettingsLabelTexts: String, CaseIterable {
     case backUp = "백업 및 복구"
     case version = "버전 정보"
 }
