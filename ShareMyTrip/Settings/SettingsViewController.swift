@@ -9,7 +9,16 @@ import UIKit
 
 class SettingsViewController: BaseViewController {
 
+    // MARK: - Properties
+    
+    let settingsView = SettingsView()
+    
+    
     // MARK: - Init
+    
+    override func loadView() {
+        self.view = settingsView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,3 +33,5 @@ class SettingsViewController: BaseViewController {
     }
 
 }
+
+
