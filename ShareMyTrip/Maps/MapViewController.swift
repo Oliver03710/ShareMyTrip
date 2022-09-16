@@ -20,6 +20,7 @@ final class MapViewController: BaseViewController {
         let mv = MKMapView()
         mv.delegate = self
         mv.showsUserLocation = true
+        mv.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         return mv
     }()
     
