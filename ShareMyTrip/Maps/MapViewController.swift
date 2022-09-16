@@ -37,16 +37,34 @@ final class MapViewController: BaseViewController {
         return btn
     }()
     
+    lazy var deleteButton: UIButton = {
+        let btn = UIButton()
+        // fix this button
+        btn.clipsToBounds = true
+        btn.layer.cornerRadius = btn.bounds.size.width / 2
+        btn.setImage(UIImage(systemName: "trash"), for: .normal)
+        btn.backgroundColor = .red
+        btn.tintColor = .white
+        btn.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        return btn
+    }()
+    
+    lazy var CreatePathButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("경로찾기", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = .systemBrown
+        btn.addTarget(self, action: #selector(createPathButtonTapped), for: .touchUpInside)
+        return btn
+    }()
+    
     private var currentPlace: CLPlacemark?
-    private var sourceLocation = CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262)
-    private let mapViewModel = MapViewModel()
     
     
     // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
@@ -54,21 +72,42 @@ final class MapViewController: BaseViewController {
     
     @objc func searchButtonTapped() {
         let vc = SearchViewController()
-        vc.mapViewModel = mapViewModel
         vc.onDoneBlock = { _ in
-            self.mapViewModel.removeAnnotations(self.mapView)
-            self.mapViewModel.setRegionAndAnnotation(self.mapView, center: self.mapViewModel.location.value)
+            LocationHelper.standard.setRegion(self.mapView, center: LocationHelper.standard.location)
+            LocationHelper.standard.setAnnotation(self.mapView, center: LocationHelper.standard.location)
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+            LocationHelper.standard.checkNumberOfAnnotations()
+            if LocationHelper.standard.isTrue {
+                LocationHelper.standard.routes.removeAll()
+                for i in 1...LocationHelper.standard.annotations.count - 1 {
+                    LocationHelper.standard.createPath(self.mapView, sourceLocation: LocationHelper.standard.annotations[i - 1].coordinate, destinationLocation: LocationHelper.standard.annotations[i].coordinate)
+                }
+            }
         }
         presentPanModal(vc)
+    }
+    
+    @objc func deleteButtonTapped() {
+        LocationHelper.standard.removeAnnotations(mapView)
+        mapView.removeOverlays(mapView.overlays)
+    }
+    
+    @objc func createPathButtonTapped() {
+        print(#function)
+        LocationHelper.standard.checkNumberOfAnnotations()
+        if LocationHelper.standard.isTrue {
+            LocationHelper.standard.showRoutes(mapView, routes: LocationHelper.standard.routes)
+            print(LocationHelper.standard.annotations)
+            print(LocationHelper.standard.routes)
+        }
     }
     
     
     // MARK: - Helper Functions
     
     override func configureUI() {
-        [mapView].forEach { view.addSubview($0) }
-        mapView.addSubview(searchButton)
+        view.addSubview(mapView)
+        [searchButton, deleteButton, CreatePathButton].forEach { mapView.addSubview($0) }
     }
     
     override func setContraints() {
@@ -81,26 +120,18 @@ final class MapViewController: BaseViewController {
             make.bottom.equalTo(mapView.snp.bottom).inset(20)
             make.height.width.equalTo(44)
         }
-    }
-    
-    func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
         
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
-        mapView.setRegion(region, animated: true)
+        deleteButton.snp.makeConstraints { make in
+            make.leading.equalTo(mapView.snp.leading).inset(20)
+            make.bottom.equalTo(mapView.snp.bottom).inset(20)
+            make.height.width.equalTo(44)
+        }
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = center
-        annotation.title = "Test"
-        
-        mapView.addAnnotation(annotation)
-        
-    }
-    
-    func removeAnnotations() {
-        mapView.annotations.forEach { (annotation) in
-            if let annotation = annotation as? MKPointAnnotation {
-                mapView.removeAnnotation(annotation)
-            }
+        CreatePathButton.snp.makeConstraints { make in
+            make.leading.equalTo(mapView.snp.leading).inset(20)
+            make.bottom.equalTo(deleteButton.snp.top).offset(-20)
+            make.height.equalTo(44)
+            make.width.equalTo(CreatePathButton.snp.height).multipliedBy(2)
         }
     }
     
@@ -154,7 +185,8 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.last?.coordinate {
             print(coordinate)
-            setRegionAndAnnotation(center: coordinate)
+            LocationHelper.standard.setRegion(mapView, center: LocationHelper.standard.location)
+            LocationHelper.standard.setAnnotation(mapView, center: LocationHelper.standard.location)
         }
         locationManager.stopUpdatingLocation()
     }
@@ -173,5 +205,12 @@ extension MapViewController: CLLocationManagerDelegate {
 // MARK: - Extension: MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.lineWidth = 5
+        renderer.strokeColor = .systemBlue
+        return renderer
+    }
     
 }

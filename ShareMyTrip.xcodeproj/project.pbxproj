@@ -11,6 +11,8 @@
 		AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */; };
 		AD4D8D8728D311F900CD2740 /* SearchVCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8628D311F900CD2740 /* SearchVCLabel.swift */; };
 		AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD4D8D8928D3163200CD2740 /* Toast */; };
+		AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1228D46B85004A2734 /* LocationHelper.swift */; };
+		AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1428D47307004A2734 /* CustomAnnotations.swift */; };
 		AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66B28D092B700680F3A /* HistoriesViewController.swift */; };
 		AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66D28D092D000680F3A /* HistoriesView.swift */; };
 		AD93E67028D0936400680F3A /* TabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66F28D0936400680F3A /* TabBarImages.swift */; };
@@ -36,7 +38,6 @@
 		ADCFAA7A28D0606A0027656F /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7928D0606A0027656F /* JGProgressHUD */; };
 		ADCFAA7D28D0609F0027656F /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7C28D0609F0027656F /* PanModal */; };
 		ADCFAA8028D063720027656F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA7F28D063720027656F /* Observable.swift */; };
-		ADCFAA8428D063E70027656F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8328D063E70027656F /* MapViewModel.swift */; };
 		ADCFAA8728D064E00027656F /* TransitionViewControllers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8628D064E00027656F /* TransitionViewControllers+Extension.swift */; };
 		ADCFAA8928D0652D0027656F /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8828D0652D0027656F /* UINavigationBar+Extension.swift */; };
 		ADCFAA8D28D066630027656F /* SharingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8C28D066630027656F /* SharingListViewController.swift */; };
@@ -52,6 +53,8 @@
 		AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AD4D8D8628D311F900CD2740 /* SearchVCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCLabel.swift; sourceTree = "<group>"; };
+		AD67DF1228D46B85004A2734 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		AD67DF1428D47307004A2734 /* CustomAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotations.swift; sourceTree = "<group>"; };
 		AD93E66B28D092B700680F3A /* HistoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewController.swift; sourceTree = "<group>"; };
 		AD93E66D28D092D000680F3A /* HistoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesView.swift; sourceTree = "<group>"; };
 		AD93E66F28D0936400680F3A /* TabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarImages.swift; sourceTree = "<group>"; };
@@ -74,7 +77,6 @@
 		ADCFAA6A28D05ED00027656F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ADCFAA6C28D05F460027656F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ADCFAA7F28D063720027656F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		ADCFAA8328D063E70027656F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		ADCFAA8628D064E00027656F /* TransitionViewControllers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitionViewControllers+Extension.swift"; sourceTree = "<group>"; };
 		ADCFAA8828D0652D0027656F /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		ADCFAA8C28D066630027656F /* SharingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingListViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */,
+				AD67DF1428D47307004A2734 /* CustomAnnotations.swift */,
+				AD67DF1228D46B85004A2734 /* LocationHelper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -195,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				ADCFAA7F28D063720027656F /* Observable.swift */,
-				ADCFAA8328D063E70027656F /* MapViewModel.swift */,
 				ADCFAA9828D0748F0027656F /* LocationViewModel.swift */,
 			);
 			path = ViewModels;
@@ -353,7 +356,9 @@
 				ADC20A6928D0F317004F94F4 /* BaseTableView.swift in Sources */,
 				AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */,
 				ADC20A5828D0DF72004F94F4 /* SettingsVCLabel.swift in Sources */,
+				AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */,
 				ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */,
+				AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */,
 				ADCFAA8928D0652D0027656F /* UINavigationBar+Extension.swift in Sources */,
 				ADC20A5228D0DAE2004F94F4 /* Reusable+Protocol.swift in Sources */,
 				ADCFAA6B28D05ED00027656F /* BaseViewController.swift in Sources */,
@@ -370,7 +375,6 @@
 				ADC20A5428D0DB0C004F94F4 /* BaseTableViewCell.swift in Sources */,
 				AD93E67028D0936400680F3A /* TabBarImages.swift in Sources */,
 				ADC20A6728D0E506004F94F4 /* CustomCGFloats.swift in Sources */,
-				ADCFAA8428D063E70027656F /* MapViewModel.swift in Sources */,
 				AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

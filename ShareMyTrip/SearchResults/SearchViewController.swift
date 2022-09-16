@@ -33,7 +33,6 @@ class SearchViewController: BaseViewController {
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var onDoneBlock : ((Bool) -> Void)?
-    var mapViewModel: MapViewModel?
     
     
     // MARK: - Init
@@ -88,12 +87,13 @@ extension SearchViewController: UITableViewDelegate {
         search.start { (response, error) in
             
             print(response ?? "response Error")
-            guard let coordinate = response?.mapItems[0].placemark.coordinate else {
+                // 프린트 찍기 mapItems
+            guard let coordinate = response?.mapItems.first?.placemark.coordinate else {
                 self.view.makeToast("위치정보를 받아오는데 오류가 발생하였습니다.")
                 return
             }
             
-            guard let name = response?.mapItems[0].name else {
+            guard let name = response?.mapItems.first?.name else {
                 self.view.makeToast("이름을 받아오는데 오류가 발생하였습니다.")
                 return
             }
@@ -106,7 +106,7 @@ extension SearchViewController: UITableViewDelegate {
             print(lat)
             print(lon)
             
-            self.mapViewModel?.location.value = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            LocationHelper.standard.location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             self.onDoneBlock?(true)
         }
         dismiss(animated: true)
