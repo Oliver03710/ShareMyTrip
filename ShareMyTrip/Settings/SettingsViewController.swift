@@ -33,5 +33,3 @@ class SettingsViewController: BaseViewController {
     }
 
 }
-
-

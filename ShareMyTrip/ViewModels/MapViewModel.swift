@@ -12,7 +12,8 @@ import MapKit
 class MapViewModel {
     
     var location: Observable<CLLocationCoordinate2D> = Observable(CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262))
-    
+    var annotation: Observable<MKPointAnnotation> = Observable(MKPointAnnotation())
+    var region: Observable<MKCoordinateRegion> = Observable(MKCoordinateRegion())
     
     func removeAnnotations(_ mapView: MKMapView) {
         mapView.annotations.forEach { (annotation) in
@@ -24,19 +25,14 @@ class MapViewModel {
     
     func setRegionAndAnnotation(_ mapView: MKMapView, center: CLLocationCoordinate2D) {
         
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
-        mapView.setRegion(region, animated: true)
+        region.value = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.setRegion(region.value, animated: true)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = center
-        annotation.title = "Test"
+        annotation.value.coordinate = center
+        annotation.value.title = "Test"
         
-        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(annotation.value)
         
-    }
-    
-    func signIn(completion: @escaping () -> Void) {
-        completion()
     }
     
 }
