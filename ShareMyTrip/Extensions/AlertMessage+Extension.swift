@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func addCompanionAlertMessage(buttonText: String, alertTitle: String?, target: Observable<[String]>) {
+    func showAlertMessage(buttonText: String, alertTitle: String?, target: Observable<[String]>) {
         
         let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
@@ -18,12 +18,29 @@ extension UIViewController {
         let confirm = UIAlertAction(title: buttonText, style: .default) { _ in
             target.value.append(alert.textFields?.first?.text ?? "")
         }
-        let cancel = UIAlertAction(title: "취소", style: .default)
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
         
         [cancel, confirm].forEach { alert.addAction($0) }
         self.present(alert, animated: true)
         
     }
+    
+    func showAlertMessage(buttonText: String, alertTitle: String?, completionHandler: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+        
+        let delete = UIAlertAction(title: buttonText, style: .destructive) { _ in
+            completionHandler()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        [cancel, delete].forEach { alert.addAction($0) }
+        self.present(alert, animated: true)
+        
+    }
+
     
 }
 
