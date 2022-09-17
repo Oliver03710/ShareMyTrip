@@ -8,15 +8,17 @@
 import Foundation
 import MapKit
 
-private protocol LocationHelperType {
+private protocol LocationHelperType: AnyObject {
+    func checkNumberOfAnnotations()
     func removeAnnotations(_ mapView: MKMapView)
     func setRegion(_ mapView: MKMapView, center: CLLocationCoordinate2D)
     func setAnnotation(_ mapView: MKMapView, center: CLLocationCoordinate2D)
     func createPath(_ mapView: MKMapView, sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D)
     func showRoutes(_ mapView: MKMapView, routes: [MKRoute])
+    func createMultiplePath(_ mapView: MKMapView)
 }
 
-public class LocationHelper: LocationHelperType {
+public final class LocationHelper: LocationHelperType {
     
     private init() { }
     
@@ -90,12 +92,17 @@ public class LocationHelper: LocationHelperType {
             
             self.routes.append(response.routes[0])
             print(self.routes)
-//            mapView.addOverlay(response.routes[0].polyline, level: MKOverlayLevel.aboveRoads)
         }
     }
     
     func showRoutes(_ mapView: MKMapView, routes: [MKRoute]) {
         routes.forEach { mapView.addOverlay($0.polyline, level: MKOverlayLevel.aboveRoads) }
+    }
+    
+    func createMultiplePath(_ mapView: MKMapView) {
+        for i in 1...annotations.count - 1 {
+            createPath(mapView, sourceLocation: annotations[i - 1].coordinate, destinationLocation: annotations[i].coordinate)
+        }
     }
     
 }
