@@ -1,13 +1,13 @@
 //
-//  SearchVCLabel.swift
+//  BaseLabel.swift
 //  ShareMyTrip
 //
-//  Created by Junhee Yoon on 2022/09/15.
+//  Created by Junhee Yoon on 2022/09/17.
 //
 
 import UIKit
 
-class SearchVCLabel: UILabel {
+class BaseLabel: UILabel {
 
     // MARK: - Init
     
@@ -24,8 +24,12 @@ class SearchVCLabel: UILabel {
     // MARK: - Helper Functions
     
     func configureUI() {
-        self.font = .systemFont(ofSize: 15)
         self.textColor = .label
+    }
+    
+    convenience init(fontSize: CGFloat) {
+        self.init()
+        self.font = .systemFont(ofSize: fontSize)
     }
 
 }
