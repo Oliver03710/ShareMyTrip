@@ -13,10 +13,10 @@ import SnapKit
 import PanModal
 
 final class MapViewController: BaseViewController {
-
+    
     // MARK: - Properties
     
-    lazy var mapView: MKMapView = {
+    private lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.delegate = self
         mv.showsUserLocation = true
@@ -24,42 +24,16 @@ final class MapViewController: BaseViewController {
         return mv
     }()
     
-    lazy var locationManager: CLLocationManager = {
+    private lazy var locationManager: CLLocationManager = {
         let lm = CLLocationManager()
         lm.delegate = self
         return lm
     }()
     
-    lazy var searchButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("검색", for: .normal)
-        btn.setTitleColor(.label, for: .normal)
-        btn.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+    private lazy var deleteButton: BaseButton = {
+        let btn = BaseButton(backgroundColor: .red, titleOrImage: "trash", hasTitle: false, componentColor: .white, addTarget: self, action: #selector(deleteButtonTapped))
         return btn
     }()
-    
-    lazy var deleteButton: UIButton = {
-        let btn = UIButton()
-        // fix this button
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = btn.bounds.size.width / 2
-        btn.setImage(UIImage(systemName: "trash"), for: .normal)
-        btn.backgroundColor = .red
-        btn.tintColor = .white
-        btn.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-        return btn
-    }()
-    
-    lazy var CreatePathButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("경로찾기", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = .systemBrown
-        btn.addTarget(self, action: #selector(createPathButtonTapped), for: .touchUpInside)
-        return btn
-    }()
-    
-    private var currentPlace: CLPlacemark?
     
     
     // MARK: - Init
@@ -71,7 +45,7 @@ final class MapViewController: BaseViewController {
     
     // MARK: - Selectors
     
-    @objc func searchButtonTapped() {
+    @objc private func searchButtonTapped() {
         let vc = SearchViewController()
         vc.onDoneBlock = { _ in
             LocationHelper.standard.setRegion(self.mapView, center: LocationHelper.standard.location)
@@ -80,20 +54,20 @@ final class MapViewController: BaseViewController {
             LocationHelper.standard.checkNumberOfAnnotations()
             if LocationHelper.standard.isTrue {
                 LocationHelper.standard.routes.removeAll()
-                for i in 1...LocationHelper.standard.annotations.count - 1 {
-                    LocationHelper.standard.createPath(self.mapView, sourceLocation: LocationHelper.standard.annotations[i - 1].coordinate, destinationLocation: LocationHelper.standard.annotations[i].coordinate)
-                }
+                LocationHelper.standard.createMultiplePath(self.mapView)
             }
         }
         presentPanModal(vc)
     }
     
-    @objc func deleteButtonTapped() {
-        LocationHelper.standard.removeAnnotations(mapView)
-        mapView.removeOverlays(mapView.overlays)
+    @objc private func deleteButtonTapped() {
+        showAlertMessage(buttonText: "삭제", alertTitle: "목적지를 지우시겠습니까?") {
+            LocationHelper.standard.removeAnnotations(self.mapView)
+            self.mapView.removeOverlays(self.mapView.overlays)
+        }
     }
     
-    @objc func createPathButtonTapped() {
+    @objc private func createPathButtonTapped() {
         print(#function)
         LocationHelper.standard.checkNumberOfAnnotations()
         if LocationHelper.standard.isTrue {
@@ -107,19 +81,15 @@ final class MapViewController: BaseViewController {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        view.addSubview(mapView)
-        [searchButton, deleteButton, CreatePathButton].forEach { mapView.addSubview($0) }
+        setNaviButtons()
     }
     
     override func setContraints() {
+        view.addSubview(mapView)
+        mapView.addSubview(deleteButton)
+        
         mapView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        searchButton.snp.makeConstraints { make in
-            make.trailing.equalTo(mapView.snp.trailing).inset(20)
-            make.bottom.equalTo(mapView.snp.bottom).inset(20)
-            make.height.width.equalTo(44)
         }
         
         deleteButton.snp.makeConstraints { make in
@@ -127,13 +97,14 @@ final class MapViewController: BaseViewController {
             make.bottom.equalTo(mapView.snp.bottom).inset(20)
             make.height.width.equalTo(44)
         }
-        
-        CreatePathButton.snp.makeConstraints { make in
-            make.leading.equalTo(mapView.snp.leading).inset(20)
-            make.bottom.equalTo(deleteButton.snp.top).offset(-20)
-            make.height.equalTo(44)
-            make.width.equalTo(CreatePathButton.snp.height).multipliedBy(2)
-        }
+    }
+    
+    private func setNaviButtons() {
+        let searchBarButton = UIBarButtonItem(title: "위치검색", style: .plain, target: self, action: #selector(searchButtonTapped))
+        let routeBarButton = UIBarButtonItem(title: "경로탐색", style: .plain, target: self, action: #selector(createPathButtonTapped))
+        navigationItem.leftBarButtonItem = routeBarButton
+        navigationItem.rightBarButtonItem = searchBarButton
+        navigationController?.navigationBar.tintColor = .systemBrown
     }
     
 }
@@ -141,9 +112,9 @@ final class MapViewController: BaseViewController {
 
 // MARK: - Extension: Location Authorization
 
-extension MapViewController {
+private extension MapViewController {
     
-    func checkUserDeviceLocationServiceAuthorization() {
+    private func checkUserDeviceLocationServiceAuthorization() {
         
         let authorizationStatus: CLAuthorizationStatus
         if #available(iOS 14.0, *) {
@@ -159,7 +130,7 @@ extension MapViewController {
         }
     }
     
-    func checkUserCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
+    private func checkUserCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
         
         switch authorizationStatus {
         case .notDetermined:
@@ -193,7 +164,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(#function)
+        print("위치 정보 불러오는데 실패했습니다.")
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

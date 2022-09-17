@@ -7,12 +7,13 @@
 
 import MapKit
 
-class CustomAnnotationView: MKAnnotationView {
+final class CustomAnnotationView: MKAnnotationView {
     
     override var annotation: MKAnnotation? {
         willSet {
             // Resize image
-            let pinImage = UIImage(named: CustomAnnotations.one.images)
+            // 이미지 원본을 집어넣으면 resizing 불필요?
+            let pinImage = UIImage(named: CustomAnnotations.one.rawValue)
             let size = CGSize(width: 60, height: 85)
             UIGraphicsBeginImageContext(size)
             pinImage!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -25,14 +26,9 @@ class CustomAnnotationView: MKAnnotationView {
             detailCalloutAccessoryView = Callout(annotation: anno)
         }
     }
-
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
-        // Enable callout
-//        canShowCallout = true
-        
-        // Move the image a little bit above the point.
         centerOffset = CGPoint(x: 0, y: -20)
     }
 }
