@@ -8,11 +8,5 @@
 import Foundation
 
 enum CustomAnnotations: String, CaseIterable {
-    case one
-    
-    var images: String {
-        switch self {
-        case .one: return "customAnno1"
-        }
-    }
+    case one = "customAnno1"
 }
