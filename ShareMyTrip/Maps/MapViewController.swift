@@ -214,4 +214,11 @@ extension MapViewController: MKMapViewDelegate {
         return renderer
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        annotationView?.canShowCallout = true
+        annotationView?.detailCalloutAccessoryView = Callout(annotation: annotation)
+        return annotationView
+    }
+    
 }

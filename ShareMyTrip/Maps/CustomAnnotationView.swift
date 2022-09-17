@@ -20,6 +20,9 @@ class CustomAnnotationView: MKAnnotationView {
             
             // Add Image
             self.image = resizedImage
+            let anno = LocationHelper.standard.annotations[0]
+            canShowCallout = true
+            detailCalloutAccessoryView = Callout(annotation: anno)
         }
     }
 
@@ -27,7 +30,7 @@ class CustomAnnotationView: MKAnnotationView {
         super.didMoveToSuperview()
         
         // Enable callout
-        canShowCallout = true
+//        canShowCallout = true
         
         // Move the image a little bit above the point.
         centerOffset = CGPoint(x: 0, y: -20)
