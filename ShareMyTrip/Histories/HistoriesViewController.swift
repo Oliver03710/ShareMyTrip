@@ -7,9 +7,18 @@
 
 import UIKit
 
-class HistoriesViewController: BaseViewController {
-
+final class HistoriesViewController: BaseViewController {
+    
+    // MARK: - Properties
+    
+    private let historiesView = HistoriesView()
+    
+    
     // MARK: - Init
+    
+    override func loadView() {
+        self.view = historiesView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,4 +31,5 @@ class HistoriesViewController: BaseViewController {
     override func configureUI() {
         
     }
+    
 }
