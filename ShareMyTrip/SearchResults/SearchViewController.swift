@@ -12,26 +12,29 @@ import SnapKit
 import Toast
 import PanModal
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
 
     // MARK: - Properties
     
-    lazy var searchBar: UISearchBar = {
+    private lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "어디로 가시나요?"
         sb.delegate = self
         return sb
     }()
     
-    lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
-        tv.delegate = self
-        tv.dataSource = self
+    private lazy var tableView: BaseTableView = {
+        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
     
-    var searchCompleter = MKLocalSearchCompleter()
-    var searchResults = [MKLocalSearchCompletion]()
+    private lazy var searchCompleter: MKLocalSearchCompleter = {
+        let sc = MKLocalSearchCompleter()
+        sc.delegate = self
+        return sc
+    }()
+    
+    private var searchResults = [MKLocalSearchCompletion]()
     var onDoneBlock : ((Bool) -> Void)?
     
     
@@ -42,12 +45,11 @@ class SearchViewController: BaseViewController {
         view.backgroundColor = .systemBackground
     }
     
-    override func configureUI() {
-        [searchBar, tableView].forEach { view.addSubview($0) }
-        setSearchCompleter()
-    }
+    
+    // MARK: - Helper Functions
     
     override func setContraints() {
+        [searchBar, tableView].forEach { view.addSubview($0) }
         
         searchBar.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
@@ -59,10 +61,6 @@ class SearchViewController: BaseViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-    }
-    
-    func setSearchCompleter() {
-        searchCompleter.delegate = self
     }
 
 }

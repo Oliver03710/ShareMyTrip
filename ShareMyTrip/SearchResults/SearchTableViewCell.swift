@@ -9,16 +9,16 @@ import UIKit
 
 import SnapKit
 
-class SearchTableViewCell: BaseTableViewCell {
+final class SearchTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
-    let titleLabel: BaseLabel = {
+    private let titleLabel: BaseLabel = {
         let label = BaseLabel(fontSize: 13)
         return label
     }()
     
-    let addressLabel: BaseLabel = {
+    private let addressLabel: BaseLabel = {
         let label = BaseLabel(fontSize: 13)
         return label
     }()
@@ -26,7 +26,7 @@ class SearchTableViewCell: BaseTableViewCell {
     
     // MARK: - Init
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    private override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     }
@@ -38,11 +38,9 @@ class SearchTableViewCell: BaseTableViewCell {
     
     // MARK: - Helper Functions
     
-    override func configureUI() {
-        [titleLabel, addressLabel].forEach { self.addSubview($0) }
-    }
-    
     override func setConstraints() {
+        [titleLabel, addressLabel].forEach { self.addSubview($0) }
+        
         titleLabel.snp.makeConstraints { make in
             make.top.directionalHorizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(self.snp.height).multipliedBy(0.3)

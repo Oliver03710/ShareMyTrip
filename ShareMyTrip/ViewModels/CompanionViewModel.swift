@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CompanionViewModel {
+final class CompanionViewModel {
     
     // MARK: - Properties
     

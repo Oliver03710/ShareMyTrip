@@ -9,11 +9,11 @@ import UIKit
 
 import SnapKit
 
-class SettingsTableViewCell: BaseTableViewCell {
+final class SettingsTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
-    let settingLabel: BaseLabel = {
+    private let settingLabel: BaseLabel = {
         let label = BaseLabel(fontSize: 15)
         return label
     }()
@@ -21,7 +21,7 @@ class SettingsTableViewCell: BaseTableViewCell {
     
     // MARK: - Init
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    private override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     }

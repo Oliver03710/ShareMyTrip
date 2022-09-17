@@ -9,15 +9,12 @@ import UIKit
 
 import SnapKit
 
-class SharingListView: BaseView {
+final class SharingListView: BaseView {
 
     // MARK: - Init
     
-    lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SharingListTableViewCell.self, forCellReuseIdentifier: SharingListTableViewCell.reuseIdentifier)
-        tv.delegate = self
-        tv.dataSource = self
-        tv.bounces = false
+    private lazy var tableView: BaseTableView = {
+        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SharingListTableViewCell.self, forCellReuseIdentifier: SharingListTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
     
@@ -26,7 +23,7 @@ class SharingListView: BaseView {
     
     // MARK: - Init
     
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
@@ -50,7 +47,7 @@ class SharingListView: BaseView {
         
     }
     
-    func reloadTableView() {
+    private func reloadTableView() {
         companionViewModel.person.bind { _ in
             self.tableView.reloadData()
         }
@@ -69,6 +66,10 @@ extension SharingListView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CustomCGFloats.settings
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return nil
     }
     
 }

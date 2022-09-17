@@ -42,6 +42,8 @@ final class MainTapBarController: UITabBarController {
 }
 
 
+// MARK: - Extension: UITabBarControllerDelegate
+
 extension MainTapBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

@@ -8,8 +8,5 @@
 import Foundation
 
 struct CustomCGFloats {
-    private init() { }
-    
     static let settings: CGFloat = 50
-
 }

@@ -7,11 +7,11 @@
 
 import UIKit
 
-class SharingListViewController: BaseViewController {
+final class SharingListViewController: BaseViewController {
 
     // MARK: - Properties
     
-    let sharingListView = SharingListView()
+    private let sharingListView = SharingListView()
     
     
     // MARK: - Init
@@ -28,8 +28,8 @@ class SharingListViewController: BaseViewController {
     
     // MARK: - Selectors
     
-    @objc func addCompanions() {
-        addCompanionAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", target: sharingListView.companionViewModel.person)
+    @objc private func addCompanions() {
+        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", target: sharingListView.companionViewModel.person)
     }
     
     
@@ -39,8 +39,9 @@ class SharingListViewController: BaseViewController {
         setNaviButtons()
     }
     
-    func setNaviButtons() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCompanions))
+    private func setNaviButtons() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addCompanions))
+        navigationController?.navigationBar.tintColor = .systemBrown
     }
 
 }

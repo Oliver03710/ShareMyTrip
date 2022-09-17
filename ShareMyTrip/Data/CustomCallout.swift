@@ -7,7 +7,7 @@
 
 import MapKit
 
-class Callout: UIView {
+final class Callout: UIView {
     
     private let titleLabel = UILabel(frame: .zero)
     private let subtitleLabel = UILabel(frame: .zero)

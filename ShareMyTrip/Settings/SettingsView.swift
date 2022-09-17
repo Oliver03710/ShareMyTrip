@@ -9,14 +9,12 @@ import UIKit
 
 import SnapKit
 
-class SettingsView: BaseView {
+final class SettingsView: BaseView {
 
     // MARK: - Properties
     
-    lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.reuseIdentifier)
-        tv.delegate = self
-        tv.dataSource = self
+    private lazy var tableView: BaseTableView = {
+        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.reuseIdentifier, delegate: self)
         tv.bounces = false
         return tv
     }()
@@ -24,7 +22,7 @@ class SettingsView: BaseView {
     
     // MARK: - Init
     
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
@@ -35,12 +33,9 @@ class SettingsView: BaseView {
     
     // MARK: - Helper Functions
     
-    override func configureUI() {
+    override func setConstraints() {
         [tableView].forEach { self.addSubview($0) }
         
-    }
-    
-    override func setConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }

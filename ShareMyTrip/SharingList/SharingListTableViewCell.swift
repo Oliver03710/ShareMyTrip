@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class SharingListTableViewCell: BaseTableViewCell {
+final class SharingListTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
@@ -21,7 +21,7 @@ class SharingListTableViewCell: BaseTableViewCell {
     
     // MARK: - Init
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    private override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     }
@@ -33,11 +33,8 @@ class SharingListTableViewCell: BaseTableViewCell {
     
     // MARK: - Helper Functions
     
-    override func configureUI() {
-        [nameLabel].forEach { self.addSubview($0) }
-    }
-    
     override func setConstraints() {
+        self.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide).inset(16)
