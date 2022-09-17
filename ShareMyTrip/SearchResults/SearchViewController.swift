@@ -87,7 +87,7 @@ extension SearchViewController: UITableViewDelegate {
         search.start { (response, error) in
             
             print(response ?? "response Error")
-                // 프린트 찍기 mapItems
+            dump(response?.mapItems)
             guard let coordinate = response?.mapItems.first?.placemark.coordinate else {
                 self.view.makeToast("위치정보를 받아오는데 오류가 발생하였습니다.")
                 return
@@ -102,9 +102,6 @@ extension SearchViewController: UITableViewDelegate {
             
             let lat = coordinate.latitude
             let lon = coordinate.longitude
-            
-            print(lat)
-            print(lon)
             
             LocationHelper.standard.location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             self.onDoneBlock?(true)

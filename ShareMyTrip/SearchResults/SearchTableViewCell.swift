@@ -13,13 +13,13 @@ class SearchTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
-    let titleLabel: SettingsVCLabel = {
-        let label = SettingsVCLabel()
+    let titleLabel: BaseLabel = {
+        let label = BaseLabel(fontSize: 13)
         return label
     }()
     
-    let addressLabel: SettingsVCLabel = {
-        let label = SettingsVCLabel()
+    let addressLabel: BaseLabel = {
+        let label = BaseLabel(fontSize: 13)
         return label
     }()
     

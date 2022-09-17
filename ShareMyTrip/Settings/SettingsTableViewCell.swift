@@ -13,8 +13,8 @@ class SettingsTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
-    let settingLabel: SettingsVCLabel = {
-        let label = SettingsVCLabel()
+    let settingLabel: BaseLabel = {
+        let label = BaseLabel(fontSize: 15)
         return label
     }()
     
