@@ -10,6 +10,6 @@ import Foundation
 enum TabBarTitles: String {
     case mapVC = "지도"
     case sharingListVC = "같이 가는 사람들"
-    case historiesVC = "여행지 목록"
-    case SettingsVC = "설정"
+    case historiesVC = "여행 히스토리"
+    case SettingsVC = "기타"
 }
