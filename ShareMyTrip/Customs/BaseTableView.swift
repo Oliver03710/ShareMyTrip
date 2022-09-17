@@ -27,10 +27,18 @@ class BaseTableView: UITableView {
         self.keyboardDismissMode = .onDrag
     }
     
-    convenience init(frame: CGRect, style: UITableView.Style, cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
+    convenience init(frame: CGRect, style: UITableView.Style, cellClass: AnyClass?, forCellReuseIdentifier identifier: String, delegate: UIView) {
         self.init(frame: frame, style: style)
         self.register(cellClass, forCellReuseIdentifier: identifier)
+        self.delegate = delegate as? any UITableViewDelegate
+        self.dataSource = delegate as? any UITableViewDataSource
     }
     
+    convenience init(frame: CGRect, style: UITableView.Style, cellClass: AnyClass?, forCellReuseIdentifier identifier: String, delegate: UIViewController) {
+        self.init(frame: frame, style: style)
+        self.register(cellClass, forCellReuseIdentifier: identifier)
+        self.delegate = delegate as? any UITableViewDelegate
+        self.dataSource = delegate as? any UITableViewDataSource
+    }
 
 }
