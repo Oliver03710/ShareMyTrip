@@ -11,26 +11,25 @@ import MapKit
 private protocol LocationHelperType: AnyObject {
     func checkNumberOfAnnotations()
     func removeAnnotations(_ mapView: MKMapView)
-    func setRegion(_ mapView: MKMapView, center: CLLocationCoordinate2D)
-    func setAnnotation(_ mapView: MKMapView, center: CLLocationCoordinate2D)
-    func createPath(_ mapView: MKMapView, sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D)
-    func showRoutes(_ mapView: MKMapView, routes: [MKRoute])
+    func setRegion(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?)
+    func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?)
+    func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees)
+    func showRoutes(_ mapView: MKMapView)
     func createMultiplePath(_ mapView: MKMapView)
 }
 
-public final class LocationHelper: LocationHelperType {
+final class LocationHelper: LocationHelperType {
     
     private init() { }
     
-    public static let standard = LocationHelper()
+    static let standard = LocationHelper()
     
     // MARK: - Properties
     
-    var location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262)
-    var annotations = [MKPointAnnotation]()
-    var region: MKCoordinateRegion = MKCoordinateRegion()
+//    var location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262)
     var routes = [MKRoute]()
     var isTrue = false
+    var annotations = [Annotation]()
     
     
     // MARK: - Helper Functions
@@ -52,23 +51,29 @@ public final class LocationHelper: LocationHelperType {
         annotations.removeAll()
     }
     
-    func setRegion(_ mapView: MKMapView, center: CLLocationCoordinate2D) {
-        region = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
+    func setRegion(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?) {
+        guard let lat = lat, let lon = lon else { return }
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 500, longitudinalMeters: 500)
         mapView.setRegion(region, animated: true)
     }
     
-    func setAnnotation(_ mapView: MKMapView, center: CLLocationCoordinate2D) {
-        
-        let annotation = MKPointAnnotation()
+    func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?) {
+        guard let lat = lat, let lon = lon else { return }
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let annotation = Annotation(CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].turn)
         annotation.coordinate = center
-        annotation.title = "Test"
-        
+        annotation.title = CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].name
+        annotation.subtitle = CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].address
         annotations.append(annotation)
         mapView.addAnnotations(annotations)
         
     }
     
-    func createPath(_ mapView: MKMapView, sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D) {
+    func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees) {
+        
+        let sourceLocation = CLLocationCoordinate2D(latitude: sourceLat, longitude: sourceLon)
+        let destinationLocation = CLLocationCoordinate2D(latitude: destinationLat, longitude: destinationLon)
         
         let sourcePlaceMark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
         let destinationPlaceMark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
@@ -95,13 +100,13 @@ public final class LocationHelper: LocationHelperType {
         }
     }
     
-    func showRoutes(_ mapView: MKMapView, routes: [MKRoute]) {
+    func showRoutes(_ mapView: MKMapView) {
         routes.forEach { mapView.addOverlay($0.polyline, level: MKOverlayLevel.aboveRoads) }
     }
     
     func createMultiplePath(_ mapView: MKMapView) {
         for i in 1...annotations.count - 1 {
-            createPath(mapView, sourceLocation: annotations[i - 1].coordinate, destinationLocation: annotations[i].coordinate)
+            createPath(mapView, sourceLat: annotations[i - 1].coordinate.latitude, sourceLon: annotations[i - 1].coordinate.longitude, destinationLat: annotations[i].coordinate.latitude, destinationLon: annotations[i].coordinate.longitude)
         }
     }
     
