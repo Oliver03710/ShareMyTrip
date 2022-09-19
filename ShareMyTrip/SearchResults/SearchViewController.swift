@@ -34,7 +34,12 @@ final class SearchViewController: BaseViewController {
         return sc
     }()
     
-    private var searchResults = [MKLocalSearchCompletion]()
+    private var searchResults = [MKLocalSearchCompletion]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     var onDoneBlock : ((Bool) -> Void)?
     
     
@@ -84,24 +89,16 @@ extension SearchViewController: UITableViewDelegate {
         let search = MKLocalSearch(request: searchRequest)
         search.start { (response, error) in
             
-            print(response ?? "response Error")
-            dump(response?.mapItems)
             guard let coordinate = response?.mapItems.first?.placemark.coordinate else {
                 self.view.makeToast("위치정보를 받아오는데 오류가 발생하였습니다.")
                 return
             }
             
-            guard let name = response?.mapItems.first?.name else {
-                self.view.makeToast("이름을 받아오는데 오류가 발생하였습니다.")
-                return
-            }
-            
-            print(name)
-            
             let lat = coordinate.latitude
             let lon = coordinate.longitude
             
-            LocationHelper.standard.location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            CurrentTripRepository.standard.addItem(name: result.title, address: result.subtitle, latitude: lat, longitude: lon, turn: CurrentTripRepository.standard.tasks.count + 1)
+            CurrentTripRepository.standard.fetchRealmData()
             self.onDoneBlock?(true)
         }
         dismiss(animated: true)
@@ -136,6 +133,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchCompleter.queryFragment = searchText
+        if let text = searchBar.text {
+            tableView.isHidden = text.isEmpty ? true : false
+        }
     }
     
 }
@@ -147,11 +147,6 @@ extension SearchViewController: MKLocalSearchCompleterDelegate {
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         searchResults = completer.results
-        tableView.reloadData()
-    }
-    
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        self.view.makeToast("\(error.localizedDescription)")
     }
     
 }
