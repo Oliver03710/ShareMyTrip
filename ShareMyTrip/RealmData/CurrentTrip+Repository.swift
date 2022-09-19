@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import MapKit
 
 import RealmSwift
 
 private protocol CurrentTripRepositoryType: AnyObject {
     func addItem(name: String, address: String, latitude: Double, longitude: Double, turn: Int)
     func deleteLastItem(item: CurrentTrip)
-    func deleteAllItem(item: CurrentTrip)
-    func fetchRealmData() -> Results<CurrentTrip>
+    func deleteAllItem()
+    func fetchRealmData()
 }
 
 final class CurrentTripRepository: CurrentTripRepositoryType {
@@ -51,7 +52,7 @@ final class CurrentTripRepository: CurrentTripRepositoryType {
         }
     }
     
-    func deleteAllItem(item: CurrentTrip) {
+    func deleteAllItem() {
         do {
             try localRealm.write {
                 localRealm.deleteAll()
@@ -61,9 +62,8 @@ final class CurrentTripRepository: CurrentTripRepositoryType {
         }
     }
     
-    func fetchRealmData() -> Results<CurrentTrip> {
+    func fetchRealmData() {
         tasks = localRealm.objects(CurrentTrip.self)
-        return tasks
     }
     
 }
