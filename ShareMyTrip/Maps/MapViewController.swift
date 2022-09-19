@@ -20,7 +20,6 @@ final class MapViewController: BaseViewController {
         let mv = MKMapView()
         mv.delegate = self
         mv.showsUserLocation = true
-        mv.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         return mv
     }()
     
@@ -48,8 +47,9 @@ final class MapViewController: BaseViewController {
     @objc private func searchButtonTapped() {
         let vc = SearchViewController()
         vc.onDoneBlock = { _ in
-            LocationHelper.standard.setRegion(self.mapView, center: LocationHelper.standard.location)
-            LocationHelper.standard.setAnnotation(self.mapView, center: LocationHelper.standard.location)
+            
+            LocationHelper.standard.setRegion(self.mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
+            LocationHelper.standard.setAnnotation(self.mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
             LocationHelper.standard.checkNumberOfAnnotations()
             if LocationHelper.standard.isTrue {
@@ -64,16 +64,14 @@ final class MapViewController: BaseViewController {
         showAlertMessage(buttonText: "삭제", alertTitle: "목적지를 지우시겠습니까?") {
             LocationHelper.standard.removeAnnotations(self.mapView)
             self.mapView.removeOverlays(self.mapView.overlays)
+            CurrentTripRepository.standard.deleteAllItem()
         }
     }
     
     @objc private func createPathButtonTapped() {
-        print(#function)
         LocationHelper.standard.checkNumberOfAnnotations()
         if LocationHelper.standard.isTrue {
-            LocationHelper.standard.showRoutes(mapView, routes: LocationHelper.standard.routes)
-            print(LocationHelper.standard.annotations)
-            print(LocationHelper.standard.routes)
+            LocationHelper.standard.showRoutes(mapView)
         }
     }
     
@@ -82,6 +80,11 @@ final class MapViewController: BaseViewController {
     
     override func configureUI() {
         setNaviButtons()
+        CurrentTripRepository.standard.fetchRealmData()
+        if let task = CurrentTripRepository.standard.tasks {
+            print(task)
+        }
+        print("Realm is located at:", CurrentTripRepository.standard.localRealm.configuration.fileURL!)
     }
     
     override func setContraints() {
@@ -100,11 +103,15 @@ final class MapViewController: BaseViewController {
     }
     
     private func setNaviButtons() {
-        let searchBarButton = UIBarButtonItem(title: "위치검색", style: .plain, target: self, action: #selector(searchButtonTapped))
-        let routeBarButton = UIBarButtonItem(title: "경로탐색", style: .plain, target: self, action: #selector(createPathButtonTapped))
+        let searchBarButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        let routeBarButton = UIBarButtonItem(title: "경로보기", style: .plain, target: self, action: #selector(createPathButtonTapped))
         navigationItem.leftBarButtonItem = routeBarButton
         navigationItem.rightBarButtonItem = searchBarButton
         navigationController?.navigationBar.tintColor = .systemBrown
+    }
+    
+    private func showAnnotations() {
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
 }
@@ -157,8 +164,6 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.last?.coordinate {
             print(coordinate)
-            LocationHelper.standard.setRegion(mapView, center: LocationHelper.standard.location)
-            LocationHelper.standard.setAnnotation(mapView, center: LocationHelper.standard.location)
         }
         locationManager.stopUpdatingLocation()
     }
@@ -186,9 +191,20 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        annotationView?.canShowCallout = true
-        annotationView?.detailCalloutAccessoryView = Callout(annotation: annotation)
+        guard let annotation = annotation as? Annotation else { return nil }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "\(annotation.identifier)")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "\(annotation.identifier)")
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        if annotation.identifier == CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].turn {
+            annotationView?.image = UIImage(named: CustomAnnotations.allCases[CurrentTripRepository.standard.tasks.count - 1].rawValue)
+            annotationView?.annotation = LocationHelper.standard.annotations[CurrentTripRepository.standard.tasks.count - 1]
+        }
+        
         return annotationView
     }
     

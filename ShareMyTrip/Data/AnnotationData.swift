@@ -8,12 +8,10 @@
 import Foundation
 import MapKit
 
-class Annotation {
-    let name: String
-    let coordinate: CLLocationCoordinate2D
+class Annotation: MKPointAnnotation {
+    var identifier: Int
     
-    init(_ name: String, lat: CLLocationDegrees, lon: CLLocationDegrees) {
-        self.name = name
-        self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+    init(_ identifier: Int) {
+        self.identifier = identifier
     }
 }
