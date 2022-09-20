@@ -34,6 +34,8 @@ final class MapViewController: BaseViewController {
         return btn
     }()
     
+    private let viewModel = MapViewModel()
+    
     
     // MARK: - Init
     
@@ -45,34 +47,15 @@ final class MapViewController: BaseViewController {
     // MARK: - Selectors
     
     @objc private func searchButtonTapped() {
-        let vc = SearchViewController()
-        vc.onDoneBlock = { _ in
-            
-            LocationHelper.standard.setRegion(self.mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
-            LocationHelper.standard.setAnnotation(self.mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
-            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
-            LocationHelper.standard.checkNumberOfAnnotations()
-            if LocationHelper.standard.isTrue {
-                LocationHelper.standard.routes.removeAll()
-                LocationHelper.standard.createMultiplePath(self.mapView)
-            }
-        }
-        presentPanModal(vc)
+        viewModel.searchButtonTapped(mapView, vcs: self)
     }
     
     @objc private func deleteButtonTapped() {
-        showAlertMessage(buttonText: "삭제", alertTitle: "목적지를 지우시겠습니까?") {
-            LocationHelper.standard.removeAnnotations(self.mapView)
-            self.mapView.removeOverlays(self.mapView.overlays)
-            CurrentTripRepository.standard.deleteAllItem()
-        }
+        viewModel.deleteButtonClicked(mapView, vc: self)
     }
     
     @objc private func createPathButtonTapped() {
-        LocationHelper.standard.checkNumberOfAnnotations()
-        if LocationHelper.standard.isTrue {
-            LocationHelper.standard.showRoutes(mapView)
-        }
+        viewModel.createPathButtonTapped(mapView)
     }
     
     
@@ -80,11 +63,13 @@ final class MapViewController: BaseViewController {
     
     override func configureUI() {
         setNaviButtons()
-        CurrentTripRepository.standard.fetchRealmData()
+        navigationItem.title = UserdefaultsHelper.standard.tripName
         if let task = CurrentTripRepository.standard.tasks {
             print(task)
         }
         print("Realm is located at:", CurrentTripRepository.standard.localRealm.configuration.fileURL!)
+        CurrentTripRepository.standard.fetchRealmData()
+        LocationHelper.standard.loadAnnotations(mapView)
     }
     
     override func setContraints() {
@@ -108,10 +93,6 @@ final class MapViewController: BaseViewController {
         navigationItem.leftBarButtonItem = routeBarButton
         navigationItem.rightBarButtonItem = searchBarButton
         navigationController?.navigationBar.tintColor = .systemBrown
-    }
-    
-    private func showAnnotations() {
-        mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
 }
@@ -184,9 +165,11 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay)
+        let renderer = MKGradientPolylineRenderer(overlay: overlay)
+        renderer.setColors([UIColor(red: 0.02, green: 0.91, blue: 0.05, alpha: 1),
+                            UIColor(red: 1, green: 0.48, blue: 0, alpha: 1),
+                            UIColor(red: 1, green: 0, blue: 0, alpha: 1)], locations: [])
         renderer.lineWidth = 5
-        renderer.strokeColor = .systemBlue
         return renderer
     }
     
@@ -200,11 +183,8 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        if annotation.identifier == CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].turn {
-            annotationView?.image = UIImage(named: CustomAnnotations.allCases[CurrentTripRepository.standard.tasks.count - 1].rawValue)
-            annotationView?.annotation = LocationHelper.standard.annotations[CurrentTripRepository.standard.tasks.count - 1]
-        }
-        
+        viewModel.isExecutedFunc(identifier: annotation.identifier, taskOrder: CurrentTripRepository.standard.tasks.count - 1, annotationView: annotationView, annotation: annotation)
+
         return annotationView
     }
     
