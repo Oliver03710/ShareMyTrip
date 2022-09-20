@@ -18,8 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let vc = MainTapBarController()
-        window?.rootViewController = vc
+        if UserdefaultsHelper.standard.isTraveling {
+            let vc = MainTapBarController()
+            window?.rootViewController = vc
+        } else {
+            let vc = StartingViewController()
+            window?.rootViewController = vc
+        }
+        
         window?.makeKeyAndVisible()
         
     }
