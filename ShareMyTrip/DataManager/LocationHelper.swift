@@ -13,9 +13,12 @@ private protocol LocationHelperType: AnyObject {
     func removeAnnotations(_ mapView: MKMapView)
     func setRegion(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?)
     func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?)
+    func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?, turn: Int)
+    func loadAnnotations(_ mapView: MKMapView)
     func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees)
     func showRoutes(_ mapView: MKMapView)
     func createMultiplePath(_ mapView: MKMapView)
+    func showAnnotations(identifier: Int, taskOrder: Int, annotationView: MKAnnotationView?, annotation: MKAnnotation)
 }
 
 final class LocationHelper: LocationHelperType {
@@ -26,7 +29,6 @@ final class LocationHelper: LocationHelperType {
     
     // MARK: - Properties
     
-//    var location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.555908, longitude: 126.973262)
     var routes = [MKRoute]()
     var isTrue = false
     var annotations = [Annotation]()
@@ -67,7 +69,28 @@ final class LocationHelper: LocationHelperType {
         annotation.subtitle = CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].address
         annotations.append(annotation)
         mapView.addAnnotations(annotations)
-        
+    }
+    
+    func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?, turn: Int) {
+        guard let lat = lat, let lon = lon else { return }
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let annotation = Annotation(CurrentTripRepository.standard.tasks[turn - 1].turn)
+        annotation.coordinate = center
+        annotation.title = CurrentTripRepository.standard.tasks[turn - 1].name
+        annotation.subtitle = CurrentTripRepository.standard.tasks[turn - 1].address
+        annotations.append(annotation)
+    }
+    
+    func loadAnnotations(_ mapView: MKMapView) {
+        CurrentTripRepository.standard.tasks.forEach { setAnnotation(mapView, lat: $0.latitude, lon: $0.longitude, turn: $0.turn) }
+        LocationHelper.standard.checkNumberOfAnnotations()
+        if LocationHelper.standard.isTrue {
+            LocationHelper.standard.routes.removeAll()
+            LocationHelper.standard.createMultiplePath(mapView)
+        }
+        dump(annotations)
+        mapView.addAnnotations(annotations)
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
     func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees) {
@@ -107,6 +130,15 @@ final class LocationHelper: LocationHelperType {
     func createMultiplePath(_ mapView: MKMapView) {
         for i in 1...annotations.count - 1 {
             createPath(mapView, sourceLat: annotations[i - 1].coordinate.latitude, sourceLon: annotations[i - 1].coordinate.longitude, destinationLat: annotations[i].coordinate.latitude, destinationLon: annotations[i].coordinate.longitude)
+        }
+    }
+    
+    func showAnnotations(identifier: Int, taskOrder: Int, annotationView: MKAnnotationView?, annotation: MKAnnotation) {
+        if identifier == CurrentTripRepository.standard.tasks[taskOrder].turn {
+            annotationView?.image = UIImage(named: "customAnno\(CustomAnnotations.allCases[taskOrder].rawValue)")
+            annotationView?.annotation = LocationHelper.standard.annotations[taskOrder]
+            annotationView?.canShowCallout = true
+            annotationView?.detailCalloutAccessoryView = Callout(annotation: annotation)
         }
     }
     
