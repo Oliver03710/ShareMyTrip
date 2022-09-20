@@ -7,55 +7,55 @@
 
 import Foundation
 
-enum CustomAnnotations: String, CaseIterable {
-    case anno1 = "customAnno1"
-    case anno2 = "customAnno2"
-    case anno3 = "customAnno3"
-    case anno4 = "customAnno4"
-    case anno5 = "customAnno5"
-    case anno6 = "customAnno6"
-    case anno7 = "customAnno7"
-    case anno8 = "customAnno8"
-    case anno9 = "customAnno9"
-    case anno10 = "customAnno10"
-    case anno11 = "customAnno11"
-    case anno12 = "customAnno12"
-    case anno13 = "customAnno13"
-    case anno14 = "customAnno14"
-    case anno15 = "customAnno15"
-    case anno16 = "customAnno16"
-    case anno17 = "customAnno17"
-    case anno18 = "customAnno18"
-    case anno19 = "customAnno19"
-    case anno20 = "customAnno20"
-    case anno21 = "customAnno21"
-    case anno22 = "customAnno22"
-    case anno23 = "customAnno23"
-    case anno24 = "customAnno24"
-    case anno25 = "customAnno25"
-    case anno26 = "customAnno26"
-    case anno27 = "customAnno27"
-    case anno28 = "customAnno28"
-    case anno29 = "customAnno29"
-    case anno30 = "customAnno30"
-    case anno31 = "customAnno31"
-    case anno32 = "customAnno32"
-    case anno33 = "customAnno33"
-    case anno34 = "customAnno34"
-    case anno35 = "customAnno35"
-    case anno36 = "customAnno36"
-    case anno37 = "customAnno37"
-    case anno38 = "customAnno38"
-    case anno39 = "customAnno39"
-    case anno40 = "customAnno40"
-    case anno41 = "customAnno41"
-    case anno42 = "customAnno42"
-    case anno43 = "customAnno43"
-    case anno44 = "customAnno44"
-    case anno45 = "customAnno45"
-    case anno46 = "customAnno46"
-    case anno47 = "customAnno47"
-    case anno48 = "customAnno48"
-    case anno49 = "customAnno49"
-    case anno50 = "customAnno50"
+enum CustomAnnotations: Int, CaseIterable {
+    case anno1 = 1
+    case anno2
+    case anno3
+    case anno4
+    case anno5
+    case anno6
+    case anno7
+    case anno8
+    case anno9
+    case anno10
+    case anno11
+    case anno12
+    case anno13
+    case anno14
+    case anno15
+    case anno16
+    case anno17
+    case anno18
+    case anno19
+    case anno20
+    case anno21
+    case anno22
+    case anno23
+    case anno24
+    case anno25
+    case anno26
+    case anno27
+    case anno28
+    case anno29
+    case anno30
+    case anno31
+    case anno32
+    case anno33
+    case anno34
+    case anno35
+    case anno36
+    case anno37
+    case anno38
+    case anno39
+    case anno40
+    case anno41
+    case anno42
+    case anno43
+    case anno44
+    case anno45
+    case anno46
+    case anno47
+    case anno48
+    case anno49
+    case anno50
 }
