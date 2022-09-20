@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */; };
 		AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */; };
 		AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */; };
 		AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD4D8D8928D3163200CD2740 /* Toast */; };
@@ -35,6 +36,12 @@
 		ADC20A5C28D0E140004F94F4 /* SettingsLabelTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A5B28D0E140004F94F4 /* SettingsLabelTexts.swift */; };
 		ADC20A6728D0E506004F94F4 /* CustomCGFloats.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */; };
 		ADC20A6928D0F317004F94F4 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A6828D0F317004F94F4 /* BaseTableView.swift */; };
+		ADC7566028D97E5C00A2B41C /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC7565F28D97E5C00A2B41C /* StartingViewController.swift */; };
+		ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC7566128D97EC900A2B41C /* StartingView.swift */; };
+		ADC7566428D9822600A2B41C /* CharacterImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC7566328D9822600A2B41C /* CharacterImageData.swift */; };
+		ADC7566728D99CB900A2B41C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ADC7566628D99CB900A2B41C /* IQKeyboardManagerSwift */; };
+		ADC7566A28D9A51400A2B41C /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC7566928D9A51400A2B41C /* UserDefaultsHelper.swift */; };
+		ADC7566C28D9B3FA00A2B41C /* StartingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */; };
 		ADCFAA5228D058640027656F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA5128D058640027656F /* AppDelegate.swift */; };
 		ADCFAA5428D058640027656F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA5328D058640027656F /* SceneDelegate.swift */; };
 		ADCFAA5928D058640027656F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCFAA5728D058640027656F /* Main.storyboard */; };
@@ -59,6 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AD67DF1228D46B85004A2734 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
@@ -86,6 +94,11 @@
 		ADC20A5B28D0E140004F94F4 /* SettingsLabelTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelTexts.swift; sourceTree = "<group>"; };
 		ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCGFloats.swift; sourceTree = "<group>"; };
 		ADC20A6828D0F317004F94F4 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		ADC7565F28D97E5C00A2B41C /* StartingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
+		ADC7566128D97EC900A2B41C /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
+		ADC7566328D9822600A2B41C /* CharacterImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageData.swift; sourceTree = "<group>"; };
+		ADC7566928D9A51400A2B41C /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewModel.swift; sourceTree = "<group>"; };
 		ADCFAA4E28D058640027656F /* ShareMyTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareMyTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCFAA5128D058640027656F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADCFAA5328D058640027656F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC7566728D99CB900A2B41C /* IQKeyboardManagerSwift in Frameworks */,
 				AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */,
 				ADCFAA7A28D0606A0027656F /* JGProgressHUD in Frameworks */,
 				ADCFAA7728D060410027656F /* SnapKit in Frameworks */,
@@ -166,12 +180,28 @@
 			children = (
 				ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */,
 				AD67DF1428D47307004A2734 /* CustomAnnotations.swift */,
-				AD94896328D5825E00BAC3B8 /* AnnotationData.swift */,
+				ADC7566328D9822600A2B41C /* CharacterImageData.swift */,
 				ADAA1D4828D5D0DF00A60C61 /* TripHistories.swift */,
-				AD94896528D5831E00BAC3B8 /* CustomCallout.swift */,
-				AD67DF1228D46B85004A2734 /* LocationHelper.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		ADC7565E28D97E3800A2B41C /* Starting */ = {
+			isa = PBXGroup;
+			children = (
+				ADC7565F28D97E5C00A2B41C /* StartingViewController.swift */,
+				ADC7566128D97EC900A2B41C /* StartingView.swift */,
+			);
+			path = Starting;
+			sourceTree = "<group>";
+		};
+		ADC7566828D9A50300A2B41C /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				ADC7566928D9A51400A2B41C /* UserDefaultsHelper.swift */,
+				AD67DF1228D46B85004A2734 /* LocationHelper.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		ADCFAA4528D058640027656F = {
@@ -197,11 +227,13 @@
 				ADCFAA5328D058640027656F /* SceneDelegate.swift */,
 				ADBE769628D8451100B1579E /* RealmData */,
 				ADC20A6528D0E4F4004F94F4 /* Data */,
+				ADC7566828D9A50300A2B41C /* DataManager */,
 				ADC20A5028D0DACA004F94F4 /* Protocols */,
 				ADCFAA9A28D078090027656F /* Enums */,
 				ADCFAA8528D064B90027656F /* Extensions */,
 				ADCFAA7E28D063640027656F /* ViewModels */,
 				ADCFAA6928D05EA00027656F /* Customs */,
+				ADC7565E28D97E3800A2B41C /* Starting */,
 				ADCFAA8228D063C80027656F /* TabBar */,
 				ADCFAA8128D063A10027656F /* Maps */,
 				AD4D8D7F28D306C400CD2740 /* SearchResults */,
@@ -219,6 +251,8 @@
 		ADCFAA6928D05EA00027656F /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				AD94896328D5825E00BAC3B8 /* AnnotationData.swift */,
+				AD94896528D5831E00BAC3B8 /* CustomCallout.swift */,
 				ADCFAA6A28D05ED00027656F /* BaseViewController.swift */,
 				ADCFAA6C28D05F460027656F /* BaseView.swift */,
 				ADC20A6828D0F317004F94F4 /* BaseTableView.swift */,
@@ -235,6 +269,8 @@
 				ADCFAA7F28D063720027656F /* Observable.swift */,
 				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
 				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
+				ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */,
+				AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -317,6 +353,7 @@
 				ADCFAA7928D0606A0027656F /* JGProgressHUD */,
 				ADCFAA7C28D0609F0027656F /* PanModal */,
 				AD4D8D8928D3163200CD2740 /* Toast */,
+				ADC7566628D99CB900A2B41C /* IQKeyboardManagerSwift */,
 			);
 			productName = ShareMyTrip;
 			productReference = ADCFAA4E28D058640027656F /* ShareMyTrip.app */;
@@ -352,6 +389,7 @@
 				ADCFAA7828D0606A0027656F /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				ADCFAA7B28D0609F0027656F /* XCRemoteSwiftPackageReference "PanModal" */,
 				AD4D8D8828D3163200CD2740 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = ADCFAA4F28D058640027656F /* Products */;
 			projectDirPath = "";
@@ -388,8 +426,10 @@
 				ADC20A5C28D0E140004F94F4 /* SettingsLabelTexts.swift in Sources */,
 				AD94896628D5831E00BAC3B8 /* CustomCallout.swift in Sources */,
 				ADC20A5628D0DC99004F94F4 /* SettingsTableViewCell.swift in Sources */,
+				ADC7566028D97E5C00A2B41C /* StartingViewController.swift in Sources */,
 				ADCFAA8028D063720027656F /* Observable.swift in Sources */,
 				ADBE76A228D858BB00B1579E /* CurrentTrip+Repository.swift in Sources */,
+				AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */,
 				AD94896428D5825E00BAC3B8 /* AnnotationData.swift in Sources */,
 				AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */,
 				AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */,
@@ -397,12 +437,16 @@
 				AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */,
 				AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */,
 				AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */,
+				ADC7566A28D9A51400A2B41C /* UserDefaultsHelper.swift in Sources */,
 				ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */,
 				AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */,
 				ADAA1D4928D5D0DF00A60C61 /* TripHistories.swift in Sources */,
+				ADC7566428D9822600A2B41C /* CharacterImageData.swift in Sources */,
+				ADC7566C28D9B3FA00A2B41C /* StartingViewModel.swift in Sources */,
 				ADC20A5228D0DAE2004F94F4 /* Reusable+Protocol.swift in Sources */,
 				ADCFAA6B28D05ED00027656F /* BaseViewController.swift in Sources */,
 				AD94896828D58A4F00BAC3B8 /* SharingListTableViewCell.swift in Sources */,
+				ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
 				ADCFAA5228D058640027656F /* AppDelegate.swift in Sources */,
 				ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */,
@@ -655,6 +699,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
 		ADCFAA7028D0602B0027656F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -694,6 +746,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD4D8D8828D3163200CD2740 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		ADC7566628D99CB900A2B41C /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 		ADCFAA7128D0602B0027656F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
