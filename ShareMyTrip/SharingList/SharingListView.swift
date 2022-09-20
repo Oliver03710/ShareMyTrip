@@ -11,7 +11,7 @@ import SnapKit
 
 final class SharingListView: BaseView {
 
-    // MARK: - Init
+    // MARK: - Properties
     
     private lazy var tableView: BaseTableView = {
         let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SharingListTableViewCell.self, forCellReuseIdentifier: SharingListTableViewCell.reuseIdentifier, delegate: self)
