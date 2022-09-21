@@ -7,18 +7,18 @@
 
 import UIKit
 
-public protocol ReusableViewProtocol {
+private protocol ReusableViewProtocol {
     static var reuseIdentifier: String { get }
 }
 
 extension UIViewController: ReusableViewProtocol {
-    public static var reuseIdentifier: String {
+    static var reuseIdentifier: String {
         return String(describing: self)
     }
 }
 
 extension UITableViewCell: ReusableViewProtocol {
-    public static var reuseIdentifier: String {
+    static var reuseIdentifier: String {
         return String(describing: self)
     }
 }
