@@ -14,13 +14,20 @@ final class SearchTableViewCell: BaseTableViewCell {
     // MARK: - Properties
     
     private let titleLabel: BaseLabel = {
-        let label = BaseLabel(fontSize: 13)
+        let label = BaseLabel(boldStyle: .regular, fontSize: 15, text: nil)
         return label
     }()
     
     private let addressLabel: BaseLabel = {
-        let label = BaseLabel(fontSize: 13)
+        let label = BaseLabel(boldStyle: .regular, fontSize: 13, text: nil)
+        label.textColor = .gray
         return label
+    }()
+    
+    private lazy var stackView: CustomStackView = {
+        let sv = CustomStackView(arrangedSubviews: [titleLabel, addressLabel], axis: .vertical, spacing: 8, distribution: .equalSpacing)
+        sv.alignment = .leading
+        return sv
     }()
     
     
@@ -39,17 +46,18 @@ final class SearchTableViewCell: BaseTableViewCell {
     // MARK: - Helper Functions
     
     override func setConstraints() {
-        [titleLabel, addressLabel].forEach { self.addSubview($0) }
+        self.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { make in
+            make.edges.equalTo(self.safeAreaLayoutGuide).inset(8)
+        }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.directionalHorizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(self.snp.height).multipliedBy(0.3)
+            make.height.equalTo(16)
         }
         
         addressLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.directionalHorizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(self.snp.height).multipliedBy(0.2)
+            make.height.equalTo(14)
         }
     }
     
