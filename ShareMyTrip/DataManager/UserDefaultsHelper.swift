@@ -16,7 +16,7 @@ class UserdefaultsHelper {
     let userDefaults = UserDefaults.standard
     
     enum Key: String {
-        case tripName, isTraveling, companions
+        case tripName, isTraveling
     }
     
     var tripName: String {
@@ -37,14 +37,6 @@ class UserdefaultsHelper {
         }
     }
     
-    var companions: [String] {
-        get {
-            return userDefaults.object(forKey: Key.companions.rawValue) as! [String]
-        }
-        set {
-            userDefaults.set(newValue, forKey: Key.companions.rawValue)
-        }
-    }
     func removeAll() {
         if let appDomain = Bundle.main.bundleIdentifier {
             userDefaults.removePersistentDomain(forName: appDomain)
