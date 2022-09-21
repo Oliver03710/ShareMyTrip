@@ -29,8 +29,13 @@ final class MapViewController: BaseViewController {
         return lm
     }()
     
-    private lazy var deleteButton: BaseButton = {
-        let btn = BaseButton(backgroundColor: .red, titleOrImage: "trash", hasTitle: false, componentColor: .white, addTarget: self, action: #selector(deleteButtonTapped))
+    private lazy var deleteButton: CircleButton = {
+        let btn = CircleButton(backgroundColor: .red, titleOrImage: "trash", hasTitle: false, componentColor: .white, addTarget: self, action: #selector(deleteButtonTapped))
+        return btn
+    }()
+    
+    private lazy var finishTripButton: CircleButton = {
+        let btn = CircleButton(backgroundColor: .systemBrown, titleOrImage: "trash", hasTitle: false, componentColor: .black, addTarget: self, action: #selector(deleteButtonTapped))
         return btn
     }()
     
