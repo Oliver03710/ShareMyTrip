@@ -61,7 +61,7 @@ extension HistoriesView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CustomCGFloats.settings
+        return CustomCGFloats.destinationView
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -86,7 +86,7 @@ extension HistoriesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = viewModel.destinations.value[indexPath.row]
+        cell.nameLabel.text = "\(indexPath.row + 1). \(viewModel.destinations.value[indexPath.row])"
         
         return cell
     }
