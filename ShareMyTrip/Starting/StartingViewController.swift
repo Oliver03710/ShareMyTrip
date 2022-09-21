@@ -29,11 +29,9 @@ final class StartingViewController: BaseViewController {
     // MARK: - Selectors
     
     @objc func confirmButtonTapped() {
-        guard let text = startingView.namingTextField.text else { return }
-        startingView.viewModel.nameText.value = text
-        startingView.viewModel.checkValidation()
+        
         if startingView.viewModel.isValid.value {
-            startingView.viewModel.transition(text: text) {
+            startingView.viewModel.transition(text: startingView.viewModel.nameText.value) {
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
                 let vc = MainTapBarController()
@@ -44,11 +42,19 @@ final class StartingViewController: BaseViewController {
         }
     }
     
+    @objc func namingTextFieldChanged() {
+        if let text = startingView.namingTextField.text {
+            startingView.viewModel.nameText.value = text
+            startingView.viewModel.checkValidation()
+        }
+    }
+    
     
     // MARK: - Helper Functions
 
     override func configureUI() {
         startingView.confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        startingView.namingTextField.addTarget(self, action: #selector(namingTextFieldChanged), for: .editingChanged)
     }
     
 }
