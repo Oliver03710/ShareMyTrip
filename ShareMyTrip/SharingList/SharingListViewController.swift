@@ -29,7 +29,11 @@ final class SharingListViewController: BaseViewController {
     // MARK: - Selectors
     
     @objc private func addCompanions() {
-        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", target: sharingListView.companionViewModel.person)
+        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", tableView: sharingListView.tableView, buttonType: .addButton)
+    }
+    
+    @objc private func deleteAllCompanions() {
+        showAlertMessage(buttonText: "삭제하기", alertTitle: "여행동료 전체 삭제", tableView: sharingListView.tableView, buttonType: .deleteButton)
     }
     
     
@@ -41,6 +45,7 @@ final class SharingListViewController: BaseViewController {
     
     private func setNaviButtons() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addCompanions))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.minus"), style: .plain, target: self, action: #selector(deleteAllCompanions))
         navigationController?.navigationBar.tintColor = .systemBrown
     }
 
