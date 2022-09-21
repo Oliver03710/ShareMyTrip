@@ -15,7 +15,7 @@ private protocol LocationHelperType: AnyObject {
     func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?)
     func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?, turn: Int)
     func loadAnnotations(_ mapView: MKMapView)
-    func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees)
+    func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees, turn: Int)
     func showRoutes(_ mapView: MKMapView)
     func createMultiplePath(_ mapView: MKMapView)
     func showAnnotations(identifier: Int, taskOrder: Int, annotationView: MKAnnotationView?, annotation: MKAnnotation)
@@ -29,7 +29,7 @@ final class LocationHelper: LocationHelperType {
     
     // MARK: - Properties
     
-    var routes = [MKRoute]()
+    var routes = [Int: MKRoute]()
     var isTrue = false
     var annotations = [Annotation]()
     
@@ -93,7 +93,7 @@ final class LocationHelper: LocationHelperType {
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
-    func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees) {
+    func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees, turn: Int) {
         
         let sourceLocation = CLLocationCoordinate2D(latitude: sourceLat, longitude: sourceLon)
         let destinationLocation = CLLocationCoordinate2D(latitude: destinationLat, longitude: destinationLon)
@@ -108,7 +108,6 @@ final class LocationHelper: LocationHelperType {
         directionRequest.source = sourceMapItem
         directionRequest.destination = destinationMapItem
         directionRequest.transportType = .any
-        
         let direction = MKDirections(request: directionRequest)
         direction.calculate { response, error in
             guard let response = response else {
@@ -117,19 +116,17 @@ final class LocationHelper: LocationHelperType {
                 }
                 return
             }
-            
-            self.routes.append(response.routes[0])
-            print(self.routes)
+            self.routes.updateValue(response.routes[0], forKey: turn)
         }
     }
     
     func showRoutes(_ mapView: MKMapView) {
-        routes.forEach { mapView.addOverlay($0.polyline, level: MKOverlayLevel.aboveRoads) }
+        routes.forEach { mapView.addOverlay($0.value.polyline, level: MKOverlayLevel.aboveRoads) }
     }
     
     func createMultiplePath(_ mapView: MKMapView) {
         for i in 1...annotations.count - 1 {
-            createPath(mapView, sourceLat: annotations[i - 1].coordinate.latitude, sourceLon: annotations[i - 1].coordinate.longitude, destinationLat: annotations[i].coordinate.latitude, destinationLon: annotations[i].coordinate.longitude)
+            createPath(mapView, sourceLat: annotations[i - 1].coordinate.latitude, sourceLon: annotations[i - 1].coordinate.longitude, destinationLat: annotations[i].coordinate.latitude, destinationLon: annotations[i].coordinate.longitude, turn: i)
         }
     }
     
