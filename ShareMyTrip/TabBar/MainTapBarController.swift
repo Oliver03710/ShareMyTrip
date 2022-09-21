@@ -26,6 +26,7 @@ final class MainTapBarController: UITabBarController {
         viewControllers = [
             createNavController(for: MapViewController(), title: TabBarTitles.mapVC.rawValue, image: UIImage(systemName: TabBarImages.mapVC.rawValue)),
             createNavController(for: SharingListViewController(), title: TabBarTitles.sharingListVC.rawValue, image: UIImage(systemName: TabBarImages.sharingListVC.rawValue)),
+            createNavController(for: DestinationsViewController(), title: TabBarTitles.destinationVC.rawValue, image: UIImage(systemName: TabBarImages.destinationVC.rawValue)),
             createNavController(for: HistoriesViewController(), title: TabBarTitles.historiesVC.rawValue, image: UIImage(systemName: TabBarImages.historiesVC.rawValue)),
             createNavController(for: SettingsViewController(), title: TabBarTitles.SettingsVC.rawValue, image: UIImage(systemName: TabBarImages.SettingsVC.rawValue))
         ]
@@ -37,16 +38,6 @@ final class MainTapBarController: UITabBarController {
         navController.tabBarItem.image = image
         rootViewController.navigationItem.title = title
         return navController
-    }
-    
-}
-
-
-// MARK: - Extension: UITabBarControllerDelegate
-
-extension MainTapBarController: UITabBarControllerDelegate {
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     }
     
 }
