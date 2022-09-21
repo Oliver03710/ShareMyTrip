@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class Annotation: MKPointAnnotation {
+final class Annotation: MKPointAnnotation {
     var identifier: Int
     
     init(_ identifier: Int) {

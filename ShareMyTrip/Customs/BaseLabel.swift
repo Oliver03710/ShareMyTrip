@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseLabel: UILabel {
+final class BaseLabel: UILabel {
 
     // MARK: - Init
     
@@ -27,9 +27,17 @@ class BaseLabel: UILabel {
         self.textColor = .label
     }
     
-    convenience init(fontSize: CGFloat) {
+    convenience init(boldStyle: UIFont.Weight, fontSize: CGFloat, text: String?) {
         self.init()
-        self.font = .systemFont(ofSize: fontSize)
+        self.font = .systemFont(ofSize: fontSize, weight: boldStyle)
+        self.text = text
+    }
+    
+    convenience init(boldStyle: UIFont.Weight, fontSize: CGFloat, text: String?, textAlignment: NSTextAlignment) {
+        self.init()
+        self.font = .systemFont(ofSize: fontSize, weight: boldStyle)
+        self.text = text
+        self.textAlignment = textAlignment
     }
 
 }

@@ -1,13 +1,13 @@
 //
-//  BaseButton.swift
+//  CircleButton.swift
 //  ShareMyTrip
 //
-//  Created by Junhee Yoon on 2022/09/17.
+//  Created by Junhee Yoon on 2022/09/22.
 //
 
 import UIKit
 
-final class BaseButton: UIButton {
+final class CircleButton: UIButton {
 
     // MARK: - Init
     
@@ -19,7 +19,19 @@ final class BaseButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        makingButtonFullCircle()
+    }
+    
+    
     // MARK: - Helper Functions
+    
+    func makingButtonFullCircle() {
+        self.layer.cornerRadius = self.bounds.size.width / 2
+        self.layer.masksToBounds = true
+        
+    }
     
     convenience init(backgroundColor: UIColor, titleOrImage: String, hasTitle: Bool, componentColor: UIColor?, addTarget: UIViewController, action: Selector) {
         self.init()
@@ -34,15 +46,6 @@ final class BaseButton: UIButton {
         }
         
         self.addTarget(addTarget, action: action, for: .touchUpInside)
-    }
-    
-    convenience init(buttonTitle: String?, textColor: UIColor, backgroundColor: UIColor, cornerRadius: CGFloat) {
-        self.init()
-        self.setTitle(buttonTitle, for: .normal)
-        self.titleLabel?.textColor = textColor
-        self.backgroundColor = backgroundColor
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = cornerRadius
     }
 
 }
