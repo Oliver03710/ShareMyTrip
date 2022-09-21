@@ -54,7 +54,7 @@ extension SettingsView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CustomCGFloats.settings
+        return CustomCGFloats.settingView
     }
     
 }

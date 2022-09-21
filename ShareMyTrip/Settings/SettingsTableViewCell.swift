@@ -14,7 +14,7 @@ final class SettingsTableViewCell: BaseTableViewCell {
     // MARK: - Properties
     
     private let settingLabel: BaseLabel = {
-        let label = BaseLabel(fontSize: 15)
+        let label = BaseLabel(boldStyle: .regular, fontSize: 15, text: nil)
         return label
     }()
     

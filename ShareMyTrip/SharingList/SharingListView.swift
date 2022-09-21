@@ -13,7 +13,7 @@ final class SharingListView: BaseView {
 
     // MARK: - Properties
     
-    private lazy var tableView: BaseTableView = {
+    lazy var tableView: BaseTableView = {
         let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SharingListTableViewCell.self, forCellReuseIdentifier: SharingListTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
@@ -35,7 +35,7 @@ final class SharingListView: BaseView {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        reloadTableView()
+        CompanionsRepository.standard.fetchRealmData()
     }
     
     override func setConstraints() {
@@ -45,12 +45,6 @@ final class SharingListView: BaseView {
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
-    }
-    
-    private func reloadTableView() {
-        companionViewModel.person.bind { _ in
-            self.tableView.reloadData()
-        }
     }
     
 }
@@ -65,7 +59,7 @@ extension SharingListView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CustomCGFloats.settings
+        return CustomCGFloats.settingView
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -80,13 +74,13 @@ extension SharingListView: UITableViewDelegate {
 extension SharingListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companionViewModel.person.value.count
+        return CompanionsRepository.standard.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SharingListTableViewCell.reuseIdentifier, for: indexPath) as? SharingListTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = companionViewModel.person.value[indexPath.row]
+        cell.nameLabel.text = CompanionsRepository.standard.tasks[indexPath.row].companion
         
         return cell
     }

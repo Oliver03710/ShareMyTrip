@@ -20,37 +20,24 @@ final class StartingView: BaseView {
         return iv
     }()
     
-    let namingTextField: UITextField = {
-        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(string: "여행 이름을 등록해주세요!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        tf.borderStyle = .roundedRect
-        tf.backgroundColor = .white
-        tf.textColor = .black
+    let namingTextField: BaseTextField = {
+        let tf = BaseTextField(placeHolder: "여행 이름을 등록해주세요!", colorOfPlaceHolder: UIColor.darkGray, borderStyle: .roundedRect, backgroundColor: .white, textColor: .black)
         return tf
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "여행가자"
-        label.font = .systemFont(ofSize: 35, weight: .bold)
-        label.textAlignment = .center
+    private let titleLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .bold, fontSize: 35, text: "여행가자", textAlignment: .center)
         return label
     }()
     
-    private let emphasizedTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "곰!"
+    private let emphasizedTitleLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 50, text: "곰!", textAlignment: .center)
         label.textColor = #colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)
-        label.font = .systemFont(ofSize: 50, weight: .heavy)
-        label.textAlignment = .center
         return label
     }()
     
-    let confirmButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("여행하기", for: .normal)
-        btn.titleLabel?.textColor = .black
-        btn.backgroundColor = .systemBrown
+    let confirmButton: BaseButton = {
+        let btn = BaseButton(buttonTitle: "여행하기", textColor: .black, backgroundColor: .systemBrown, cornerRadius: 8)
         return btn
     }()
     
@@ -72,7 +59,8 @@ final class StartingView: BaseView {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        binds()
+        viewModel.activateButton(confirmButton)
+        viewModel.bindsTextField(namingTextField)
     }
     
     override func setConstraints() {
@@ -109,12 +97,6 @@ final class StartingView: BaseView {
             make.bottom.equalTo(titleLabel.snp.bottom)
             make.height.equalTo(50)
             make.width.equalTo(80)
-        }
-    }
-    
-    func binds() {
-        viewModel.nameText.bind { text in
-            self.namingTextField.text = text
         }
     }
 

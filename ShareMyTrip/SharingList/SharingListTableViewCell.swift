@@ -14,7 +14,7 @@ final class SharingListTableViewCell: BaseTableViewCell {
     // MARK: - Properties
     
     let nameLabel: BaseLabel = {
-        let label = BaseLabel(fontSize: 13)
+        let label = BaseLabel(boldStyle: .regular, fontSize: 15, text: nil)
         return label
     }()
     
