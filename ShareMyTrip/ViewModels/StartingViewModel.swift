@@ -5,7 +5,7 @@
 //  Created by Junhee Yoon on 2022/09/20.
 //
 
-import Foundation
+import UIKit
 
 final class StartingViewModel {
     
@@ -18,13 +18,31 @@ final class StartingViewModel {
     // MARK: - Helper Functions
     
     func checkValidation() {
-        isValid.value = nameText.value.isEmpty ? false : true
+        let string = nameText.value.trimmingCharacters(in: .whitespaces)
+        if nameText.value.isEmpty || string.isEmpty {
+            isValid.value = false
+        } else {
+            isValid.value = true
+        }
     }
     
     func transition(text: String, completion: @escaping () -> Void) {
         UserdefaultsHelper.standard.isTraveling = true
         UserdefaultsHelper.standard.tripName = text
         completion()
+    }
+    
+    func activateButton(_ button: UIButton) {
+        isValid.bind { bool in
+            button.isEnabled = bool
+            button.backgroundColor = bool ? .systemBrown : .lightGray
+        }
+    }
+    
+    func bindsTextField(_ textField: UITextField) {
+        nameText.bind { text in
+            textField.text = text
+        }
     }
     
 }

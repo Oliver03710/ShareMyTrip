@@ -5,7 +5,9 @@
 //  Created by Junhee Yoon on 2022/09/17.
 //
 
-import Foundation
+import UIKit
+
+import RealmSwift
 
 final class CompanionViewModel {
     
@@ -16,11 +18,16 @@ final class CompanionViewModel {
     
     // MARK: - Helper Functions
     
-//    func checkSections(section: Int) -> Int {
-//        switch section {
-//        case 0: return person.value.count
-//        default: return 1
-//        }
-//    }
+    func reloadTableView(_ tableView: UITableView) {
+        person.bind { _ in
+            tableView.reloadData()
+        }
+    }
+    
+    func saveToRealm() {
+        if let companion = person.value.last {
+            CompanionsRepository.standard.addItem(companion: companion)
+        }
+    }
     
 }
