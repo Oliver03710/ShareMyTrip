@@ -18,7 +18,18 @@ final class DestinationsView: BaseView {
         return tv
     }()
     
-    private let viewModel = DestinationViewModel()
+    private let characterImageView: CharacterImageView = {
+        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
+        iv.alpha = 0.5
+        return iv
+    }()
+    
+    private let bubbleLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "지도 탭에서 목적지를 추가해보세요!")
+        label.textAlignment = .center
+        label.textColor = .gray
+        return label
+    }()
     
     
     // MARK: - Init
@@ -35,10 +46,23 @@ final class DestinationsView: BaseView {
     // MARK: - Helper Functions
     
     override func setConstraints() {
-        [tableView].forEach { self.addSubview($0) }
+        [characterImageView, bubbleLabel, tableView].forEach { self.addSubview($0) }
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        characterImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(1)
+            make.height.width.equalTo(200)
+        }
+        
+        bubbleLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(0.7)
+            make.height.equalTo(20)
+            make.width.equalTo(self.snp.width)
         }
     }
     
@@ -55,10 +79,6 @@ extension DestinationsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CustomCGFloats.destinationView
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return nil
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
