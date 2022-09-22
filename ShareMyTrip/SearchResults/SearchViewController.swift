@@ -23,9 +23,22 @@ final class SearchViewController: BaseViewController {
         return sb
     }()
     
-    private lazy var tableView: BaseTableView = {
+    lazy var tableView: BaseTableView = {
         let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier, delegate: self)
         return tv
+    }()
+    
+    private let characterImageView: CharacterImageView = {
+        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
+        iv.alpha = 0.5
+        return iv
+    }()
+    
+    private let bubbleLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "원하는 장소를 검색해보세요!")
+        label.textAlignment = .center
+        label.textColor = .gray
+        return label
     }()
     
     private lazy var searchCompleter: MKLocalSearchCompleter = {
@@ -54,8 +67,21 @@ final class SearchViewController: BaseViewController {
     // MARK: - Helper Functions
     
     override func setContraints() {
-        [searchBar, tableView].forEach { view.addSubview($0) }
+        [characterImageView, bubbleLabel, searchBar, tableView].forEach { view.addSubview($0) }
         
+        characterImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(view.snp.centerY).multipliedBy(1)
+            make.height.width.equalTo(200)
+        }
+        
+        bubbleLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(view.snp.centerY).multipliedBy(0.7)
+            make.height.equalTo(20)
+            make.width.equalTo(view.snp.width)
+        }
+
         searchBar.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(44)
