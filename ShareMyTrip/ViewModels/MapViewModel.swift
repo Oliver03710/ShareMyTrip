@@ -62,13 +62,13 @@ final class MapViewModel {
             
             LocationHelper.standard.removeAnnotations(mapView)
             mapView.removeOverlays(mapView.overlays)
-            CurrentTripRepository.standard.deleteAllItem()
+            CurrentTripRepository.standard.tasks.forEach { CurrentTripRepository.standard.deleteLastItem(item: $0) }
             
         } deleteAllWithTransition: {
             
             LocationHelper.standard.removeAnnotations(mapView)
             mapView.removeOverlays(mapView.overlays)
-            CurrentTripRepository.standard.deleteAllItem()
+            CurrentTripRepository.standard.tasks.forEach { CurrentTripRepository.standard.deleteLastItem(item: $0) }
             UserdefaultsHelper.standard.removeAll()
             
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -86,7 +86,7 @@ final class MapViewModel {
         
         isExecuted.value = true
         let vc = SearchViewController()
-        
+        vc.tableView.isHidden = true
         vc.onDoneBlock = { _ in
             self.searchTableViewRowSelected(mapView)
         }
@@ -117,6 +117,47 @@ final class MapViewModel {
                 
             }
         }
+    }
+    
+    func finishTripButtonTapped(_ mapView: MKMapView) {
+        
+        var destinations = [String](), companions = [String](), addresses = [String]()
+        
+        if !CurrentTripRepository.standard.tasks.isEmpty && !CompanionsRepository.standard.tasks.isEmpty {
+            
+            CurrentTripRepository.standard.tasks.forEach {
+                destinations.append($0.name)
+                addresses.append($0.address)
+            }
+            CompanionsRepository.standard.tasks.forEach { companions.append($0.companion) }
+            print(destinations)
+            print(companions)
+            print(addresses)
+            TripHistoryRepository.standard.addItem(tripName: UserdefaultsHelper.standard.tripName, desnitations: destinations, companions: companions, addresses: addresses)
+            TripHistoryRepository.standard.fetchRealmData()
+            
+            LocationHelper.standard.removeAnnotations(mapView)
+            mapView.removeOverlays(mapView.overlays)
+            LocationHelper.standard.annotations.removeAll()
+            LocationHelper.standard.routes.removeAll()
+            
+            CurrentTripRepository.standard.tasks.forEach {
+                destinations.append($0.name)
+                addresses.append($0.address)
+            }
+            CompanionsRepository.standard.tasks.forEach { CompanionsRepository.standard.deleteSpecificItem(item: $0) }
+            CurrentTripRepository.standard.tasks.forEach { CurrentTripRepository.standard.deleteLastItem(item: $0) }
+            UserdefaultsHelper.standard.removeAll()
+            
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            let vc = StartingViewController()
+
+            sceneDelegate?.window?.rootViewController = vc
+            sceneDelegate?.window?.makeKeyAndVisible()
+            
+        }
+        
     }
     
 }
