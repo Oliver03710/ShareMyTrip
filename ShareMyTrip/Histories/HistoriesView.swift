@@ -7,19 +7,29 @@
 
 import UIKit
 
-import PanModal
 import SnapKit
 
 final class HistoriesView: BaseView {
 
     // MARK: - Init
     
-    private lazy var tableView: BaseTableView = {
+    lazy var tableView: BaseTableView = {
         let tv = BaseTableView(frame: .zero, style: .plain, cellClass: HistoriesTableViewCell.self, forCellReuseIdentifier: HistoriesTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
     
-    private let viewModel = HistoriesViewModel()
+    private let characterImageView: CharacterImageView = {
+        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
+        iv.alpha = 0.5
+        return iv
+    }()
+    
+    private let bubbleLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "여행가자곰과 더 여행해보세요!")
+        label.textAlignment = .center
+        label.textColor = .gray
+        return label
+    }()
     
     
     // MARK: - Init
@@ -36,15 +46,27 @@ final class HistoriesView: BaseView {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        let testArr = ["강원도 춘천", "경기도 가평", "경상도 경주", "부산"]
-        viewModel.destinations.value.append(contentsOf: testArr)
+        TripHistoryRepository.standard.fetchRealmData()
     }
     
     override func setConstraints() {
-        [tableView].forEach { self.addSubview($0) }
+        [characterImageView, bubbleLabel, tableView].forEach { self.addSubview($0) }
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        characterImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(1)
+            make.height.width.equalTo(200)
+        }
+        
+        bubbleLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(0.7)
+            make.height.equalTo(20)
+            make.width.equalTo(self.snp.width)
         }
         
     }
@@ -65,7 +87,8 @@ extension HistoriesView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return nil
+        let action = UISwipeActionsConfiguration()
+        return action.trailingDeleteAction(indexPath: indexPath, viewControllerCase: .history, tableView: tableView)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -80,13 +103,13 @@ extension HistoriesView: UITableViewDelegate {
 extension HistoriesView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.destinations.value.count
+        return TripHistoryRepository.standard.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = "\(indexPath.row + 1). \(viewModel.destinations.value[indexPath.row])"
+        cell.nameLabel.text = "\(indexPath.row + 1). \(TripHistoryRepository.standard.tasks[indexPath.row].tripName)"
         
         return cell
     }
