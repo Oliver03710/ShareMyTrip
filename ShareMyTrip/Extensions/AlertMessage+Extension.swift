@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func showAlertMessage(buttonText: String, alertTitle: String?, tableView: UITableView, buttonType: ButtonType) {
+    func showAlertMessage(buttonText: String, alertTitle: String?, tableView: UITableView, buttonType: ButtonType, viewModel: CompanionViewModel) {
         
         let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
         if buttonType == .addButton {
@@ -21,12 +21,11 @@ extension UIViewController {
             if buttonType == .addButton {
                 CompanionsRepository.standard.addItem(companion: alert.textFields?.first?.text ?? "")
             } else {
-                CompanionsRepository.standard.deleteAllItem()
+                CompanionsRepository.standard.tasks.forEach { CompanionsRepository.standard.deleteSpecificItem(item: $0) }
             }
-            CompanionsRepository.standard.fetchRealmData()
+            viewModel.checkEmpty(tableView: tableView)
             tableView.reloadData()
         }
-        
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         
         [cancel, confirm].forEach { alert.addAction($0) }
