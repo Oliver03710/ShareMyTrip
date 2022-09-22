@@ -11,23 +11,9 @@ import RealmSwift
 
 final class CompanionViewModel {
     
-    // MARK: - Properties
-    
-    var person: Observable<[String]> = Observable([])
-        
-    
-    // MARK: - Helper Functions
-    
-    func reloadTableView(_ tableView: UITableView) {
-        person.bind { _ in
-            tableView.reloadData()
-        }
-    }
-    
-    func saveToRealm() {
-        if let companion = person.value.last {
-            CompanionsRepository.standard.addItem(companion: companion)
-        }
+    func checkEmpty(tableView: UITableView) {
+        CompanionsRepository.standard.fetchRealmData()
+        tableView.isHidden = CompanionsRepository.standard.tasks.isEmpty ? true : false
     }
     
 }
