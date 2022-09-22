@@ -22,18 +22,23 @@ final class SharingListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sharingListView.ViewModel.checkEmpty(tableView: sharingListView.tableView)
+        sharingListView.tableView.reloadData()
     }
     
     
     // MARK: - Selectors
     
     @objc private func addCompanions() {
-        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", tableView: sharingListView.tableView, buttonType: .addButton)
+        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", tableView: sharingListView.tableView, buttonType: .addButton, viewModel: sharingListView.ViewModel)
     }
     
     @objc private func deleteAllCompanions() {
-        showAlertMessage(buttonText: "삭제하기", alertTitle: "여행동료 전체 삭제", tableView: sharingListView.tableView, buttonType: .deleteButton)
+        showAlertMessage(buttonText: "삭제하기", alertTitle: "여행동료 전체 삭제", tableView: sharingListView.tableView, buttonType: .deleteButton, viewModel: sharingListView.ViewModel)
     }
     
     
