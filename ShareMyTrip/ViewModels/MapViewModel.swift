@@ -123,7 +123,7 @@ final class MapViewModel {
         
         var destinations = [String](), companions = [String](), addresses = [String]()
         
-        if !CurrentTripRepository.standard.tasks.isEmpty && !CompanionsRepository.standard.tasks.isEmpty {
+        if !CurrentTripRepository.standard.tasks.isEmpty {
             
             CurrentTripRepository.standard.tasks.forEach {
                 destinations.append($0.name)
