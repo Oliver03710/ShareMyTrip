@@ -1,5 +1,5 @@
 //
-//  SharingListViewController.swift
+//  CompanionsViewController.swift
 //  ShareMyTrip
 //
 //  Created by Junhee Yoon on 2022/09/13.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-final class SharingListViewController: BaseViewController {
+final class CompanionsViewController: BaseViewController {
 
     // MARK: - Properties
     
-    private let sharingListView = SharingListView()
+    private let companionsView = CompanionsView()
     
     
     // MARK: - Init
     
     override func loadView() {
-        self.view = sharingListView
+        self.view = companionsView
     }
     
     override func viewDidLoad() {
@@ -26,19 +26,19 @@ final class SharingListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sharingListView.ViewModel.checkEmpty(tableView: sharingListView.tableView)
-        sharingListView.tableView.reloadData()
+        companionsView.ViewModel.checkEmpty(tableView: companionsView.tableView)
+        companionsView.tableView.reloadData()
     }
     
     
     // MARK: - Selectors
     
     @objc private func addCompanions() {
-        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", tableView: sharingListView.tableView, buttonType: .addButton, viewModel: sharingListView.ViewModel)
+        showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", tableView: companionsView.tableView, buttonType: .addButton, viewModel: companionsView.ViewModel)
     }
     
     @objc private func deleteAllCompanions() {
-        showAlertMessage(buttonText: "삭제하기", alertTitle: "여행동료 전체 삭제", tableView: sharingListView.tableView, buttonType: .deleteButton, viewModel: sharingListView.ViewModel)
+        showAlertMessage(buttonText: "삭제하기", alertTitle: "여행동료 전체 삭제", tableView: companionsView.tableView, buttonType: .deleteButton, viewModel: companionsView.ViewModel)
     }
     
     

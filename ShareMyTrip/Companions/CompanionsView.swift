@@ -1,5 +1,5 @@
 //
-//  SharingListView.swift
+//  CompanionsView.swift
 //  ShareMyTrip
 //
 //  Created by Junhee Yoon on 2022/09/13.
@@ -9,12 +9,12 @@ import UIKit
 
 import SnapKit
 
-final class SharingListView: BaseView {
+final class CompanionsView: BaseView {
 
     // MARK: - Properties
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SharingListTableViewCell.self, forCellReuseIdentifier: SharingListTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: CompanionsTableViewCell.self, forCellReuseIdentifier: CompanionsTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
     
@@ -78,7 +78,7 @@ final class SharingListView: BaseView {
 
 // MARK: - Extension: UITableViewDelegate
 
-extension SharingListView: UITableViewDelegate {
+extension CompanionsView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -98,14 +98,14 @@ extension SharingListView: UITableViewDelegate {
 
 // MARK: - Extension: UITableViewDataSource
 
-extension SharingListView: UITableViewDataSource {
+extension CompanionsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CompanionsRepository.standard.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SharingListTableViewCell.reuseIdentifier, for: indexPath) as? SharingListTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanionsTableViewCell.reuseIdentifier, for: indexPath) as? CompanionsTableViewCell else { return UITableViewCell() }
         
         cell.nameLabel.text = CompanionsRepository.standard.tasks[indexPath.row].companion
         

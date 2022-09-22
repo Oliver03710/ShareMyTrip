@@ -1,5 +1,5 @@
 //
-//  SharingListTableViewCell.swift
+//  CompanionsViewCell.swift
 //  ShareMyTrip
 //
 //  Created by Junhee Yoon on 2022/09/17.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class SharingListTableViewCell: BaseTableViewCell {
+final class CompanionsTableViewCell: BaseTableViewCell {
 
     // MARK: - Properties
     
