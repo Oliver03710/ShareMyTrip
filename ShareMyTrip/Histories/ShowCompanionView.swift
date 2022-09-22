@@ -1,37 +1,35 @@
 //
-//  HistoriesView.swift
+//  ShowCompanionView.swift
 //  ShareMyTrip
 //
-//  Created by Junhee Yoon on 2022/09/13.
+//  Created by Junhee Yoon on 2022/09/23.
 //
 
 import UIKit
 
-import SnapKit
+class ShowCompanionView: BaseView {
 
-final class HistoriesView: BaseView {
-
-    // MARK: - Init
+    // MARK: - Properties
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: HistoriesTableViewCell.self, forCellReuseIdentifier: HistoriesTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: CompanionsTableViewCell.self, forCellReuseIdentifier: CompanionsTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
     
     private let characterImageView: CharacterImageView = {
-        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
+        let iv = CharacterImageView(.zero, image: CharacterImage.crying.rawValue, contentMode: .scaleAspectFit)
         iv.alpha = 0.5
         return iv
     }()
     
     private let bubbleLabel: BaseLabel = {
-        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "여행가자곰과 더 여행해보세요!")
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "함께 여행 간 친구가 없습니다.")
         label.textAlignment = .center
         label.textColor = .gray
         return label
     }()
     
-    var transitionVC: ((Int) -> Void)?
+    var index = 0
     
     
     // MARK: - Init
@@ -54,10 +52,6 @@ final class HistoriesView: BaseView {
     override func setConstraints() {
         [characterImageView, bubbleLabel, tableView].forEach { self.addSubview($0) }
         
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
-        }
-        
         characterImageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY).multipliedBy(1)
@@ -71,6 +65,10 @@ final class HistoriesView: BaseView {
             make.width.equalTo(self.snp.width)
         }
         
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
     }
     
 }
@@ -78,24 +76,18 @@ final class HistoriesView: BaseView {
 
 // MARK: - Extension: UITableViewDelegate
 
-extension HistoriesView: UITableViewDelegate {
+extension ShowCompanionView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CustomCGFloats.destinationView
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UISwipeActionsConfiguration()
-        return action.trailingDeleteAction(indexPath: indexPath, viewControllerCase: .history, tableView: tableView)
+        return CustomCGFloats.settingView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        transitionVC?(indexPath.row)
     }
     
 }
@@ -103,16 +95,16 @@ extension HistoriesView: UITableViewDelegate {
 
 // MARK: - Extension: UITableViewDataSource
 
-extension HistoriesView: UITableViewDataSource {
+extension ShowCompanionView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TripHistoryRepository.standard.tasks.count
+        return TripHistoryRepository.standard.tasks[index].companions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanionsTableViewCell.reuseIdentifier, for: indexPath) as? CompanionsTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = "\(indexPath.row + 1). \(TripHistoryRepository.standard.tasks[indexPath.row].tripName)"
+        cell.nameLabel.text = TripHistoryRepository.standard.tasks[index].companions[indexPath.row]
         
         return cell
     }

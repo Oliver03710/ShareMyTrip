@@ -7,6 +7,8 @@
 
 import UIKit
 
+import PanModal
+
 final class HistoriesViewController: BaseViewController {
     
     // MARK: - Properties
@@ -35,7 +37,12 @@ final class HistoriesViewController: BaseViewController {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        
+        historiesView.transitionVC = { index in
+            let vc = ShowCompanionViewController()
+            vc.showCompanionView.index = index
+            print(index)
+            self.presentPanModal(vc)
+        }
     }
     
 }
