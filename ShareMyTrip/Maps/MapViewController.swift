@@ -34,8 +34,10 @@ final class MapViewController: BaseViewController {
         return btn
     }()
     
-    private lazy var finishTripButton: CircleButton = {
-        let btn = CircleButton(backgroundColor: .systemBrown, titleOrImage: "trash", hasTitle: false, componentColor: .black, addTarget: self, action: #selector(deleteButtonTapped))
+    private lazy var finishTripButton: BaseButton = {
+        let btn = BaseButton(backgroundColor: .systemBrown, titleOrImage: "여행종료", hasTitle: true, componentColor: .white, addTarget: self, action: #selector(finishTripButtonTapped))
+        btn.layer.masksToBounds = true
+        btn.layer.cornerRadius = 12
         return btn
     }()
     
@@ -63,6 +65,10 @@ final class MapViewController: BaseViewController {
         viewModel.createPathButtonTapped(mapView)
     }
     
+    @objc private func finishTripButtonTapped() {
+        viewModel.finishTripButtonTapped(mapView)
+    }
+    
     
     // MARK: - Helper Functions
     
@@ -79,7 +85,7 @@ final class MapViewController: BaseViewController {
     
     override func setContraints() {
         view.addSubview(mapView)
-        mapView.addSubview(deleteButton)
+        [deleteButton, finishTripButton].forEach { mapView.addSubview($0) }
         
         mapView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -90,6 +96,14 @@ final class MapViewController: BaseViewController {
             make.bottom.equalTo(mapView.snp.bottom).inset(20)
             make.height.width.equalTo(44)
         }
+        
+        finishTripButton.snp.makeConstraints { make in
+            make.trailing.equalTo(mapView.snp.trailing).inset(20)
+            make.bottom.equalTo(mapView.snp.bottom).inset(20)
+            make.height.equalTo(44)
+            make.width.equalTo(finishTripButton.snp.height).multipliedBy(2)
+        }
+        
     }
     
     private func setNaviButtons() {
