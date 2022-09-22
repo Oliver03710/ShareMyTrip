@@ -18,7 +18,20 @@ final class SharingListView: BaseView {
         return tv
     }()
     
-    let companionViewModel = CompanionViewModel()
+    private let characterImageView: CharacterImageView = {
+        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
+        iv.alpha = 0.5
+        return iv
+    }()
+    
+    private let bubbleLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "여행에 함께 갈 친구를 추가해보세요.")
+        label.textAlignment = .center
+        label.textColor = .gray
+        return label
+    }()
+    
+    let ViewModel = CompanionViewModel()
     
     
     // MARK: - Init
@@ -39,7 +52,20 @@ final class SharingListView: BaseView {
     }
     
     override func setConstraints() {
-        [tableView].forEach { self.addSubview($0) }
+        [characterImageView, bubbleLabel, tableView].forEach { self.addSubview($0) }
+        
+        characterImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(1)
+            make.height.width.equalTo(200)
+        }
+        
+        bubbleLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).multipliedBy(0.7)
+            make.height.equalTo(20)
+            make.width.equalTo(self.snp.width)
+        }
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
@@ -63,7 +89,8 @@ extension SharingListView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return nil
+        let action = UISwipeActionsConfiguration()
+        return action.trailingDeleteAction(indexPath: indexPath, viewControllerCase: .companion, tableView: tableView)
     }
     
 }
