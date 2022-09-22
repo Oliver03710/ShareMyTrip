@@ -9,7 +9,7 @@ import Foundation
 
 import RealmSwift
 
-class CurrentTrip: Object {
+final class CurrentTrip: Object {
     @Persisted var name: String
     @Persisted var address: String
     @Persisted var latitude: Double

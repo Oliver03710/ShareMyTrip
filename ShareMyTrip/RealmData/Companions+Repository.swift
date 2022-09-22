@@ -16,7 +16,6 @@ enum ButtonType {
 private protocol CompanionsRepositoryType: AnyObject {
     func addItem(companion: String)
     func deleteSpecificItem(item: Companions)
-    func deleteAllItem()
     func fetchRealmData()
 }
 
@@ -49,16 +48,6 @@ final class CompanionsRepository: CompanionsRepositoryType {
         do {
             try localRealm.write {
                 localRealm.delete(item)
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    func deleteAllItem() {
-        do {
-            try localRealm.write {
-                localRealm.deleteAll()
             }
         } catch let error {
             print(error)

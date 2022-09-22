@@ -9,7 +9,7 @@ import Foundation
 
 import RealmSwift
 
-class TripHistory: Object {
+final class TripHistory: Object {
     @Persisted var tripName: String
     @Persisted var destinations = List<String>()
     @Persisted var companions = List<String>()

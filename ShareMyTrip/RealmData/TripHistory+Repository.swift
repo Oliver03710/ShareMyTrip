@@ -11,6 +11,7 @@ import RealmSwift
 
 private protocol TripHistoryRepositoryType: AnyObject {
     func addItem(tripName: String, desnitations: [String], companions: [String], addresses: [String])
+    func deleteSpecificItem(item: TripHistory)
     func deleteItem(item: TripHistory)
     func fetchRealmData()
 }
@@ -24,11 +25,7 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     // MARK: - Init
     
     let localRealm = try! Realm()
-    var tasks: Results<TripHistory>! {
-        didSet {
-            fetchRealmData()
-        }
-    }
+    var tasks: Results<TripHistory>!
     
     
     // MARK: - Helper Functions
@@ -38,6 +35,16 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
         do {
             try localRealm.write {
                 localRealm.add(task)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func deleteSpecificItem(item: TripHistory) {
+        do {
+            try localRealm.write {
+                localRealm.delete(item)
             }
         } catch let error {
             print(error)

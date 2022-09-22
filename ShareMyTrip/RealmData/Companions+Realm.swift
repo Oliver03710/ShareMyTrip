@@ -9,7 +9,7 @@ import Foundation
 
 import RealmSwift
 
-class Companions: Object {
+final class Companions: Object {
     @Persisted var companion: String
     
     @Persisted(primaryKey: true) var objectId: ObjectId
