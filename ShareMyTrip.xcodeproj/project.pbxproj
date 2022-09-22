@@ -11,6 +11,9 @@
 		AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */; };
 		AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */; };
 		AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD4D8D8928D3163200CD2740 /* Toast */; };
+		AD5039B028DC33AE004E328E /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = AD5039AF28DC33AE004E328E /* PanModal */; };
+		AD5039B228DC6882004E328E /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5039B128DC6882004E328E /* CharacterImageView.swift */; };
+		AD5039B428DC78E1004E328E /* SwipeAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */; };
 		AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1228D46B85004A2734 /* LocationHelper.swift */; };
 		AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1428D47307004A2734 /* CustomAnnotations.swift */; };
 		AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66B28D092B700680F3A /* HistoriesViewController.swift */; };
@@ -21,6 +24,8 @@
 		AD94896828D58A4F00BAC3B8 /* SharingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896728D58A4F00BAC3B8 /* SharingListTableViewCell.swift */; };
 		AD94896A28D58AB100BAC3B8 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896928D58AB100BAC3B8 /* BaseLabel.swift */; };
 		AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */; };
+		AD9B72B028DC308B00EBE70A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AD9B72AF28DC308B00EBE70A /* Realm */; };
+		AD9B72B228DC308B00EBE70A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD9B72B128DC308B00EBE70A /* RealmSwift */; };
 		ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */; };
 		ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */; };
 		ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */; };
@@ -51,11 +56,7 @@
 		ADCFAA6828D05E980027656F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA6728D05E980027656F /* MapViewController.swift */; };
 		ADCFAA6B28D05ED00027656F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA6A28D05ED00027656F /* BaseViewController.swift */; };
 		ADCFAA6D28D05F460027656F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA6C28D05F460027656F /* BaseView.swift */; };
-		ADCFAA7228D0602B0027656F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7128D0602B0027656F /* Realm */; };
-		ADCFAA7428D0602B0027656F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7328D0602B0027656F /* RealmSwift */; };
 		ADCFAA7728D060410027656F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7628D060410027656F /* SnapKit */; };
-		ADCFAA7A28D0606A0027656F /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7928D0606A0027656F /* JGProgressHUD */; };
-		ADCFAA7D28D0609F0027656F /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7C28D0609F0027656F /* PanModal */; };
 		ADCFAA8028D063720027656F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA7F28D063720027656F /* Observable.swift */; };
 		ADCFAA8D28D066630027656F /* SharingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8C28D066630027656F /* SharingListViewController.swift */; };
 		ADCFAA8F28D069260027656F /* SharingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8E28D069260027656F /* SharingListView.swift */; };
@@ -69,7 +70,6 @@
 		ADF6166D28DAD3ED00151B6E /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6166C28DAD3ED00151B6E /* DestinationsViewController.swift */; };
 		ADF6166F28DAD42A00151B6E /* DestinationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6166E28DAD42A00151B6E /* DestinationsView.swift */; };
 		ADF6167128DAD4D600151B6E /* DestinationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */; };
-		ADF6167328DAD8EC00151B6E /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167228DAD8EC00151B6E /* DestinationViewModel.swift */; };
 		ADF6167928DAE93900151B6E /* Companions+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167828DAE93900151B6E /* Companions+Realm.swift */; };
 		ADF6167B28DAEA1800151B6E /* Companions+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +78,8 @@
 		AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		AD5039B128DC6882004E328E /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
+		AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipeAction+Extension.swift"; sourceTree = "<group>"; };
 		AD67DF1228D46B85004A2734 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		AD67DF1428D47307004A2734 /* CustomAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotations.swift; sourceTree = "<group>"; };
 		AD93E66B28D092B700680F3A /* HistoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +134,6 @@
 		ADF6166C28DAD3ED00151B6E /* DestinationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsViewController.swift; sourceTree = "<group>"; };
 		ADF6166E28DAD42A00151B6E /* DestinationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsView.swift; sourceTree = "<group>"; };
 		ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsTableViewCell.swift; sourceTree = "<group>"; };
-		ADF6167228DAD8EC00151B6E /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
 		ADF6167828DAE93900151B6E /* Companions+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Companions+Realm.swift"; sourceTree = "<group>"; };
 		ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Companions+Repository.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,13 +143,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9B72B228DC308B00EBE70A /* RealmSwift in Frameworks */,
 				ADC7566728D99CB900A2B41C /* IQKeyboardManagerSwift in Frameworks */,
+				AD5039B028DC33AE004E328E /* PanModal in Frameworks */,
 				AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */,
-				ADCFAA7A28D0606A0027656F /* JGProgressHUD in Frameworks */,
 				ADCFAA7728D060410027656F /* SnapKit in Frameworks */,
-				ADCFAA7428D0602B0027656F /* RealmSwift in Frameworks */,
-				ADCFAA7228D0602B0027656F /* Realm in Frameworks */,
-				ADCFAA7D28D0609F0027656F /* PanModal in Frameworks */,
+				AD9B72B028DC308B00EBE70A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +283,7 @@
 				ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */,
 				ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */,
 				ADF1D5B528DB730400DDB171 /* CustomStackView.swift */,
+				AD5039B128DC6882004E328E /* CharacterImageView.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -294,7 +295,6 @@
 				ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */,
 				AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */,
 				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
-				ADF6167228DAD8EC00151B6E /* DestinationViewModel.swift */,
 				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
 			);
 			path = ViewModels;
@@ -321,6 +321,7 @@
 			children = (
 				ADCFAA9628D073F90027656F /* AlertLocation+Extension.swift */,
 				ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */,
+				AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,13 +383,12 @@
 			);
 			name = ShareMyTrip;
 			packageProductDependencies = (
-				ADCFAA7128D0602B0027656F /* Realm */,
-				ADCFAA7328D0602B0027656F /* RealmSwift */,
 				ADCFAA7628D060410027656F /* SnapKit */,
-				ADCFAA7928D0606A0027656F /* JGProgressHUD */,
-				ADCFAA7C28D0609F0027656F /* PanModal */,
 				AD4D8D8928D3163200CD2740 /* Toast */,
 				ADC7566628D99CB900A2B41C /* IQKeyboardManagerSwift */,
+				AD9B72AF28DC308B00EBE70A /* Realm */,
+				AD9B72B128DC308B00EBE70A /* RealmSwift */,
+				AD5039AF28DC33AE004E328E /* PanModal */,
 			);
 			productName = ShareMyTrip;
 			productReference = ADCFAA4E28D058640027656F /* ShareMyTrip.app */;
@@ -419,12 +419,11 @@
 			);
 			mainGroup = ADCFAA4528D058640027656F;
 			packageReferences = (
-				ADCFAA7028D0602B0027656F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				ADCFAA7528D060410027656F /* XCRemoteSwiftPackageReference "SnapKit" */,
-				ADCFAA7828D0606A0027656F /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
-				ADCFAA7B28D0609F0027656F /* XCRemoteSwiftPackageReference "PanModal" */,
 				AD4D8D8828D3163200CD2740 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				AD5039AE28DC33AE004E328E /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = ADCFAA4F28D058640027656F /* Products */;
 			projectDirPath = "";
@@ -456,7 +455,6 @@
 				ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */,
 				ADBE769E28D84D6F00B1579E /* CurrentTrip+Realm.swift in Sources */,
 				ADCFAA9428D069F70027656F /* SettingsView.swift in Sources */,
-				ADF6167328DAD8EC00151B6E /* DestinationViewModel.swift in Sources */,
 				AD94896A28D58AB100BAC3B8 /* BaseLabel.swift in Sources */,
 				ADCFAA9728D073F90027656F /* AlertLocation+Extension.swift in Sources */,
 				ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */,
@@ -466,6 +464,7 @@
 				ADC20A5628D0DC99004F94F4 /* SettingsTableViewCell.swift in Sources */,
 				ADC7566028D97E5C00A2B41C /* StartingViewController.swift in Sources */,
 				ADF6166D28DAD3ED00151B6E /* DestinationsViewController.swift in Sources */,
+				AD5039B428DC78E1004E328E /* SwipeAction+Extension.swift in Sources */,
 				ADCFAA8028D063720027656F /* Observable.swift in Sources */,
 				ADBE76A228D858BB00B1579E /* CurrentTrip+Repository.swift in Sources */,
 				ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */,
@@ -480,6 +479,7 @@
 				AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */,
 				AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */,
 				ADC7566A28D9A51400A2B41C /* UserDefaultsHelper.swift in Sources */,
+				AD5039B228DC6882004E328E /* CharacterImageView.swift in Sources */,
 				ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */,
 				ADF6167128DAD4D600151B6E /* DestinationsTableViewCell.swift in Sources */,
 				AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */,
@@ -743,20 +743,28 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		AD5039AE28DC33AE004E328E /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.30.0;
+			};
+		};
 		ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
 				kind = exactVersion;
 				version = 6.5.0;
-			};
-		};
-		ADCFAA7028D0602B0027656F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
 			};
 		};
 		ADCFAA7528D060410027656F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -767,22 +775,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		ADCFAA7828D0606A0027656F /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		ADCFAA7B28D0609F0027656F /* XCRemoteSwiftPackageReference "PanModal" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/slackhq/PanModal.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -791,35 +783,30 @@
 			package = AD4D8D8828D3163200CD2740 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
 		};
+		AD5039AF28DC33AE004E328E /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD5039AE28DC33AE004E328E /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
+		};
+		AD9B72AF28DC308B00EBE70A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		AD9B72B128DC308B00EBE70A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		ADC7566628D99CB900A2B41C /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		ADCFAA7128D0602B0027656F /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADCFAA7028D0602B0027656F /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		ADCFAA7328D0602B0027656F /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADCFAA7028D0602B0027656F /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		ADCFAA7628D060410027656F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ADCFAA7528D060410027656F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		ADCFAA7928D0606A0027656F /* JGProgressHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADCFAA7828D0606A0027656F /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
-			productName = JGProgressHUD;
-		};
-		ADCFAA7C28D0609F0027656F /* PanModal */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADCFAA7B28D0609F0027656F /* XCRemoteSwiftPackageReference "PanModal" */;
-			productName = PanModal;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
