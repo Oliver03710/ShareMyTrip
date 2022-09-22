@@ -29,6 +29,7 @@ final class DestinationsViewController: BaseViewController {
         super.viewWillAppear(animated)
         CurrentTripRepository.standard.fetchRealmData()
         destinationsView.tableView.reloadData()
+        destinationsView.tableView.isHidden = CurrentTripRepository.standard.tasks.isEmpty ? true : false
     }
     
     
