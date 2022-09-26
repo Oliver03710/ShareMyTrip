@@ -160,4 +160,19 @@ final class MapViewModel {
         
     }
     
+    func requestAPI() {
+//        for i in 1...745 {
+//            TouristAttractionsAPIManager.requestTouristAttractions(pageNo: i) { data, error in
+//                if let data = data {
+//                    TouristAttractionsRepository.standard.addItem(name: data.name, address: data.address, introduction: data.introduction, admin: data.admin, phoneNumber: data.phoneNumber, latitude: data.latitude, longitude: data.longitude)
+//                }
+//            }
+//        }
+        TouristAttractionsAPIManager.requestTouristAttractions(pageNo: 1) { data, error in
+            if let data = data {
+                print(data)
+            }
+        }
+    }
+    
 }

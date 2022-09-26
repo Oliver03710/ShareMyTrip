@@ -48,6 +48,7 @@ final class MapViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.requestAPI()
     }
     
     

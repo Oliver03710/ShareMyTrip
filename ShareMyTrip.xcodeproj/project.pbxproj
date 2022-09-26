@@ -19,6 +19,14 @@
 		AD67483A28DCE05500E68F20 /* AlertLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67483928DCE05500E68F20 /* AlertLocation+Extension.swift */; };
 		AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1228D46B85004A2734 /* LocationHelper.swift */; };
 		AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1428D47307004A2734 /* CustomAnnotations.swift */; };
+		AD87226D28E196D60048700A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AD87226C28E196D60048700A /* .gitignore */; };
+		AD87226F28E197290048700A /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87226E28E197290048700A /* APIKeys.swift */; };
+		AD87227128E197AD0048700A /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227028E197AD0048700A /* Endpoints.swift */; };
+		AD87227328E1980C0048700A /* TouristAttractionsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227228E1980C0048700A /* TouristAttractionsAPIManager.swift */; };
+		AD87227528E198540048700A /* TouristAttractionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227428E198540048700A /* TouristAttractionsData.swift */; };
+		AD87227728E198C30048700A /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227628E198C30048700A /* URLSession+Extension.swift */; };
+		AD87227928E1C0680048700A /* TouristAttractions+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227828E1C0680048700A /* TouristAttractions+Realm.swift */; };
+		AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */; };
 		AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66B28D092B700680F3A /* HistoriesViewController.swift */; };
 		AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66D28D092D000680F3A /* HistoriesView.swift */; };
 		AD93E67028D0936400680F3A /* TabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66F28D0936400680F3A /* TabBarImages.swift */; };
@@ -32,7 +40,6 @@
 		ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */; };
 		ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */; };
 		ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */; };
-		ADAA1D4928D5D0DF00A60C61 /* TripHistories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4828D5D0DF00A60C61 /* TripHistories.swift */; };
 		ADAA1D4B28D5D14100A60C61 /* HistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */; };
 		ADBE769E28D84D6F00B1579E /* CurrentTrip+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */; };
 		ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */; };
@@ -87,6 +94,14 @@
 		AD67483928DCE05500E68F20 /* AlertLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertLocation+Extension.swift"; sourceTree = "<group>"; };
 		AD67DF1228D46B85004A2734 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		AD67DF1428D47307004A2734 /* CustomAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotations.swift; sourceTree = "<group>"; };
+		AD87226C28E196D60048700A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AD87226E28E197290048700A /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		AD87227028E197AD0048700A /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		AD87227228E1980C0048700A /* TouristAttractionsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsAPIManager.swift; sourceTree = "<group>"; };
+		AD87227428E198540048700A /* TouristAttractionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsData.swift; sourceTree = "<group>"; };
+		AD87227628E198C30048700A /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		AD87227828E1C0680048700A /* TouristAttractions+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TouristAttractions+Realm.swift"; sourceTree = "<group>"; };
+		AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TouristAttractions+Repository.swift"; sourceTree = "<group>"; };
 		AD93E66B28D092B700680F3A /* HistoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewController.swift; sourceTree = "<group>"; };
 		AD93E66D28D092D000680F3A /* HistoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesView.swift; sourceTree = "<group>"; };
 		AD93E66F28D0936400680F3A /* TabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarImages.swift; sourceTree = "<group>"; };
@@ -98,7 +113,6 @@
 		ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertMessage+Extension.swift"; sourceTree = "<group>"; };
 		ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesTableViewCell.swift; sourceTree = "<group>"; };
-		ADAA1D4828D5D0DF00A60C61 /* TripHistories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistories.swift; sourceTree = "<group>"; };
 		ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewModel.swift; sourceTree = "<group>"; };
 		ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentTrip+Realm.swift"; sourceTree = "<group>"; };
 		ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TripHistory+Realm.swift"; sourceTree = "<group>"; };
@@ -168,6 +182,17 @@
 			path = SearchResults;
 			sourceTree = "<group>";
 		};
+		AD87226B28E1969F0048700A /* TouristAttractionsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				AD87226E28E197290048700A /* APIKeys.swift */,
+				AD87227028E197AD0048700A /* Endpoints.swift */,
+				AD87227228E1980C0048700A /* TouristAttractionsAPIManager.swift */,
+				AD87227428E198540048700A /* TouristAttractionsData.swift */,
+			);
+			path = TouristAttractionsAPI;
+			sourceTree = "<group>";
+		};
 		AD93E66A28D0928D00680F3A /* Histories */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +211,8 @@
 				ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */,
 				ADF6167828DAE93900151B6E /* Companions+Realm.swift */,
 				ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */,
+				AD87227828E1C0680048700A /* TouristAttractions+Realm.swift */,
+				AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */,
 				ADBE76A128D858BB00B1579E /* CurrentTrip+Repository.swift */,
 				ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */,
 				ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */,
@@ -207,7 +234,6 @@
 				ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */,
 				AD67DF1428D47307004A2734 /* CustomAnnotations.swift */,
 				ADC7566328D9822600A2B41C /* CharacterImageData.swift */,
-				ADAA1D4828D5D0DF00A60C61 /* TripHistories.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -233,6 +259,7 @@
 		ADCFAA4528D058640027656F = {
 			isa = PBXGroup;
 			children = (
+				AD87226C28E196D60048700A /* .gitignore */,
 				ADCFAA5028D058640027656F /* ShareMyTrip */,
 				ADCFAA4F28D058640027656F /* Products */,
 			);
@@ -251,6 +278,7 @@
 			children = (
 				ADCFAA5128D058640027656F /* AppDelegate.swift */,
 				ADCFAA5328D058640027656F /* SceneDelegate.swift */,
+				AD87226B28E1969F0048700A /* TouristAttractionsAPI */,
 				ADBE769628D8451100B1579E /* RealmData */,
 				ADC20A6528D0E4F4004F94F4 /* Data */,
 				ADC7566828D9A50300A2B41C /* DataManager */,
@@ -328,6 +356,7 @@
 				AD67483928DCE05500E68F20 /* AlertLocation+Extension.swift */,
 				ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */,
 				AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */,
+				AD87227628E198C30048700A /* URLSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD87226D28E196D60048700A /* .gitignore in Resources */,
 				ADCFAA5E28D058670027656F /* LaunchScreen.storyboard in Resources */,
 				ADCFAA5B28D058670027656F /* Assets.xcassets in Resources */,
 				ADCFAA5928D058640027656F /* Main.storyboard in Resources */,
@@ -477,7 +507,9 @@
 				AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */,
 				AD94896428D5825E00BAC3B8 /* AnnotationData.swift in Sources */,
 				AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */,
+				AD87227528E198540048700A /* TouristAttractionsData.swift in Sources */,
 				AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */,
+				AD87227328E1980C0048700A /* TouristAttractionsAPIManager.swift in Sources */,
 				ADC20A6928D0F317004F94F4 /* BaseTableView.swift in Sources */,
 				ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */,
 				AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */,
@@ -488,21 +520,25 @@
 				ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */,
 				ADF6167128DAD4D600151B6E /* DestinationsTableViewCell.swift in Sources */,
 				AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */,
-				ADAA1D4928D5D0DF00A60C61 /* TripHistories.swift in Sources */,
+				AD87227928E1C0680048700A /* TouristAttractions+Realm.swift in Sources */,
 				ADC7566428D9822600A2B41C /* CharacterImageData.swift in Sources */,
+				AD87227128E197AD0048700A /* Endpoints.swift in Sources */,
 				ADC7566C28D9B3FA00A2B41C /* StartingViewModel.swift in Sources */,
 				ADC20A5228D0DAE2004F94F4 /* Reusable+Protocol.swift in Sources */,
 				ADCFAA6B28D05ED00027656F /* BaseViewController.swift in Sources */,
 				AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */,
+				AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */,
 				AD67483628DCCB3800E68F20 /* ShowCompanionViewController.swift in Sources */,
 				ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
 				AD67483828DCD4E700E68F20 /* ShowCompanionView.swift in Sources */,
 				ADCFAA5228D058640027656F /* AppDelegate.swift in Sources */,
 				ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */,
+				AD87227728E198C30048700A /* URLSession+Extension.swift in Sources */,
 				ADCFAA6D28D05F460027656F /* BaseView.swift in Sources */,
 				ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */,
 				ADCFAA8F28D069260027656F /* CompanionsView.swift in Sources */,
+				AD87226F28E197290048700A /* APIKeys.swift in Sources */,
 				ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */,
 				ADCFAA5428D058640027656F /* SceneDelegate.swift in Sources */,
 				ADBE76A428D858C900B1579E /* TripHistory+Repository.swift in Sources */,
