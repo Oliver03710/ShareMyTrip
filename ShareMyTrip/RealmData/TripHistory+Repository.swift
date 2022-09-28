@@ -10,10 +10,12 @@ import Foundation
 import RealmSwift
 
 private protocol TripHistoryRepositoryType: AnyObject {
-    func addItem(tripName: String, desnitations: [String], companions: [String], addresses: [String])
-    func deleteSpecificItem(item: TripHistory)
+    func addItem(tripName: String, trips: [CurrentTrip], companions: [Companions])
+    func deleteDestinationItem(item: CurrentTrip)
     func deleteItem(item: TripHistory)
     func fetchRealmData()
+    func fetchCurrentTrip() -> Results<TripHistory>
+    func fetchTripHistory() -> Results<TripHistory>
 }
 
 final class TripHistoryRepository: TripHistoryRepositoryType {
@@ -30,8 +32,8 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     
     // MARK: - Helper Functions
     
-    func addItem(tripName: String, desnitations: [String], companions: [String], addresses: [String]) {
-        let task = TripHistory(tripName: tripName, desnitations: desnitations, companions: companions, addresses: addresses)
+    func addItem(tripName: String, trips: [CurrentTrip], companions: [Companions]) {
+        let task = TripHistory(tripName: tripName, trips: trips, companions: companions)
         do {
             try localRealm.write {
                 localRealm.add(task)
@@ -41,7 +43,52 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
         }
     }
     
-    func deleteSpecificItem(item: TripHistory) {
+    func updateItem(text: String) {
+        let currentTrip = fetchCurrentTrip()
+        do {
+            try localRealm.write {
+                let companion = Companions(companion: text)
+                currentTrip.first?.companions.append(companion)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func updateItem(trip: CurrentTrip) {
+        let currentTrip = fetchCurrentTrip()
+        do {
+            try localRealm.write {
+                currentTrip.first?.trips.append(trip)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func updateTripName(text: String) {
+        let currentTrip = fetchCurrentTrip()
+        do {
+            try localRealm.write {
+                currentTrip[0].tripName = text
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func finishTrip() {
+        let currentTrip = fetchCurrentTrip()
+        do {
+            try localRealm.write {
+                currentTrip.first?.isTraveling = false
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func deleteDestinationItem(item: CurrentTrip) {
         do {
             try localRealm.write {
                 localRealm.delete(item)
@@ -61,8 +108,40 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
         }
     }
     
+    func deleteCompanionItem(item: Companions) {
+        do {
+            try localRealm.write {
+                localRealm.delete(item)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func deleteAllCompanionItem() {
+        let currentTrip = fetchCurrentTrip()
+        do {
+            try localRealm.write {
+                currentTrip[0].companions.removeAll()
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+
+    
     func fetchRealmData() {
         tasks = localRealm.objects(TripHistory.self)
+    }
+    
+    func fetchCurrentTrip() -> Results<TripHistory> {
+        tasks = localRealm.objects(TripHistory.self)
+        return tasks.where { $0.isTraveling == true }
+    }
+    
+    func fetchTripHistory() -> Results<TripHistory> {
+        tasks = localRealm.objects(TripHistory.self)
+        return tasks.where { $0.isTraveling == false }
     }
     
 }

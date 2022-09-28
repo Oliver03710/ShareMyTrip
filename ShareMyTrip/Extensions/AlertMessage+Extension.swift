@@ -17,12 +17,17 @@ extension UIViewController {
                 textField.attributedPlaceholder = NSAttributedString(string: "너! 내 동료가 돼라!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             }
         }
+        
         let confirm = UIAlertAction(title: buttonText, style: buttonType == .addButton ? .default : .destructive) { _ in
+            
             if buttonType == .addButton {
-                CompanionsRepository.standard.addItem(companion: alert.textFields?.first?.text ?? "")
+                guard let text = alert.textFields?.first?.text else { return }
+                TripHistoryRepository.standard.updateItem(text: text)
             } else {
-                CompanionsRepository.standard.tasks.forEach { CompanionsRepository.standard.deleteSpecificItem(item: $0) }
+                TripHistoryRepository.standard.deleteAllCompanionItem()
+                print("Delete All Action")
             }
+            
             viewModel.checkEmpty(tableView: tableView)
             tableView.reloadData()
         }
@@ -55,7 +60,43 @@ extension UIViewController {
         self.present(alert, animated: true)
         
     }
-
     
+    func showAlertMessage(completionHandler: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: "현재 여행을 종료하시겠습니까?", message: "종료시, 여행 정보가 여행 히스토리에 이동 및 저장됩니다.", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.attributedPlaceholder = NSAttributedString(string: "현재 여행의 제목을 입력해주세요.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        }
+        
+        let finishTrip = UIAlertAction(title: "네", style: .default) { _ in
+            guard let text = alert.textFields?.first?.text else { return }
+            let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+            
+            if text.isEmpty {
+                TripHistoryRepository.standard.updateTripName(text: "나의 여행 \(tripHistory.count + 1)")
+            } else {
+                TripHistoryRepository.standard.updateTripName(text: text)
+            }
+            completionHandler()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        [cancel, finishTrip].forEach { alert.addAction($0) }
+        self.present(alert, animated: true)
+        
+    }
+    
+    func showAlertMessage(title: String) {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "확인", style: .default)
+        
+        [confirm].forEach { alert.addAction($0) }
+        self.present(alert, animated: true)
+        
+    }
+
 }
 

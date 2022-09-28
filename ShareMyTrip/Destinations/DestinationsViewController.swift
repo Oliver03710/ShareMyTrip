@@ -7,6 +7,8 @@
 
 import UIKit
 
+import PanModal
+
 final class DestinationsViewController: BaseViewController {
     
     // MARK: - Properties
@@ -27,16 +29,20 @@ final class DestinationsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        CurrentTripRepository.standard.fetchRealmData()
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
         destinationsView.tableView.reloadData()
-        destinationsView.tableView.isHidden = CurrentTripRepository.standard.tasks.isEmpty ? true : false
+        destinationsView.tableView.isHidden = currentTrip[0].trips.isEmpty ? true : false
     }
     
     
     // MARK: - Helper Functions
     
     override func configureUI() {
-        
+        destinationsView.transitionVC = { index in
+            let vc = RecommendationViewController()
+            vc.recommendationView.index = index
+            self.presentPanModal(vc)
+        }
     }
     
 }

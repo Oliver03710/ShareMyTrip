@@ -48,7 +48,6 @@ final class CompanionsView: BaseView {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        CompanionsRepository.standard.fetchRealmData()
     }
     
     override func setConstraints() {
@@ -101,13 +100,15 @@ extension CompanionsView: UITableViewDelegate {
 extension CompanionsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CompanionsRepository.standard.tasks.count
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        return currentTrip[0].companions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanionsTableViewCell.reuseIdentifier, for: indexPath) as? CompanionsTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = CompanionsRepository.standard.tasks[indexPath.row].companion
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        cell.nameLabel.text = currentTrip[0].companions[indexPath.row].companion
         
         return cell
     }

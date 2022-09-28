@@ -15,12 +15,12 @@ final class TouristAttractions: Object, Codable {
     @Persisted var introduction: String
     @Persisted var admin: String
     @Persisted var phoneNumber: String
-    @Persisted var latitude: String
-    @Persisted var longitude: String
+    @Persisted var latitude: Double
+    @Persisted var longitude: Double
     
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(name: String, address: String, introduction: String, admin: String, phoneNumber: String, latitude: String, longitude: String) {
+    convenience init(name: String, address: String, introduction: String, admin: String, phoneNumber: String, latitude: Double, longitude: Double) {
         self.init()
         self.name = name
         self.address = address

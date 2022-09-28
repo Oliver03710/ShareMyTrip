@@ -40,7 +40,6 @@ final class HistoriesViewController: BaseViewController {
         historiesView.transitionVC = { index in
             let vc = ShowCompanionViewController()
             vc.showCompanionView.index = index
-            print(index)
             self.presentPanModal(vc)
         }
     }

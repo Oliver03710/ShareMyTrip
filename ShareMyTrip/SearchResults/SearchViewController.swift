@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 
+import RealmSwift
 import SnapKit
 import Toast
 import PanModal
@@ -127,8 +128,11 @@ extension SearchViewController: UITableViewDelegate {
             let lat = coordinate.latitude
             let lon = coordinate.longitude
             
-            CurrentTripRepository.standard.addItem(name: result.title, address: result.subtitle, latitude: lat, longitude: lon, turn: CurrentTripRepository.standard.tasks.count + 1)
-            CurrentTripRepository.standard.fetchRealmData()
+            
+            TripHistoryRepository.standard.fetchRealmData()
+            let currentTrip = TripHistoryRepository.standard.tasks.where { $0.isTraveling == true }
+            let task = CurrentTrip(name: result.title, address: result.subtitle, latitude: lat, longitude: lon, turn: currentTrip[0].trips.count + 1)
+            TripHistoryRepository.standard.updateItem(trip: task)
             self.onDoneBlock?(true)
         }
         dismiss(animated: true)

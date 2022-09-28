@@ -21,8 +21,13 @@ final class MapViewModel {
     
     func searchTableViewRowSelected(_ mapView: MKMapView) {
         
-        LocationHelper.standard.setRegion(mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
-        LocationHelper.standard.setAnnotation(mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        
+        LocationHelper.standard.setRegion(mapView, lat: currentTrip[0].trips.last?.latitude, lon: currentTrip[0].trips.last?.longitude)
+        LocationHelper.standard.setAnnotation(mapView, lat: currentTrip[0].trips.last?.latitude, lon: currentTrip[0].trips.last?.longitude)
+        
+//        LocationHelper.standard.setRegion(mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
+//        LocationHelper.standard.setAnnotation(mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
         mapView.showAnnotations(mapView.annotations, animated: true)
         
         LocationHelper.standard.checkNumberOfAnnotations()
@@ -36,9 +41,11 @@ final class MapViewModel {
     }
     
     func deleteButtonClicked(_ mapView: MKMapView, vc: UIViewController) {
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        
         vc.showAlertMessage {
             
-            guard let anno = LocationHelper.standard.annotations.last, let lastItem = CurrentTripRepository.standard.tasks.last else { return }
+            guard let anno = LocationHelper.standard.annotations.last, let lastItem = currentTrip[0].trips.last else { return }
             
             if !LocationHelper.standard.annotations.isEmpty && !LocationHelper.standard.routes.isEmpty {
                 
@@ -46,14 +53,14 @@ final class MapViewModel {
                 mapView.removeOverlays(mapView.overlays)
                 LocationHelper.standard.annotations.removeLast()
                 LocationHelper.standard.routes.removeValue(forKey: lastItem.turn - 1)
-                CurrentTripRepository.standard.deleteLastItem(item: lastItem)
+                TripHistoryRepository.standard.deleteDestinationItem(item: lastItem)
                 
             } else if LocationHelper.standard.annotations.count == 1 {
                 
                 LocationHelper.standard.annotations.removeAll()
                 LocationHelper.standard.routes.removeAll()
                 LocationHelper.standard.removeAnnotations(mapView)
-                CurrentTripRepository.standard.deleteLastItem(item: lastItem)
+                TripHistoryRepository.standard.deleteDestinationItem(item: lastItem)
                 mapView.removeOverlays(mapView.overlays)
                 
             }
@@ -62,13 +69,13 @@ final class MapViewModel {
             
             LocationHelper.standard.removeAnnotations(mapView)
             mapView.removeOverlays(mapView.overlays)
-            CurrentTripRepository.standard.tasks.forEach { CurrentTripRepository.standard.deleteLastItem(item: $0) }
+            currentTrip[0].trips.forEach { TripHistoryRepository.standard.deleteDestinationItem(item: $0) }
             
         } deleteAllWithTransition: {
             
             LocationHelper.standard.removeAnnotations(mapView)
             mapView.removeOverlays(mapView.overlays)
-            CurrentTripRepository.standard.tasks.forEach { CurrentTripRepository.standard.deleteLastItem(item: $0) }
+            currentTrip[0].trips.forEach { TripHistoryRepository.standard.deleteDestinationItem(item: $0) }
             UserdefaultsHelper.standard.removeAll()
             
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -119,60 +126,47 @@ final class MapViewModel {
         }
     }
     
-    func finishTripButtonTapped(_ mapView: MKMapView) {
+    func finishTripButtonTapped(_ mapView: MKMapView, vc: UIViewController) {
         
-        var destinations = [String](), companions = [String](), addresses = [String]()
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
         
-        if !CurrentTripRepository.standard.tasks.isEmpty {
-            
-            CurrentTripRepository.standard.tasks.forEach {
-                destinations.append($0.name)
-                addresses.append($0.address)
+        if currentTrip[0].trips.isEmpty {
+            vc.showAlertMessage(title: "여행을 종료하시려면 목적지를 최소 1개 설정해주세요.")
+        } else {
+            vc.showAlertMessage {
+                TripHistoryRepository.standard.finishTrip()
+                LocationHelper.standard.removeAnnotations(mapView)
+                mapView.removeOverlays(mapView.overlays)
+                LocationHelper.standard.annotations.removeAll()
+                LocationHelper.standard.routes.removeAll()
+                
+                UserdefaultsHelper.standard.removeAll()
+                
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                let vc = MainTapBarController()
+                
+                sceneDelegate?.window?.rootViewController = vc
+                sceneDelegate?.window?.makeKeyAndVisible()
             }
-            CompanionsRepository.standard.tasks.forEach { companions.append($0.companion) }
-            print(destinations)
-            print(companions)
-            print(addresses)
-            TripHistoryRepository.standard.addItem(tripName: UserdefaultsHelper.standard.tripName, desnitations: destinations, companions: companions, addresses: addresses)
-            TripHistoryRepository.standard.fetchRealmData()
-            
-            LocationHelper.standard.removeAnnotations(mapView)
-            mapView.removeOverlays(mapView.overlays)
-            LocationHelper.standard.annotations.removeAll()
-            LocationHelper.standard.routes.removeAll()
-            
-            CurrentTripRepository.standard.tasks.forEach {
-                destinations.append($0.name)
-                addresses.append($0.address)
-            }
-            CompanionsRepository.standard.tasks.forEach { CompanionsRepository.standard.deleteSpecificItem(item: $0) }
-            CurrentTripRepository.standard.tasks.forEach { CurrentTripRepository.standard.deleteLastItem(item: $0) }
-            UserdefaultsHelper.standard.removeAll()
-            
-            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            let sceneDelegate = windowScene?.delegate as? SceneDelegate
-            let vc = StartingViewController()
-
-            sceneDelegate?.window?.rootViewController = vc
-            sceneDelegate?.window?.makeKeyAndVisible()
             
         }
         
     }
     
     func requestAPI() {
-//        for i in 1...745 {
-//            TouristAttractionsAPIManager.requestTouristAttractions(pageNo: i) { data, error in
-//                if let data = data {
-//                    TouristAttractionsRepository.standard.addItem(name: data.name, address: data.address, introduction: data.introduction, admin: data.admin, phoneNumber: data.phoneNumber, latitude: data.latitude, longitude: data.longitude)
-//                }
-//            }
-//        }
-        TouristAttractionsAPIManager.requestTouristAttractions(pageNo: 1) { data, error in
-            if let data = data {
-                print(data)
+        
+        if TouristAttractionsRepository.standard.tasks.isEmpty {
+            TouristAttractionsAPIManager.requestTouristAttractions(pageNo: 1) { data, error in
+                if let data = data {
+                    for i in data.response.body.items {
+                        guard let lat = Double(i.latitude), let lon = Double(i.longitude) else { return }
+                        TouristAttractionsRepository.standard.addItem(name: i.name, address: i.address, introduction: i.introduction, admin: i.admin, phoneNumber: i.phoneNumber, latitude: lat, longitude: lon)
+                    }
+                }
             }
         }
+        
     }
     
 }

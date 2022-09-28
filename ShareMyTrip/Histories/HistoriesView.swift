@@ -106,13 +106,15 @@ extension HistoriesView: UITableViewDelegate {
 extension HistoriesView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TripHistoryRepository.standard.tasks.count
+        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        return tripHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = "\(indexPath.row + 1). \(TripHistoryRepository.standard.tasks[indexPath.row].tripName)"
+        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        cell.nameLabel.text = "\(indexPath.row + 1). \(tripHistory[indexPath.row].tripName)"
         
         return cell
     }

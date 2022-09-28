@@ -11,7 +11,7 @@ final class HistoriesViewModel {
     
     // MARK: - Properties
     
-    var destinations: Observable<[String]> = Observable([])
+    var trips: Observable<[CurrentTrip]> = Observable([])
     
     
     // MARK: - Helper Functions

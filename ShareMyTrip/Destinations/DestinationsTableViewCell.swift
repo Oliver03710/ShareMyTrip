@@ -18,6 +18,12 @@ final class DestinationsTableViewCell: BaseTableViewCell {
         return label
     }()
     
+    let addressLabel: BaseLabel = {
+        let label = BaseLabel(boldStyle: .regular, fontSize: 13, text: nil)
+        label.textColor = .gray
+        return label
+    }()
+    
     
     // MARK: - Init
     
@@ -35,10 +41,16 @@ final class DestinationsTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         
-        self.addSubview(nameLabel)
+        [nameLabel, addressLabel].forEach { addSubview($0) }
         
         nameLabel.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.directionalHorizontalEdges.top.equalTo(self.safeAreaLayoutGuide).inset(8)
+            make.height.equalTo(16)
+        }
+        
+        addressLabel.snp.makeConstraints { make in
+            make.directionalHorizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(nameLabel.snp.bottom).offset(8)
         }
         
     }

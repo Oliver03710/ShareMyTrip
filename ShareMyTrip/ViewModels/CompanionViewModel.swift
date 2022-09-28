@@ -12,8 +12,8 @@ import RealmSwift
 final class CompanionViewModel {
     
     func checkEmpty(tableView: UITableView) {
-        CompanionsRepository.standard.fetchRealmData()
-        tableView.isHidden = CompanionsRepository.standard.tasks.isEmpty ? true : false
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        tableView.isHidden = currentTrip[0].companions.isEmpty ? true : false
     }
     
 }

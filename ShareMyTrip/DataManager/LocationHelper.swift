@@ -63,32 +63,46 @@ final class LocationHelper: LocationHelperType {
     func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?) {
         guard let lat = lat, let lon = lon else { return }
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let annotation = Annotation(CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].turn)
+        
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        
+        let annotation = Annotation(currentTrip[0].trips[currentTrip[0].trips.count - 1].turn)
         annotation.coordinate = center
-        annotation.title = CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].name
-        annotation.subtitle = CurrentTripRepository.standard.tasks[CurrentTripRepository.standard.tasks.count - 1].address
+        annotation.title = currentTrip[0].trips[currentTrip.count - 1].name
+        annotation.subtitle = currentTrip[0].trips[currentTrip.count - 1].address
+        
         annotations.append(annotation)
         mapView.addAnnotations(annotations)
     }
     
     func setAnnotation(_ mapView: MKMapView, lat: CLLocationDegrees?, lon: CLLocationDegrees?, turn: Int) {
+        
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        
         guard let lat = lat, let lon = lon else { return }
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let annotation = Annotation(CurrentTripRepository.standard.tasks[turn - 1].turn)
+        let annotation = Annotation(currentTrip[0].trips[turn - 1].turn)
         annotation.coordinate = center
-        annotation.title = CurrentTripRepository.standard.tasks[turn - 1].name
-        annotation.subtitle = CurrentTripRepository.standard.tasks[turn - 1].address
+        annotation.title = currentTrip[0].trips[turn - 1].name
+        annotation.subtitle = currentTrip[0].trips[turn - 1].address
         annotations.append(annotation)
+        
     }
     
     func loadAnnotations(_ mapView: MKMapView) {
-        CurrentTripRepository.standard.tasks.forEach { setAnnotation(mapView, lat: $0.latitude, lon: $0.longitude, turn: $0.turn) }
+        
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        
+        currentTrip[0].trips.forEach {
+            setAnnotation(mapView, lat: $0.latitude, lon: $0.longitude, turn: $0.turn)
+        }
+        
         LocationHelper.standard.checkNumberOfAnnotations()
         if LocationHelper.standard.isTrue {
             LocationHelper.standard.routes.removeAll()
             LocationHelper.standard.createMultiplePath(mapView)
         }
-        dump(annotations)
+        
         mapView.addAnnotations(annotations)
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
@@ -107,7 +121,7 @@ final class LocationHelper: LocationHelperType {
         let directionRequest = MKDirections.Request()
         directionRequest.source = sourceMapItem
         directionRequest.destination = destinationMapItem
-        directionRequest.transportType = .any
+        directionRequest.transportType = .automobile
         let direction = MKDirections(request: directionRequest)
         direction.calculate { response, error in
             guard let response = response else {
@@ -131,12 +145,16 @@ final class LocationHelper: LocationHelperType {
     }
     
     func showAnnotations(identifier: Int, taskOrder: Int, annotationView: MKAnnotationView?, annotation: MKAnnotation) {
-        if identifier == CurrentTripRepository.standard.tasks[taskOrder].turn {
+        
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        
+        if identifier == currentTrip[0].trips[taskOrder].turn {
             annotationView?.image = UIImage(named: "customAnno\(CustomAnnotations.allCases[taskOrder].rawValue)")
             annotationView?.annotation = LocationHelper.standard.annotations[taskOrder]
             annotationView?.canShowCallout = true
             annotationView?.detailCalloutAccessoryView = Callout(annotation: annotation)
         }
+        
     }
     
 }

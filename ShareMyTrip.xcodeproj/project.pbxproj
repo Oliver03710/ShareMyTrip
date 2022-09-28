@@ -73,6 +73,10 @@
 		ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9128D069EB0027656F /* SettingsViewController.swift */; };
 		ADCFAA9428D069F70027656F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9328D069F70027656F /* SettingsView.swift */; };
 		ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */; };
+		ADDFB9AE28E3003200F223E8 /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9AD28E3003200F223E8 /* DestinationViewModel.swift */; };
+		ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */; };
+		ADDFB9B228E3047200F223E8 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9B128E3047200F223E8 /* RecommendationView.swift */; };
+		ADDFB9B428E306B900F223E8 /* RecommendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */; };
 		ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */; };
 		ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B328DB680600DDB171 /* CircleButton.swift */; };
 		ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B528DB730400DDB171 /* CustomStackView.swift */; };
@@ -146,6 +150,10 @@
 		ADCFAA9128D069EB0027656F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ADCFAA9328D069F70027656F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTitles.swift; sourceTree = "<group>"; };
+		ADDFB9AD28E3003200F223E8 /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
+		ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
+		ADDFB9B128E3047200F223E8 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
+		ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationTableViewCell.swift; sourceTree = "<group>"; };
 		ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		ADF1D5B328DB680600DDB171 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		ADF1D5B528DB730400DDB171 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
@@ -212,10 +220,10 @@
 				ADF6167828DAE93900151B6E /* Companions+Realm.swift */,
 				ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */,
 				AD87227828E1C0680048700A /* TouristAttractions+Realm.swift */,
-				AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */,
 				ADBE76A128D858BB00B1579E /* CurrentTrip+Repository.swift */,
 				ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */,
 				ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */,
+				AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */,
 			);
 			path = RealmData;
 			sourceTree = "<group>";
@@ -328,6 +336,7 @@
 				ADCFAA7F28D063720027656F /* Observable.swift */,
 				ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */,
 				AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */,
+				ADDFB9AD28E3003200F223E8 /* DestinationViewModel.swift */,
 				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
 				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
 			);
@@ -397,6 +406,9 @@
 				ADF6166C28DAD3ED00151B6E /* DestinationsViewController.swift */,
 				ADF6166E28DAD42A00151B6E /* DestinationsView.swift */,
 				ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */,
+				ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */,
+				ADDFB9B128E3047200F223E8 /* RecommendationView.swift */,
+				ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */,
 			);
 			path = Destinations;
 			sourceTree = "<group>";
@@ -501,12 +513,14 @@
 				ADF6166D28DAD3ED00151B6E /* DestinationsViewController.swift in Sources */,
 				AD5039B428DC78E1004E328E /* SwipeAction+Extension.swift in Sources */,
 				ADCFAA8028D063720027656F /* Observable.swift in Sources */,
+				ADDFB9AE28E3003200F223E8 /* DestinationViewModel.swift in Sources */,
 				ADBE76A228D858BB00B1579E /* CurrentTrip+Repository.swift in Sources */,
 				ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */,
 				ADF6167928DAE93900151B6E /* Companions+Realm.swift in Sources */,
 				AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */,
 				AD94896428D5825E00BAC3B8 /* AnnotationData.swift in Sources */,
 				AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */,
+				ADDFB9B428E306B900F223E8 /* RecommendationTableViewCell.swift in Sources */,
 				AD87227528E198540048700A /* TouristAttractionsData.swift in Sources */,
 				AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */,
 				AD87227328E1980C0048700A /* TouristAttractionsAPIManager.swift in Sources */,
@@ -514,6 +528,7 @@
 				ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */,
 				AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */,
 				AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */,
+				ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */,
 				AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */,
 				ADC7566A28D9A51400A2B41C /* UserDefaultsHelper.swift in Sources */,
 				AD5039B228DC6882004E328E /* CharacterImageView.swift in Sources */,
@@ -529,6 +544,7 @@
 				AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */,
 				AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */,
 				AD67483628DCCB3800E68F20 /* ShowCompanionViewController.swift in Sources */,
+				ADDFB9B228E3047200F223E8 /* RecommendationView.swift in Sources */,
 				ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
 				AD67483828DCD4E700E68F20 /* ShowCompanionView.swift in Sources */,
@@ -701,10 +717,12 @@
 				DEVELOPMENT_TEAM = DLA597KS3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareMyTrip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "여행가자곰";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 사용하여 원하는 목적지와의 거리를 탐색합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -712,7 +730,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jhee.ShareMyTrip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jhee.TripBear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -733,10 +751,12 @@
 				DEVELOPMENT_TEAM = DLA597KS3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareMyTrip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "여행가자곰";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 사용하여 원하는 목적지와의 거리를 탐색합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -744,7 +764,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jhee.ShareMyTrip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jhee.TripBear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

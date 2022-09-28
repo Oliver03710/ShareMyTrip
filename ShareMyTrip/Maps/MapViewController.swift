@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
+import RealmSwift
 import SnapKit
 import PanModal
 
@@ -48,7 +49,6 @@ final class MapViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.requestAPI()
     }
     
     
@@ -67,7 +67,7 @@ final class MapViewController: BaseViewController {
     }
     
     @objc private func finishTripButtonTapped() {
-        viewModel.finishTripButtonTapped(mapView)
+        viewModel.finishTripButtonTapped(mapView, vc: self)
     }
     
     
@@ -76,12 +76,15 @@ final class MapViewController: BaseViewController {
     override func configureUI() {
         setNaviButtons()
         navigationItem.title = UserdefaultsHelper.standard.tripName
-        if let task = CurrentTripRepository.standard.tasks {
-            print(task)
+        print("Realm is located at:", TripHistoryRepository.standard.localRealm.configuration.fileURL!)
+        
+        TouristAttractionsRepository.standard.fetchRealmData()
+        TripHistoryRepository.standard.fetchRealmData()
+        if TripHistoryRepository.standard.fetchCurrentTrip().isEmpty {
+            TripHistoryRepository.standard.addItem(tripName: "", trips: [], companions: [])
         }
-        print("Realm is located at:", CurrentTripRepository.standard.localRealm.configuration.fileURL!)
-        CurrentTripRepository.standard.fetchRealmData()
         LocationHelper.standard.loadAnnotations(mapView)
+        viewModel.requestAPI()
     }
     
     override func setContraints() {
@@ -202,8 +205,9 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
         
-        viewModel.isExecutedFunc(identifier: annotation.identifier, taskOrder: CurrentTripRepository.standard.tasks.count - 1, annotationView: annotationView, annotation: annotation)
+        viewModel.isExecutedFunc(identifier: annotation.identifier, taskOrder: currentTrip[0].trips.count - 1, annotationView: annotationView, annotation: annotation)
 
         return annotationView
     }

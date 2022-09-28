@@ -9,14 +9,13 @@ import Foundation
 
 import RealmSwift
 
-final class CurrentTrip: Object {
+final class CurrentTrip: EmbeddedObject, Codable {
+    
     @Persisted var name: String
     @Persisted var address: String
     @Persisted var latitude: Double
     @Persisted var longitude: Double
     @Persisted var turn: Int
-    
-    @Persisted(primaryKey: true) var objectId: ObjectId
     
     convenience init(name: String, address: String, latitude: Double, longitude: Double, turn: Int) {
         self.init()

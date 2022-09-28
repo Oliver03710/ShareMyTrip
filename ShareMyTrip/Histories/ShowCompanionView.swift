@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShowCompanionView: BaseView {
+final class ShowCompanionView: BaseView {
 
     // MARK: - Properties
     
@@ -104,7 +104,7 @@ extension ShowCompanionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanionsTableViewCell.reuseIdentifier, for: indexPath) as? CompanionsTableViewCell else { return UITableViewCell() }
         
-        cell.nameLabel.text = TripHistoryRepository.standard.tasks[index].companions[indexPath.row]
+        cell.nameLabel.text = TripHistoryRepository.standard.tasks[index].companions[indexPath.row].companion
         
         return cell
     }

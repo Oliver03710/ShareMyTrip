@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 private protocol TouristAttractionsRepositoryType: AnyObject {
-    func addItem(name: String, address: String, introduction: String, admin: String, phoneNumber: String, latitude: String, longitude: String)
+    func addItem(name: String, address: String, introduction: String, admin: String, phoneNumber: String, latitude: Double, longitude: Double)
     func deleteSpecificItem(item: TouristAttractions)
     func fetchRealmData()
 }
@@ -29,7 +29,7 @@ final class TouristAttractionsRepository: TouristAttractionsRepositoryType {
     
     // MARK: - Helper Functions
     
-    func addItem(name: String, address: String, introduction: String, admin: String, phoneNumber: String, latitude: String, longitude: String) {
+    func addItem(name: String, address: String, introduction: String, admin: String, phoneNumber: String, latitude: Double, longitude: Double) {
         let task = TouristAttractions(name: name, address: address, introduction: introduction, admin: admin, phoneNumber: phoneNumber, latitude: latitude, longitude: longitude)
         do {
             try localRealm.write {
