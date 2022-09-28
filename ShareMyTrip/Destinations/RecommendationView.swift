@@ -1,38 +1,36 @@
 //
-//  DestinationsView.swift
+//  RecommendationView.swift
 //  ShareMyTrip
 //
-//  Created by Junhee Yoon on 2022/09/21.
+//  Created by Junhee Yoon on 2022/09/27.
 //
 
 import UIKit
 
-import SnapKit
-import PanModal
+final class RecommendationView: BaseView {
 
-final class DestinationsView: BaseView {
-    
-    // MARK: - Init
+    // MARK: - Properties
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: DestinationsTableViewCell.self, forCellReuseIdentifier: DestinationsTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: RecommendationTableViewCell.self, forCellReuseIdentifier: RecommendationTableViewCell.reuseIdentifier, delegate: self)
         return tv
     }()
     
     private let characterImageView: CharacterImageView = {
-        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
+        let iv = CharacterImageView(.zero, image: CharacterImage.crying.rawValue, contentMode: .scaleAspectFit)
         iv.alpha = 0.5
         return iv
     }()
     
     private let bubbleLabel: BaseLabel = {
-        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "지도 탭에서 목적지를 추가해보세요!")
+        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "근처에 추천 관광지가 없습니다.")
         label.textAlignment = .center
         label.textColor = .gray
         return label
     }()
     
-    var transitionVC: ((Int) -> Void)?
+    let viewModel = DestinationViewModel()
+    var index = 0
     
     
     // MARK: - Init
@@ -51,10 +49,6 @@ final class DestinationsView: BaseView {
     override func setConstraints() {
         [characterImageView, bubbleLabel, tableView].forEach { self.addSubview($0) }
         
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
-        }
-        
         characterImageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY).multipliedBy(1)
@@ -67,6 +61,11 @@ final class DestinationsView: BaseView {
             make.height.equalTo(20)
             make.width.equalTo(self.snp.width)
         }
+        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
     }
     
 }
@@ -74,19 +73,18 @@ final class DestinationsView: BaseView {
 
 // MARK: - Extension: UITableViewDelegate
 
-extension DestinationsView: UITableViewDelegate {
+extension RecommendationView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CustomCGFloats.destinationView
+        return CustomCGFloats.settingView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        transitionVC?(indexPath.row)
     }
     
 }
@@ -94,19 +92,17 @@ extension DestinationsView: UITableViewDelegate {
 
 // MARK: - Extension: UITableViewDataSource
 
-extension DestinationsView: UITableViewDataSource {
+extension RecommendationView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
-        return currentTrip[0].trips.count
+        return viewModel.touristAttractionsAnno.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationsTableViewCell.reuseIdentifier, for: indexPath) as? DestinationsTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendationTableViewCell.reuseIdentifier, for: indexPath) as? RecommendationTableViewCell else { return UITableViewCell() }
         
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
-        cell.nameLabel.text = "\(indexPath.row + 1). \(currentTrip[0].trips[indexPath.row].name)"
-        cell.addressLabel.text = "\(currentTrip[0].trips[indexPath.row].address)"
+        cell.nameLabel.text = viewModel.touristAttractionsAnno.value[indexPath.row].name
+        cell.addressLabel.text = viewModel.touristAttractionsAnno.value[indexPath.row].address
         
         return cell
     }
