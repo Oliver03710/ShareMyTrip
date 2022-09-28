@@ -16,9 +16,9 @@ enum APIError: Error {
 
 class TouristAttractionsAPIManager {
     
-    static func requestTouristAttractions(pageNo: Int, completion: @escaping (TouristAttractions?, APIError?) -> Void) {
+    static func requestTouristAttractions(pageNo: Int, completion: @escaping (TouristAttraction?, APIError?) -> Void) {
         
-        guard let url = URL(string: "\(Endpoints.touristAttractionsURL)?serviceKey=\(APIKeys.touristAttractionsKey)&type=json&pageNo=\(pageNo)&numOfRows=10") else {
+        guard let url = URL(string: "\(Endpoints.touristAttractionsURL)?serviceKey=\(APIKeys.touristAttractionsKey)&type=json&pageNo=\(pageNo)&numOfRows=745") else {
             print("Error")
             return
         }
@@ -52,7 +52,7 @@ class TouristAttractionsAPIManager {
                 }
                 
                 do {
-                    let result = try JSONDecoder().decode(TouristAttractions.self, from: data)
+                    let result = try JSONDecoder().decode(TouristAttraction.self, from: data)
                     print(result)
                     completion(result, nil)
                 } catch {
