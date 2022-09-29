@@ -7,6 +7,8 @@
 
 import UIKit
 
+import PanModal
+
 final class SettingsViewController: BaseViewController {
 
     // MARK: - Properties
@@ -29,7 +31,10 @@ final class SettingsViewController: BaseViewController {
     // MARK: - Helper Functions
     
     override func configureUI() {
-        
+        settingsView.transitionVC = {
+            let vc = BackupViewController()
+            self.presentPanModal(vc)
+        }
     }
 
 }

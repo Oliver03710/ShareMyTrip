@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD02F96628E4845F00323E4A /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F96528E4845F00323E4A /* FileManager+Extension.swift */; };
+		AD02F96928E4847B00323E4A /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = AD02F96828E4847B00323E4A /* Zip */; };
+		AD02F96B28E4926300323E4A /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F96A28E4926300323E4A /* BackupViewController.swift */; };
+		AD02F96F28E4931600323E4A /* BackupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */; };
+		AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F97028E49AF500323E4A /* Date+Extension.swift */; };
+		AD02F97328E4D77200323E4A /* Object+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F97228E4D77200323E4A /* Object+Extension.swift */; };
 		AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */; };
 		AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */; };
 		AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */; };
@@ -43,7 +49,6 @@
 		ADAA1D4B28D5D14100A60C61 /* HistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */; };
 		ADBE769E28D84D6F00B1579E /* CurrentTrip+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */; };
 		ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */; };
-		ADBE76A228D858BB00B1579E /* CurrentTrip+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE76A128D858BB00B1579E /* CurrentTrip+Repository.swift */; };
 		ADBE76A428D858C900B1579E /* TripHistory+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */; };
 		ADC20A5228D0DAE2004F94F4 /* Reusable+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A5128D0DAE2004F94F4 /* Reusable+Protocol.swift */; };
 		ADC20A5428D0DB0C004F94F4 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A5328D0DB0C004F94F4 /* BaseTableViewCell.swift */; };
@@ -84,10 +89,14 @@
 		ADF6166F28DAD42A00151B6E /* DestinationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6166E28DAD42A00151B6E /* DestinationsView.swift */; };
 		ADF6167128DAD4D600151B6E /* DestinationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */; };
 		ADF6167928DAE93900151B6E /* Companions+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167828DAE93900151B6E /* Companions+Realm.swift */; };
-		ADF6167B28DAEA1800151B6E /* Companions+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD02F96528E4845F00323E4A /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		AD02F96A28E4926300323E4A /* BackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
+		AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTableViewCell.swift; sourceTree = "<group>"; };
+		AD02F97028E49AF500323E4A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		AD02F97228E4D77200323E4A /* Object+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Extension.swift"; sourceTree = "<group>"; };
 		AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,7 +129,6 @@
 		ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewModel.swift; sourceTree = "<group>"; };
 		ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentTrip+Realm.swift"; sourceTree = "<group>"; };
 		ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TripHistory+Realm.swift"; sourceTree = "<group>"; };
-		ADBE76A128D858BB00B1579E /* CurrentTrip+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentTrip+Repository.swift"; sourceTree = "<group>"; };
 		ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TripHistory+Repository.swift"; sourceTree = "<group>"; };
 		ADC20A5128D0DAE2004F94F4 /* Reusable+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reusable+Protocol.swift"; sourceTree = "<group>"; };
 		ADC20A5328D0DB0C004F94F4 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,7 +169,6 @@
 		ADF6166E28DAD42A00151B6E /* DestinationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsView.swift; sourceTree = "<group>"; };
 		ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsTableViewCell.swift; sourceTree = "<group>"; };
 		ADF6167828DAE93900151B6E /* Companions+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Companions+Realm.swift"; sourceTree = "<group>"; };
-		ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Companions+Repository.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD02F96928E4847B00323E4A /* Zip in Frameworks */,
 				AD9B72B228DC308B00EBE70A /* RealmSwift in Frameworks */,
 				ADC7566728D99CB900A2B41C /* IQKeyboardManagerSwift in Frameworks */,
 				AD5039B028DC33AE004E328E /* PanModal in Frameworks */,
@@ -220,8 +228,6 @@
 				ADF6167828DAE93900151B6E /* Companions+Realm.swift */,
 				ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */,
 				AD87227828E1C0680048700A /* TouristAttractions+Realm.swift */,
-				ADBE76A128D858BB00B1579E /* CurrentTrip+Repository.swift */,
-				ADF6167A28DAEA1800151B6E /* Companions+Repository.swift */,
 				ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */,
 				AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */,
 			);
@@ -363,9 +369,12 @@
 			isa = PBXGroup;
 			children = (
 				AD67483928DCE05500E68F20 /* AlertLocation+Extension.swift */,
+				AD02F96528E4845F00323E4A /* FileManager+Extension.swift */,
 				ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */,
 				AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */,
 				AD87227628E198C30048700A /* URLSession+Extension.swift */,
+				AD02F97028E49AF500323E4A /* Date+Extension.swift */,
+				AD02F97228E4D77200323E4A /* Object+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -386,6 +395,8 @@
 				ADCFAA9128D069EB0027656F /* SettingsViewController.swift */,
 				ADCFAA9328D069F70027656F /* SettingsView.swift */,
 				ADC20A5528D0DC99004F94F4 /* SettingsTableViewCell.swift */,
+				AD02F96A28E4926300323E4A /* BackupViewController.swift */,
+				AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -436,6 +447,7 @@
 				AD9B72AF28DC308B00EBE70A /* Realm */,
 				AD9B72B128DC308B00EBE70A /* RealmSwift */,
 				AD5039AF28DC33AE004E328E /* PanModal */,
+				AD02F96828E4847B00323E4A /* Zip */,
 			);
 			productName = ShareMyTrip;
 			productReference = ADCFAA4E28D058640027656F /* ShareMyTrip.app */;
@@ -471,6 +483,7 @@
 				ADC7566528D99CB900A2B41C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */,
 				AD5039AE28DC33AE004E328E /* XCRemoteSwiftPackageReference "PanModal" */,
+				AD02F96728E4847B00323E4A /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = ADCFAA4F28D058640027656F /* Products */;
 			projectDirPath = "";
@@ -507,14 +520,12 @@
 				ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */,
 				ADC20A5C28D0E140004F94F4 /* SettingsLabelTexts.swift in Sources */,
 				AD94896628D5831E00BAC3B8 /* CustomCallout.swift in Sources */,
-				ADF6167B28DAEA1800151B6E /* Companions+Repository.swift in Sources */,
 				ADC20A5628D0DC99004F94F4 /* SettingsTableViewCell.swift in Sources */,
 				ADC7566028D97E5C00A2B41C /* StartingViewController.swift in Sources */,
 				ADF6166D28DAD3ED00151B6E /* DestinationsViewController.swift in Sources */,
 				AD5039B428DC78E1004E328E /* SwipeAction+Extension.swift in Sources */,
 				ADCFAA8028D063720027656F /* Observable.swift in Sources */,
 				ADDFB9AE28E3003200F223E8 /* DestinationViewModel.swift in Sources */,
-				ADBE76A228D858BB00B1579E /* CurrentTrip+Repository.swift in Sources */,
 				ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */,
 				ADF6167928DAE93900151B6E /* Companions+Realm.swift in Sources */,
 				AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */,
@@ -526,10 +537,12 @@
 				AD87227328E1980C0048700A /* TouristAttractionsAPIManager.swift in Sources */,
 				ADC20A6928D0F317004F94F4 /* BaseTableView.swift in Sources */,
 				ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */,
+				AD02F96628E4845F00323E4A /* FileManager+Extension.swift in Sources */,
 				AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */,
 				AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */,
 				ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */,
 				AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */,
+				AD02F96F28E4931600323E4A /* BackupTableViewCell.swift in Sources */,
 				ADC7566A28D9A51400A2B41C /* UserDefaultsHelper.swift in Sources */,
 				AD5039B228DC6882004E328E /* CharacterImageView.swift in Sources */,
 				ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */,
@@ -547,6 +560,9 @@
 				ADDFB9B228E3047200F223E8 /* RecommendationView.swift in Sources */,
 				ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
+				AD02F97328E4D77200323E4A /* Object+Extension.swift in Sources */,
+				AD02F96B28E4926300323E4A /* BackupViewController.swift in Sources */,
+				AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */,
 				AD67483828DCD4E700E68F20 /* ShowCompanionView.swift in Sources */,
 				ADCFAA5228D058640027656F /* AppDelegate.swift in Sources */,
 				ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */,
@@ -799,6 +815,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AD02F96728E4847B00323E4A /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		AD4D8D8828D3163200CD2740 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
@@ -842,6 +866,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AD02F96828E4847B00323E4A /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD02F96728E4847B00323E4A /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
 		AD4D8D8928D3163200CD2740 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD4D8D8828D3163200CD2740 /* XCRemoteSwiftPackageReference "Toast-Swift" */;

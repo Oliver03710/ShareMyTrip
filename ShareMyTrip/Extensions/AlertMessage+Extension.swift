@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum ButtonType {
+    case addButton, deleteButton
+}
+
 extension UIViewController {
     
     func showAlertMessage(buttonText: String, alertTitle: String?, tableView: UITableView, buttonType: ButtonType, viewModel: CompanionViewModel) {
@@ -97,6 +101,19 @@ extension UIViewController {
         self.present(alert, animated: true)
         
     }
-
+    
+    func showAlertMessage(title: String, completionHandler: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
+            completionHandler()
+        }
+        
+        [confirm].forEach { alert.addAction($0) }
+        self.present(alert, animated: true)
+        
+    }
+    
 }
 

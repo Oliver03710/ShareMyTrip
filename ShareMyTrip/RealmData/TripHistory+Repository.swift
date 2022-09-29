@@ -5,7 +5,7 @@
 //  Created by Junhee Yoon on 2022/09/19.
 //
 
-import Foundation
+import UIKit
 
 import RealmSwift
 
@@ -142,6 +142,76 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     func fetchTripHistory() -> Results<TripHistory> {
         tasks = localRealm.objects(TripHistory.self)
         return tasks.where { $0.isTraveling == false }
+    }
+    
+    func saveEncodedDataToDocument(vc: UIViewController) throws {
+        fetchRealmData()
+        guard let task = tasks else { return }
+        let encodedData = try encodeData(task)
+        
+        print(encodedData)
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            throw DocumentError.fetchDirectoryPathError
+        }
+        
+        let jsonDataPath = documentDirectory.appendingPathComponent("encodedData.json")
+        
+        try encodedData.write(to: jsonDataPath)
+    }
+    
+    func encodeData(_ data: Results<TripHistory>) throws -> Data {
+        do {
+            let encoder = JSONEncoder()
+            
+            encoder.dateEncodingStrategy = .iso8601
+            
+            let encodedData: Data = try encoder.encode(data)
+            
+            return encodedData
+        }
+        catch {
+            throw CodableError.jsonEncodeError
+        }
+    }
+    
+    func decodeData() throws -> Data {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            throw DocumentError.fetchJsonDataError
+        }
+        
+//        print(path)
+        
+        let dataPath = documentDirectory.appendingPathComponent("encodedData.json")
+        
+//        print(dataPath)
+        do {
+            return try Data(contentsOf: dataPath)
+        } catch {
+            throw DocumentError.fetchJsonDataError
+        }
+    }
+    
+    func restoreRealmForBackupFile() throws {
+        let jsonData = try decodeData()
+        
+        guard let decodedData = try decodeTrip(jsonData) else { return }
+        print(decodedData)
+        try localRealm.write {
+            localRealm.deleteAll()
+            localRealm.add(decodedData)
+        }
+    }
+    
+    func decodeTrip(_ tripData: Data) throws -> [TripHistory]? {
+        do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let decodedData: [TripHistory] = try decoder.decode([TripHistory].self, from: tripData)
+            print(decodedData)
+            return decodedData
+        } catch {
+            throw CodableError.jsonDecodeError
+        }
     }
     
 }
