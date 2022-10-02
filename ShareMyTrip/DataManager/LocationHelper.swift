@@ -68,8 +68,8 @@ final class LocationHelper: LocationHelperType {
         
         let annotation = Annotation(currentTrip[0].trips[currentTrip[0].trips.count - 1].turn)
         annotation.coordinate = center
-        annotation.title = currentTrip[0].trips[currentTrip.count - 1].name
-        annotation.subtitle = currentTrip[0].trips[currentTrip.count - 1].address
+        annotation.title = currentTrip[0].trips[currentTrip[0].trips.count - 1].name
+        annotation.subtitle = currentTrip[0].trips[currentTrip[0].trips.count - 1].address
         
         annotations.append(annotation)
         mapView.addAnnotations(annotations)
