@@ -40,7 +40,7 @@ final class DestinationsViewController: BaseViewController {
     override func configureUI() {
         destinationsView.transitionVC = { index in
             let vc = RecommendationViewController()
-            vc.recommendationView.index = index
+            vc.index = index
             self.presentPanModal(vc)
         }
     }
