@@ -53,7 +53,7 @@ class TouristAttractionsAPIManager {
                 
                 do {
                     let result = try JSONDecoder().decode(TouristAttraction.self, from: data)
-                    print(result)
+//                    print(result)
                     completion(result, nil)
                 } catch {
                     print(error)

@@ -12,8 +12,9 @@
 		AD02F96B28E4926300323E4A /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F96A28E4926300323E4A /* BackupViewController.swift */; };
 		AD02F96F28E4931600323E4A /* BackupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */; };
 		AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F97028E49AF500323E4A /* Date+Extension.swift */; };
-		AD02F97328E4D77200323E4A /* Object+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F97228E4D77200323E4A /* Object+Extension.swift */; };
 		AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */; };
+		AD2BDA9F28E5EAA7002B5B62 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDA9E28E5EAA7002B5B62 /* CustomCollectionView.swift */; };
+		AD2BDAA128E5EAB7002B5B62 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDAA028E5EAB7002B5B62 /* CustomCollectionViewCell.swift */; };
 		AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */; };
 		AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */; };
 		AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD4D8D8928D3163200CD2740 /* Toast */; };
@@ -43,6 +44,11 @@
 		AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */; };
 		AD9B72B028DC308B00EBE70A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AD9B72AF28DC308B00EBE70A /* Realm */; };
 		AD9B72B228DC308B00EBE70A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD9B72B128DC308B00EBE70A /* RealmSwift */; };
+		ADA6706928E9952A00F2F170 /* SearchAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6706828E9952A00F2F170 /* SearchAPIManager.swift */; };
+		ADA6706B28E99C8700F2F170 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6706A28E99C8700F2F170 /* SearchData.swift */; };
+		ADA6706D28E9A95C00F2F170 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */; };
+		ADA6706F28E9AD2400F2F170 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */; };
+		ADA6707428E9BAFE00F2F170 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6707328E9BAFE00F2F170 /* String+Extension.swift */; };
 		ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */; };
 		ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */; };
 		ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */; };
@@ -78,10 +84,8 @@
 		ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9128D069EB0027656F /* SettingsViewController.swift */; };
 		ADCFAA9428D069F70027656F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9328D069F70027656F /* SettingsView.swift */; };
 		ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */; };
-		ADDFB9AE28E3003200F223E8 /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9AD28E3003200F223E8 /* DestinationViewModel.swift */; };
 		ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */; };
-		ADDFB9B228E3047200F223E8 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9B128E3047200F223E8 /* RecommendationView.swift */; };
-		ADDFB9B428E306B900F223E8 /* RecommendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */; };
+		ADDFB9B428E306B900F223E8 /* RecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9B328E306B900F223E8 /* RecommendationCollectionViewCell.swift */; };
 		ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */; };
 		ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B328DB680600DDB171 /* CircleButton.swift */; };
 		ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B528DB730400DDB171 /* CustomStackView.swift */; };
@@ -96,8 +100,9 @@
 		AD02F96A28E4926300323E4A /* BackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTableViewCell.swift; sourceTree = "<group>"; };
 		AD02F97028E49AF500323E4A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		AD02F97228E4D77200323E4A /* Object+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Extension.swift"; sourceTree = "<group>"; };
 		AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		AD2BDA9E28E5EAA7002B5B62 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		AD2BDAA028E5EAB7002B5B62 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AD5039B128DC6882004E328E /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
@@ -123,6 +128,11 @@
 		AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsTableViewCell.swift; sourceTree = "<group>"; };
 		AD94896928D58AB100BAC3B8 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionViewModel.swift; sourceTree = "<group>"; };
+		ADA6706828E9952A00F2F170 /* SearchAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIManager.swift; sourceTree = "<group>"; };
+		ADA6706A28E99C8700F2F170 /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
+		ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		ADA6707328E9BAFE00F2F170 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertMessage+Extension.swift"; sourceTree = "<group>"; };
 		ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,10 +168,8 @@
 		ADCFAA9128D069EB0027656F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ADCFAA9328D069F70027656F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTitles.swift; sourceTree = "<group>"; };
-		ADDFB9AD28E3003200F223E8 /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
 		ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
-		ADDFB9B128E3047200F223E8 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
-		ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationTableViewCell.swift; sourceTree = "<group>"; };
+		ADDFB9B328E306B900F223E8 /* RecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		ADF1D5B328DB680600DDB171 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		ADF1D5B528DB730400DDB171 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
@@ -198,15 +206,17 @@
 			path = SearchResults;
 			sourceTree = "<group>";
 		};
-		AD87226B28E1969F0048700A /* TouristAttractionsAPI */ = {
+		AD87226B28E1969F0048700A /* APIManagers */ = {
 			isa = PBXGroup;
 			children = (
 				AD87226E28E197290048700A /* APIKeys.swift */,
 				AD87227028E197AD0048700A /* Endpoints.swift */,
 				AD87227228E1980C0048700A /* TouristAttractionsAPIManager.swift */,
 				AD87227428E198540048700A /* TouristAttractionsData.swift */,
+				ADA6706828E9952A00F2F170 /* SearchAPIManager.swift */,
+				ADA6706A28E99C8700F2F170 /* SearchData.swift */,
 			);
-			path = TouristAttractionsAPI;
+			path = APIManagers;
 			sourceTree = "<group>";
 		};
 		AD93E66A28D0928D00680F3A /* Histories */ = {
@@ -292,7 +302,7 @@
 			children = (
 				ADCFAA5128D058640027656F /* AppDelegate.swift */,
 				ADCFAA5328D058640027656F /* SceneDelegate.swift */,
-				AD87226B28E1969F0048700A /* TouristAttractionsAPI */,
+				AD87226B28E1969F0048700A /* APIManagers */,
 				ADBE769628D8451100B1579E /* RealmData */,
 				ADC20A6528D0E4F4004F94F4 /* Data */,
 				ADC7566828D9A50300A2B41C /* DataManager */,
@@ -332,6 +342,8 @@
 				ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */,
 				ADF1D5B528DB730400DDB171 /* CustomStackView.swift */,
 				AD5039B128DC6882004E328E /* CharacterImageView.swift */,
+				AD2BDA9E28E5EAA7002B5B62 /* CustomCollectionView.swift */,
+				AD2BDAA028E5EAB7002B5B62 /* CustomCollectionViewCell.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -341,10 +353,11 @@
 			children = (
 				ADCFAA7F28D063720027656F /* Observable.swift */,
 				ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */,
+				ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */,
 				AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */,
-				ADDFB9AD28E3003200F223E8 /* DestinationViewModel.swift */,
 				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
 				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
+				ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -374,7 +387,7 @@
 				AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */,
 				AD87227628E198C30048700A /* URLSession+Extension.swift */,
 				AD02F97028E49AF500323E4A /* Date+Extension.swift */,
-				AD02F97228E4D77200323E4A /* Object+Extension.swift */,
+				ADA6707328E9BAFE00F2F170 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,8 +431,7 @@
 				ADF6166E28DAD42A00151B6E /* DestinationsView.swift */,
 				ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */,
 				ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */,
-				ADDFB9B128E3047200F223E8 /* RecommendationView.swift */,
-				ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */,
+				ADDFB9B328E306B900F223E8 /* RecommendationCollectionViewCell.swift */,
 			);
 			path = Destinations;
 			sourceTree = "<group>";
@@ -516,6 +528,7 @@
 				ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */,
 				ADBE769E28D84D6F00B1579E /* CurrentTrip+Realm.swift in Sources */,
 				ADCFAA9428D069F70027656F /* SettingsView.swift in Sources */,
+				ADA6706928E9952A00F2F170 /* SearchAPIManager.swift in Sources */,
 				AD94896A28D58AB100BAC3B8 /* BaseLabel.swift in Sources */,
 				ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */,
 				ADC20A5C28D0E140004F94F4 /* SettingsLabelTexts.swift in Sources */,
@@ -525,19 +538,21 @@
 				ADF6166D28DAD3ED00151B6E /* DestinationsViewController.swift in Sources */,
 				AD5039B428DC78E1004E328E /* SwipeAction+Extension.swift in Sources */,
 				ADCFAA8028D063720027656F /* Observable.swift in Sources */,
-				ADDFB9AE28E3003200F223E8 /* DestinationViewModel.swift in Sources */,
+				ADA6706B28E99C8700F2F170 /* SearchData.swift in Sources */,
 				ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */,
 				ADF6167928DAE93900151B6E /* Companions+Realm.swift in Sources */,
 				AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */,
 				AD94896428D5825E00BAC3B8 /* AnnotationData.swift in Sources */,
 				AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */,
-				ADDFB9B428E306B900F223E8 /* RecommendationTableViewCell.swift in Sources */,
+				ADDFB9B428E306B900F223E8 /* RecommendationCollectionViewCell.swift in Sources */,
 				AD87227528E198540048700A /* TouristAttractionsData.swift in Sources */,
+				ADA6706F28E9AD2400F2F170 /* SearchViewModel.swift in Sources */,
 				AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */,
 				AD87227328E1980C0048700A /* TouristAttractionsAPIManager.swift in Sources */,
 				ADC20A6928D0F317004F94F4 /* BaseTableView.swift in Sources */,
 				ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */,
 				AD02F96628E4845F00323E4A /* FileManager+Extension.swift in Sources */,
+				AD2BDAA128E5EAB7002B5B62 /* CustomCollectionViewCell.swift in Sources */,
 				AD4D8D8528D30F7A00CD2740 /* SearchTableViewCell.swift in Sources */,
 				AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */,
 				ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */,
@@ -557,10 +572,8 @@
 				AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */,
 				AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */,
 				AD67483628DCCB3800E68F20 /* ShowCompanionViewController.swift in Sources */,
-				ADDFB9B228E3047200F223E8 /* RecommendationView.swift in Sources */,
 				ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
-				AD02F97328E4D77200323E4A /* Object+Extension.swift in Sources */,
 				AD02F96B28E4926300323E4A /* BackupViewController.swift in Sources */,
 				AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */,
 				AD67483828DCD4E700E68F20 /* ShowCompanionView.swift in Sources */,
@@ -570,12 +583,14 @@
 				ADCFAA6D28D05F460027656F /* BaseView.swift in Sources */,
 				ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */,
 				ADCFAA8F28D069260027656F /* CompanionsView.swift in Sources */,
+				ADA6707428E9BAFE00F2F170 /* String+Extension.swift in Sources */,
 				AD87226F28E197290048700A /* APIKeys.swift in Sources */,
 				ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */,
 				ADCFAA5428D058640027656F /* SceneDelegate.swift in Sources */,
 				ADBE76A428D858C900B1579E /* TripHistory+Repository.swift in Sources */,
 				ADCFAA8D28D066630027656F /* CompanionsViewController.swift in Sources */,
 				ADCFAA6828D05E980027656F /* MapViewController.swift in Sources */,
+				AD2BDA9F28E5EAA7002B5B62 /* CustomCollectionView.swift in Sources */,
 				ADC20A5428D0DB0C004F94F4 /* BaseTableViewCell.swift in Sources */,
 				ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */,
 				AD93E67028D0936400680F3A /* TabBarImages.swift in Sources */,
@@ -584,6 +599,7 @@
 				ADF6166F28DAD42A00151B6E /* DestinationsView.swift in Sources */,
 				ADC20A6728D0E506004F94F4 /* CustomCGFloats.swift in Sources */,
 				AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */,
+				ADA6706D28E9A95C00F2F170 /* RecommendationsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

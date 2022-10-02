@@ -13,7 +13,7 @@ final class Observable<T> {
     
     var value: T {
         didSet {
-            print("\(oldValue) Changed")
+//            print("\(oldValue) Changed")
             listener?(value)
         }
     }
@@ -23,7 +23,7 @@ final class Observable<T> {
     }
     
     func bind(_ closure: @escaping (T) -> Void) {
-        print(#function)
+//        print(#function)
         closure(value)
         listener = closure
     }

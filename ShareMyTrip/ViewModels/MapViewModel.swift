@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 
 import PanModal
+import Toast
 
 final class MapViewModel {
     
@@ -26,8 +27,6 @@ final class MapViewModel {
         LocationHelper.standard.setRegion(mapView, lat: currentTrip[0].trips.last?.latitude, lon: currentTrip[0].trips.last?.longitude)
         LocationHelper.standard.setAnnotation(mapView, lat: currentTrip[0].trips.last?.latitude, lon: currentTrip[0].trips.last?.longitude)
         
-//        LocationHelper.standard.setRegion(mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
-//        LocationHelper.standard.setAnnotation(mapView, lat: CurrentTripRepository.standard.tasks.last?.latitude, lon: CurrentTripRepository.standard.tasks.last?.longitude)
         mapView.showAnnotations(mapView.annotations, animated: true)
         
         LocationHelper.standard.checkNumberOfAnnotations()
@@ -68,6 +67,7 @@ final class MapViewModel {
         } deleteAllItem: {
             
             LocationHelper.standard.removeAnnotations(mapView)
+            LocationHelper.standard.routes.removeAll()
             mapView.removeOverlays(mapView.overlays)
             currentTrip[0].trips.forEach { TripHistoryRepository.standard.deleteDestinationItem(item: $0) }
             
@@ -96,6 +96,9 @@ final class MapViewModel {
         vc.tableView.isHidden = true
         vc.onDoneBlock = { _ in
             self.searchTableViewRowSelected(mapView)
+        }
+        vc.showToast = {
+            vcs.view.makeToast("목적지를 더 추가할 수 없습니다.")
         }
         
         vcs.presentPanModal(vc)
@@ -144,27 +147,12 @@ final class MapViewModel {
                 
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                let vc = MainTapBarController()
+                let vc = StartingViewController()
                 
                 sceneDelegate?.window?.rootViewController = vc
                 sceneDelegate?.window?.makeKeyAndVisible()
             }
             
-        }
-        
-    }
-    
-    func requestAPI() {
-        
-        if TouristAttractionsRepository.standard.tasks.isEmpty {
-            TouristAttractionsAPIManager.requestTouristAttractions(pageNo: 1) { data, error in
-                if let data = data {
-                    for i in data.response.body.items {
-                        guard let lat = Double(i.latitude), let lon = Double(i.longitude) else { return }
-                        TouristAttractionsRepository.standard.addItem(name: i.name, address: i.address, introduction: i.introduction, admin: i.admin, phoneNumber: i.phoneNumber, latitude: lat, longitude: lon)
-                    }
-                }
-            }
         }
         
     }

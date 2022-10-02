@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 final class MainTapBarController: UITabBarController {
     
@@ -14,8 +15,8 @@ final class MainTapBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        UITabBar.appearance().backgroundColor = .systemBackground
         tabBar.tintColor = .label
+        self.modalPresentationStyle = .fullScreen
         configureTabBars()
     }
     
