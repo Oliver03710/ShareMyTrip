@@ -75,7 +75,7 @@ extension UIViewController {
         urlPaths.append(contentsOf: [realmFilePath])
         
         do {
-            let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "TravelGom_\(Date().toString(withFormat: "yyMMdd_HH.mm"))")
+            let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "Trip_\(Date().toString(withFormat: "yyMMdd_HH.mm"))")
             
             return zipFilePath
         }
