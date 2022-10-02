@@ -26,4 +26,20 @@ final class CurrentTrip: EmbeddedObject, Codable {
         self.turn = turn
     }
     
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.address, forKey: .address)
+        try container.encode(self.latitude, forKey: .latitude)
+        try container.encode(self.longitude, forKey: .longitude)
+        try container.encode(self.turn, forKey: .turn)
+    }
+    
+    private enum CodingKeys: CodingKey {
+        case name
+        case address
+        case latitude
+        case longitude
+        case turn
+    }
 }

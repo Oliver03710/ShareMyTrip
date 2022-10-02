@@ -108,6 +108,16 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
         }
     }
     
+    func deleteAllItem() {
+        do {
+            try localRealm.write {
+                localRealm.deleteAll()
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     func deleteCompanionItem(item: Companions) {
         do {
             try localRealm.write {
