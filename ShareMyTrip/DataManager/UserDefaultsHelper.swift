@@ -16,16 +16,7 @@ class UserdefaultsHelper {
     let userDefaults = UserDefaults.standard
     
     enum Key: String {
-        case tripName, isTraveling
-    }
-    
-    var tripName: String {
-        get {
-            return userDefaults.string(forKey: Key.tripName.rawValue) ?? ""
-        }
-        set {
-            userDefaults.set(newValue, forKey: Key.tripName.rawValue)
-        }
+        case isTraveling
     }
     
     var isTraveling: Bool {
