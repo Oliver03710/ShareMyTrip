@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 import PanModal
 
@@ -13,7 +14,7 @@ final class SettingsViewController: BaseViewController {
 
     // MARK: - Properties
     
-    private let settingsView = SettingsView()
+    let settingsView = SettingsView()
     
     
     // MARK: - Init
@@ -24,7 +25,6 @@ final class SettingsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
