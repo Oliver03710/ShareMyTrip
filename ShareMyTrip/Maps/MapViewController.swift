@@ -13,11 +13,15 @@ import RealmSwift
 import SnapKit
 import PanModal
 
+protocol TransferMapViewDelegate: AnyObject {
+    func passMapView(_ mapView: MKMapView)
+}
+
 final class MapViewController: BaseViewController {
     
     // MARK: - Properties
     
-    private lazy var mapView: MKMapView = {
+    lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.delegate = self
         mv.showsUserLocation = true
@@ -35,7 +39,7 @@ final class MapViewController: BaseViewController {
         return btn
     }()
     
-    private lazy var finishTripButton: BaseButton = {
+    lazy var finishTripButton: BaseButton = {
         let btn = BaseButton(backgroundColor: .systemBrown, titleOrImage: "여행종료", hasTitle: true, componentColor: .white, addTarget: self, action: #selector(finishTripButtonTapped))
         btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 12
@@ -43,12 +47,14 @@ final class MapViewController: BaseViewController {
     }()
     
     private let viewModel = MapViewModel()
+    weak var delegate: TransferMapViewDelegate?
     
     
     // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -75,7 +81,6 @@ final class MapViewController: BaseViewController {
     
     override func configureUI() {
         setNaviButtons()
-        navigationItem.title = UserdefaultsHelper.standard.tripName
         print("Realm is located at:", TripHistoryRepository.standard.localRealm.configuration.fileURL!)
         
         TouristAttractionsRepository.standard.fetchRealmData()
@@ -84,7 +89,7 @@ final class MapViewController: BaseViewController {
             TripHistoryRepository.standard.addItem(tripName: "", trips: [], companions: [])
         }
         LocationHelper.standard.loadAnnotations(mapView)
-        viewModel.requestAPI()
+        delegate?.passMapView(self.mapView)
     }
     
     override func setContraints() {
@@ -210,6 +215,45 @@ extension MapViewController: MKMapViewDelegate {
         viewModel.isExecutedFunc(identifier: annotation.identifier, taskOrder: currentTrip[0].trips.count - 1, annotationView: annotationView, annotation: annotation)
 
         return annotationView
+    }
+    
+}
+
+
+// MARK: - Extension: PanModalPresentable
+
+extension MapViewController: PanModalPresentable {
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+
+    var shortFormHeight: PanModalHeight {
+        return .contentHeightIgnoringSafeArea(0)
+    }
+
+    var longFormHeight: PanModalHeight {
+        return shortFormHeight
+    }
+
+    var panModalBackgroundColor: UIColor {
+        return UIColor.black.withAlphaComponent(0.1)
+    }
+
+    var shouldRoundTopCorners: Bool {
+        return false
+    }
+
+    var showDragIndicator: Bool {
+        return true
+    }
+
+    var anchorModalToLongForm: Bool {
+        return false
+    }
+
+    var isUserInteractionEnabled: Bool {
+        return true
     }
     
 }

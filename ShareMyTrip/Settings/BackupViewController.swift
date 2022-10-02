@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 import PanModal
 import SnapKit
@@ -35,6 +36,7 @@ final class BackupViewController: BaseViewController {
     }()
     
     var zipFiles: [URL] = []
+    var mapView: MKMapView?
     
     
     // MARK: - Init
@@ -46,7 +48,7 @@ final class BackupViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-//        backupView.tableView.isHidden = TripHistoryRepository.standard.tasks[showCompanionView.index].companions.isEmpty ? true : false
+        
     }
     
     
@@ -86,6 +88,8 @@ final class BackupViewController: BaseViewController {
     
     override func configureUI() {
         setConstraints()
+        view.backgroundColor = .systemBackground
+        
     }
     
     func setConstraints() {
@@ -113,6 +117,7 @@ final class BackupViewController: BaseViewController {
     }
     
     func restoreRealm(urls: [URL], index: Int) {
+        
         let selectedFileURL = urls[index]
         
         guard let path = documentDirectoryPath() else {
@@ -141,8 +146,7 @@ final class BackupViewController: BaseViewController {
                     
                     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                     let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                    let vc = MainTapBarController()
-                    
+                    let vc = StartingViewController()
                     sceneDelegate?.window?.rootViewController = vc
                     sceneDelegate?.window?.makeKeyAndVisible()
                 })
@@ -152,6 +156,7 @@ final class BackupViewController: BaseViewController {
             }
         }
     }
+    
 }
 
 
@@ -191,11 +196,16 @@ extension BackupViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        do {
-            let arr = try fetchDocumentZipFile()
-            restoreRealm(urls: arr, index: indexPath.row)
-        } catch {
-            print(error)
+        showAlertMessageWithCancel(title: "해당 데이터로 복구하시겠습니까?") {
+            do {
+                let mv = MapViewController()
+                mv.delegate = self
+                self.presentPanModal(mv)
+                let arr = try self.fetchDocumentZipFile()
+                self.restoreRealm(urls: arr, index: indexPath.row)
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -274,7 +284,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
                     
                     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                     let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                    let vc = MainTapBarController()
+                    let vc = StartingViewController()
                     
                     sceneDelegate?.window?.rootViewController = vc
                     sceneDelegate?.window?.makeKeyAndVisible()
@@ -306,7 +316,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
                     
                     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                     let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                    let vc = MainTapBarController()
+                    let vc = StartingViewController()
 
                     sceneDelegate?.window?.rootViewController = vc
                     sceneDelegate?.window?.makeKeyAndVisible()
@@ -319,4 +329,16 @@ extension BackupViewController: UIDocumentPickerDelegate {
         }
     }
     
+}
+
+
+// MARK: - Extension: TransferMapViewDelegate
+
+extension BackupViewController: TransferMapViewDelegate {
+    
+    func passMapView(_ mapView: MKMapView) {
+        LocationHelper.standard.removeAnnotations(mapView)
+        LocationHelper.standard.routes.removeAll()
+        mapView.removeOverlays(mapView.overlays)
+    }
 }
