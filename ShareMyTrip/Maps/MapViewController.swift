@@ -88,7 +88,7 @@ final class MapViewController: BaseViewController {
         if TripHistoryRepository.standard.fetchCurrentTrip().isEmpty {
             TripHistoryRepository.standard.addItem(tripName: "", trips: [], companions: [])
         }
-        LocationHelper.standard.loadAnnotations(mapView)
+        LocationHelper.standard.loadAnnotations(mapView, index: nil, status: .current)
         delegate?.passMapView(self.mapView)
     }
     

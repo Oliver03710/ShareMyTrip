@@ -38,8 +38,8 @@ final class HistoriesViewController: BaseViewController {
     
     override func configureUI() {
         historiesView.transitionVC = { index in
-            let vc = ShowCompanionViewController()
-            vc.showCompanionView.index = index
+            let vc = DetailHistoriesViewController()
+            vc.detailHistoriesView.index = index
             self.presentPanModal(vc)
         }
     }

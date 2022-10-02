@@ -21,8 +21,8 @@
 		AD5039B028DC33AE004E328E /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = AD5039AF28DC33AE004E328E /* PanModal */; };
 		AD5039B228DC6882004E328E /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5039B128DC6882004E328E /* CharacterImageView.swift */; };
 		AD5039B428DC78E1004E328E /* SwipeAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */; };
-		AD67483628DCCB3800E68F20 /* ShowCompanionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67483528DCCB3800E68F20 /* ShowCompanionViewController.swift */; };
-		AD67483828DCD4E700E68F20 /* ShowCompanionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67483728DCD4E700E68F20 /* ShowCompanionView.swift */; };
+		AD67483628DCCB3800E68F20 /* DetailHistoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67483528DCCB3800E68F20 /* DetailHistoriesViewController.swift */; };
+		AD67483828DCD4E700E68F20 /* DetailHistoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67483728DCD4E700E68F20 /* DetailHistoriesView.swift */; };
 		AD67483A28DCE05500E68F20 /* AlertLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67483928DCE05500E68F20 /* AlertLocation+Extension.swift */; };
 		AD67DF1328D46B85004A2734 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1228D46B85004A2734 /* LocationHelper.swift */; };
 		AD67DF1528D47307004A2734 /* CustomAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67DF1428D47307004A2734 /* CustomAnnotations.swift */; };
@@ -49,6 +49,7 @@
 		ADA6706D28E9A95C00F2F170 /* RecommendationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */; };
 		ADA6706F28E9AD2400F2F170 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */; };
 		ADA6707428E9BAFE00F2F170 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6707328E9BAFE00F2F170 /* String+Extension.swift */; };
+		ADA6707F28EA096200F2F170 /* DetailHistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6707E28EA096200F2F170 /* DetailHistoriesViewModel.swift */; };
 		ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */; };
 		ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */; };
 		ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */; };
@@ -107,8 +108,8 @@
 		AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AD5039B128DC6882004E328E /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		AD5039B328DC78E1004E328E /* SwipeAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipeAction+Extension.swift"; sourceTree = "<group>"; };
-		AD67483528DCCB3800E68F20 /* ShowCompanionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCompanionViewController.swift; sourceTree = "<group>"; };
-		AD67483728DCD4E700E68F20 /* ShowCompanionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCompanionView.swift; sourceTree = "<group>"; };
+		AD67483528DCCB3800E68F20 /* DetailHistoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoriesViewController.swift; sourceTree = "<group>"; };
+		AD67483728DCD4E700E68F20 /* DetailHistoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoriesView.swift; sourceTree = "<group>"; };
 		AD67483928DCE05500E68F20 /* AlertLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertLocation+Extension.swift"; sourceTree = "<group>"; };
 		AD67DF1228D46B85004A2734 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		AD67DF1428D47307004A2734 /* CustomAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotations.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewModel.swift; sourceTree = "<group>"; };
 		ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		ADA6707328E9BAFE00F2F170 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		ADA6707E28EA096200F2F170 /* DetailHistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoriesViewModel.swift; sourceTree = "<group>"; };
 		ADAA1D4028D5987C00A60C61 /* AlertMessage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertMessage+Extension.swift"; sourceTree = "<group>"; };
 		ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -224,8 +226,8 @@
 			children = (
 				AD93E66B28D092B700680F3A /* HistoriesViewController.swift */,
 				AD93E66D28D092D000680F3A /* HistoriesView.swift */,
-				AD67483528DCCB3800E68F20 /* ShowCompanionViewController.swift */,
-				AD67483728DCD4E700E68F20 /* ShowCompanionView.swift */,
+				AD67483528DCCB3800E68F20 /* DetailHistoriesViewController.swift */,
+				AD67483728DCD4E700E68F20 /* DetailHistoriesView.swift */,
 				ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */,
 			);
 			path = Histories;
@@ -358,6 +360,7 @@
 				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
 				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
 				ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */,
+				ADA6707E28EA096200F2F170 /* DetailHistoriesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				ADDFB9B428E306B900F223E8 /* RecommendationCollectionViewCell.swift in Sources */,
 				AD87227528E198540048700A /* TouristAttractionsData.swift in Sources */,
 				ADA6706F28E9AD2400F2F170 /* SearchViewModel.swift in Sources */,
+				ADA6707F28EA096200F2F170 /* DetailHistoriesViewModel.swift in Sources */,
 				AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */,
 				AD87227328E1980C0048700A /* TouristAttractionsAPIManager.swift in Sources */,
 				ADC20A6928D0F317004F94F4 /* BaseTableView.swift in Sources */,
@@ -571,12 +575,12 @@
 				ADCFAA6B28D05ED00027656F /* BaseViewController.swift in Sources */,
 				AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */,
 				AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */,
-				AD67483628DCCB3800E68F20 /* ShowCompanionViewController.swift in Sources */,
+				AD67483628DCCB3800E68F20 /* DetailHistoriesViewController.swift in Sources */,
 				ADC7566228D97EC900A2B41C /* StartingView.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
 				AD02F96B28E4926300323E4A /* BackupViewController.swift in Sources */,
 				AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */,
-				AD67483828DCD4E700E68F20 /* ShowCompanionView.swift in Sources */,
+				AD67483828DCD4E700E68F20 /* DetailHistoriesView.swift in Sources */,
 				ADCFAA5228D058640027656F /* AppDelegate.swift in Sources */,
 				ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */,
 				AD87227728E198C30048700A /* URLSession+Extension.swift in Sources */,

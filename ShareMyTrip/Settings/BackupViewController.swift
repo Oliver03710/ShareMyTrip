@@ -337,7 +337,7 @@ extension BackupViewController: UIDocumentPickerDelegate {
 extension BackupViewController: TransferMapViewDelegate {
     
     func passMapView(_ mapView: MKMapView) {
-        LocationHelper.standard.removeAnnotations(mapView)
+        LocationHelper.standard.removeAnnotations(mapView, status: .current)
         LocationHelper.standard.routes.removeAll()
         mapView.removeOverlays(mapView.overlays)
     }

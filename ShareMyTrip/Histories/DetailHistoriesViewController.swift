@@ -1,5 +1,5 @@
 //
-//  ShowCompanionViewController.swift
+//  DetailHistoriesViewController.swift
 //  ShareMyTrip
 //
 //  Created by Junhee Yoon on 2022/09/23.
@@ -9,17 +9,17 @@ import UIKit
 
 import PanModal
 
-final class ShowCompanionViewController: BaseViewController {
+final class DetailHistoriesViewController: BaseViewController {
 
     // MARK: - Properties
 
-    let showCompanionView = ShowCompanionView()
+    let detailHistoriesView = DetailHistoriesView()
     
     
     // MARK: - Init
     
     override func loadView() {
-        self.view = showCompanionView
+        self.view = detailHistoriesView
     }
 
     override func viewDidLoad() {
@@ -29,15 +29,8 @@ final class ShowCompanionViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         TripHistoryRepository.standard.fetchRealmData()
-        showCompanionView.tableView.reloadData()
-        showCompanionView.tableView.isHidden = TripHistoryRepository.standard.tasks[showCompanionView.index].companions.isEmpty ? true : false
-    }
-    
-    
-    // MARK: - Helper Functions
-    
-    override func configureUI() {
-        
+        detailHistoriesView.tableView.reloadData()
+        detailHistoriesView.tableView.isHidden = TripHistoryRepository.standard.tasks[detailHistoriesView.index].companions.isEmpty ? true : false
     }
 
 }
@@ -45,7 +38,7 @@ final class ShowCompanionViewController: BaseViewController {
 
 // MARK: - Extension: PanModalPresentable
 
-extension ShowCompanionViewController: PanModalPresentable {
+extension DetailHistoriesViewController: PanModalPresentable {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

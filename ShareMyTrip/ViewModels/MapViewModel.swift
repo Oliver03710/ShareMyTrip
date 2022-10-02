@@ -34,7 +34,7 @@ final class MapViewModel {
         if LocationHelper.standard.isTrue {
             
             LocationHelper.standard.routes.removeAll()
-            LocationHelper.standard.createMultiplePath(mapView)
+            LocationHelper.standard.createMultiplePath(mapView, status: .current)
             
         }
     }
@@ -58,7 +58,7 @@ final class MapViewModel {
                 
                 LocationHelper.standard.annotations.removeAll()
                 LocationHelper.standard.routes.removeAll()
-                LocationHelper.standard.removeAnnotations(mapView)
+                LocationHelper.standard.removeAnnotations(mapView, status: .current)
                 TripHistoryRepository.standard.deleteDestinationItem(item: lastItem)
                 mapView.removeOverlays(mapView.overlays)
                 
@@ -66,14 +66,14 @@ final class MapViewModel {
             
         } deleteAllItem: {
             
-            LocationHelper.standard.removeAnnotations(mapView)
+            LocationHelper.standard.removeAnnotations(mapView, status: .current)
             LocationHelper.standard.routes.removeAll()
             mapView.removeOverlays(mapView.overlays)
             currentTrip[0].trips.forEach { TripHistoryRepository.standard.deleteDestinationItem(item: $0) }
             
         } deleteAllWithTransition: {
             
-            LocationHelper.standard.removeAnnotations(mapView)
+            LocationHelper.standard.removeAnnotations(mapView, status: .current)
             mapView.removeOverlays(mapView.overlays)
             currentTrip[0].trips.forEach { TripHistoryRepository.standard.deleteDestinationItem(item: $0) }
             UserdefaultsHelper.standard.removeAll()
@@ -109,7 +109,7 @@ final class MapViewModel {
         LocationHelper.standard.checkNumberOfAnnotations()
         
         if LocationHelper.standard.isTrue {
-            LocationHelper.standard.showRoutes(mapView)
+            LocationHelper.standard.showRoutes(mapView, status: .current)
         }
         
     }
@@ -118,13 +118,12 @@ final class MapViewModel {
         
         if isExecuted.value {
             
-            LocationHelper.standard.showAnnotations(identifier: identifier, taskOrder: taskOrder, annotationView: annotationView, annotation: annotation)
+            LocationHelper.standard.showAnnotations(identifier: identifier, taskOrder: taskOrder, annotationView: annotationView, annotation: annotation, index: nil, status: .current)
             
         } else {
             
             LocationHelper.standard.annotations.forEach {
-                LocationHelper.standard.showAnnotations(identifier: identifier, taskOrder: $0.identifier - 1, annotationView: annotationView, annotation: annotation)
-                
+                LocationHelper.standard.showAnnotations(identifier: identifier, taskOrder: $0.identifier - 1, annotationView: annotationView, annotation: annotation, index: nil, status: .current)
             }
         }
     }
@@ -138,7 +137,7 @@ final class MapViewModel {
         } else {
             vc.showAlertMessage {
                 TripHistoryRepository.standard.finishTrip()
-                LocationHelper.standard.removeAnnotations(mapView)
+                LocationHelper.standard.removeAnnotations(mapView, status: .current)
                 mapView.removeOverlays(mapView.overlays)
                 LocationHelper.standard.annotations.removeAll()
                 LocationHelper.standard.routes.removeAll()
