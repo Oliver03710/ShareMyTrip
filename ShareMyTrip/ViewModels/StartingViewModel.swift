@@ -9,40 +9,36 @@ import UIKit
 
 final class StartingViewModel {
     
-    // MARK: - Properties
-    
-    var nameText: Observable<String> = Observable("")
-    var isValid: Observable<Bool> = Observable(false)
-
-    
     // MARK: - Helper Functions
     
-    func checkValidation() {
-        let string = nameText.value.trimmingCharacters(in: .whitespaces)
-        if nameText.value.isEmpty || string.isEmpty {
-            isValid.value = false
-        } else {
-            isValid.value = true
+    func TransitionAfterRequestAPI() {
+        
+        let group = DispatchGroup()
+        
+        TouristAttractionsRepository.standard.fetchRealmData()
+        if TouristAttractionsRepository.standard.tasks.isEmpty {
+            group.enter()
+            TouristAttractionsAPIManager.requestTouristAttractions(pageNo: 1) { data, error in
+                if let data = data {
+                    for i in data.response.body.items {
+                        guard let lat = Double(i.latitude), let lon = Double(i.longitude) else { return }
+                        TouristAttractionsRepository.standard.addItem(name: i.name, address: i.address, introduction: i.introduction, admin: i.admin, phoneNumber: i.phoneNumber, latitude: lat, longitude: lon)
+                    }
+                }
+                group.leave()
+            }
+            
         }
-    }
-    
-    func transition(text: String, completion: @escaping () -> Void) {
-        UserdefaultsHelper.standard.isTraveling = true
-        UserdefaultsHelper.standard.tripName = text
-        completion()
-    }
-    
-    func activateButton(_ button: UIButton) {
-        isValid.bind { bool in
-            button.isEnabled = bool
-            button.backgroundColor = bool ? .systemBrown : .lightGray
+        
+        group.notify(queue: .main) {
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            let vc = MainTapBarController()
+            
+            sceneDelegate?.window?.rootViewController = vc
+            sceneDelegate?.window?.makeKeyAndVisible()
         }
-    }
-    
-    func bindsTextField(_ textField: UITextField) {
-        nameText.bind { text in
-            textField.text = text
-        }
+        
     }
     
 }
