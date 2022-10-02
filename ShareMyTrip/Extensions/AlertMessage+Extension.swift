@@ -23,7 +23,6 @@ extension UIViewController {
         }
         
         let confirm = UIAlertAction(title: buttonText, style: buttonType == .addButton ? .default : .destructive) { _ in
-            
             if buttonType == .addButton {
                 guard let text = alert.textFields?.first?.text else { return }
                 TripHistoryRepository.standard.updateItem(text: text)
@@ -111,6 +110,21 @@ extension UIViewController {
         }
         
         [confirm].forEach { alert.addAction($0) }
+        self.present(alert, animated: true)
+        
+    }
+    
+    func showAlertMessageWithCancel(title: String, completionHandler: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
+            completionHandler()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        [cancel, confirm].forEach { alert.addAction($0) }
         self.present(alert, animated: true)
         
     }
