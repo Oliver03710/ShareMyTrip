@@ -26,6 +26,7 @@ final class SearchViewController: BaseViewController {
     
     lazy var tableView: BaseTableView = {
         let tv = BaseTableView(frame: .zero, style: .plain, cellClass: SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier, delegate: self)
+        tv.prefetchDataSource = self
         return tv
     }()
     
@@ -42,30 +43,36 @@ final class SearchViewController: BaseViewController {
         return label
     }()
     
-    private lazy var searchCompleter: MKLocalSearchCompleter = {
-        let sc = MKLocalSearchCompleter()
-        sc.delegate = self
-        return sc
-    }()
+//    private lazy var searchCompleter: MKLocalSearchCompleter = {
+//        let sc = MKLocalSearchCompleter()
+//        sc.delegate = self
+//        return sc
+//    }()
     
-    private var searchResults = [MKLocalSearchCompletion]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+//    private var searchResults = [MKLocalSearchCompletion]() {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
     
     var onDoneBlock : ((Bool) -> Void)?
+    var showToast : (() -> Void)?
+    let viewModel = SearchViewModel()
     
     
     // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
     }
     
     
     // MARK: - Helper Functions
+    
+    override func configureUI() {
+        view.backgroundColor = .systemBackground
+        viewModel.reloadTableView(tableView)
+    }
     
     override func setContraints() {
         [characterImageView, bubbleLabel, searchBar, tableView].forEach { view.addSubview($0) }
@@ -78,7 +85,7 @@ final class SearchViewController: BaseViewController {
         
         bubbleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
-            make.centerY.equalTo(view.snp.centerY).multipliedBy(0.7)
+            make.bottom.equalTo(characterImageView.snp.top).offset(-16)
             make.height.equalTo(20)
             make.width.equalTo(view.snp.width)
         }
@@ -114,29 +121,49 @@ extension SearchViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let result = searchResults[indexPath.row]
-        let searchRequest = MKLocalSearch.Request(completion: result)
-        
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            
-            guard let coordinate = response?.mapItems.first?.placemark.coordinate else {
-                self.view.makeToast("위치정보를 받아오는데 오류가 발생하였습니다.")
-                return
-            }
-            
-            let lat = coordinate.latitude
-            let lon = coordinate.longitude
-            
-            
-            TripHistoryRepository.standard.fetchRealmData()
-            let currentTrip = TripHistoryRepository.standard.tasks.where { $0.isTraveling == true }
-            let task = CurrentTrip(name: result.title, address: result.subtitle, latitude: lat, longitude: lon, turn: currentTrip[0].trips.count + 1)
+        TripHistoryRepository.standard.fetchRealmData()
+        let currentTrip = TripHistoryRepository.standard.tasks.where { $0.isTraveling == true }
+        if currentTrip[0].trips.count < 50 {
+            let task = CurrentTrip(name: viewModel.results.value[indexPath.row].name, address: viewModel.results.value[indexPath.row].address, latitude: viewModel.results.value[indexPath.row].coordinates.latitude, longitude: viewModel.results.value[indexPath.row].coordinates.longitude, turn: currentTrip[0].trips.count + 1)
             TripHistoryRepository.standard.updateItem(trip: task)
             self.onDoneBlock?(true)
+        } else {
+            self.showToast?()
+            self.view.makeToast("더 이상 목적지를 추가할 수 없습니다.")
         }
         dismiss(animated: true)
     }
+   
+
+        // 애플 내장 지도 검색 기능
+        
+//        let result = searchResults[indexPath.row]
+//        let searchRequest = MKLocalSearch.Request(completion: result)
+//
+//        let search = MKLocalSearch(request: searchRequest)
+//        search.start { (response, error) in
+//
+//            guard let coordinate = response?.mapItems.first?.placemark.coordinate else {
+//                self.view.makeToast("위치정보를 받아오는데 오류가 발생하였습니다.")
+//                return
+//            }
+//
+//            let lat = coordinate.latitude
+//            let lon = coordinate.longitude
+//
+//
+//            TripHistoryRepository.standard.fetchRealmData()
+//            let currentTrip = TripHistoryRepository.standard.tasks.where { $0.isTraveling == true }
+//            if currentTrip[0].trips.count < 50 {
+//                let task = CurrentTrip(name: result.title, address: result.subtitle, latitude: lat, longitude: lon, turn: currentTrip[0].trips.count + 1)
+//                TripHistoryRepository.standard.updateItem(trip: task)
+//                self.onDoneBlock?(true)
+//            } else {
+//                self.showToast?()
+//                self.view.makeToast("더 이상 목적지를 추가할 수 없습니다.")
+//            }
+//        }
+//        dismiss(animated: true)
     
 }
 
@@ -146,14 +173,14 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        return viewModel.results.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         
-        let searchResult = searchResults[indexPath.row]
-        cell.setCellComponents(title: searchResult.title, subTitle: searchResult.subtitle)
+        let searchResult = viewModel.results.value[indexPath.row]
+        cell.setCellComponents(title: searchResult.name, subTitle: searchResult.address)
         
         return cell
     }
@@ -165,11 +192,12 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCompleter.queryFragment = searchText
-        if let text = searchBar.text {
-            tableView.isHidden = text.isEmpty ? true : false
-        }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.results.value.removeAll()
+        viewModel.pages.value = 1
+        guard let text = searchBar.text else { return }
+        viewModel.searchText.value = text
+        viewModel.requestAPI(viewModel.searchText.value, pages: viewModel.pages.value)
     }
     
 }
@@ -177,13 +205,13 @@ extension SearchViewController: UISearchBarDelegate {
 
 // MARK: - Extension: MKLocalSearchCompleterDelegate
 
-extension SearchViewController: MKLocalSearchCompleterDelegate {
-    
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
-    }
-    
-}
+//extension SearchViewController: MKLocalSearchCompleterDelegate {
+//
+//    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+//        searchResults = completer.results
+//    }
+//
+//}
 
 
 // MARK: - Extension: PanModalPresentable
@@ -204,5 +232,23 @@ extension SearchViewController: PanModalPresentable {
 
     var anchorModalToLongForm: Bool {
         return false
+    }
+}
+
+
+// MARK: - Extension: UICollectionViewDataSourcePrefetching
+
+extension SearchViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        indexPaths.forEach { indexPath in
+            
+            if viewModel.results.value.count - 7 == indexPath.row, viewModel.results.value.count < viewModel.totalCounts.value {
+                viewModel.pages.value += 1
+                print(viewModel.pages.value)
+                viewModel.requestAPI(viewModel.searchText.value, pages: viewModel.pages.value)
+            }
+        }
     }
 }
