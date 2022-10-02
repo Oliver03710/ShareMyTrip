@@ -8,7 +8,7 @@
 import Foundation
 
 enum CharacterImage: String, CaseIterable {
-    case main = "mainCharacterFullBody"
+    case main = "treval_bear_main_blue"
     case smile = "smileFace"
     case crying = "cryingFace"
 }
