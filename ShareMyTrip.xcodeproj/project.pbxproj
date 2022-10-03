@@ -36,7 +36,6 @@
 		AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */; };
 		AD93E66C28D092B700680F3A /* HistoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66B28D092B700680F3A /* HistoriesViewController.swift */; };
 		AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66D28D092D000680F3A /* HistoriesView.swift */; };
-		AD93E67028D0936400680F3A /* TabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66F28D0936400680F3A /* TabBarImages.swift */; };
 		AD94896428D5825E00BAC3B8 /* AnnotationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896328D5825E00BAC3B8 /* AnnotationData.swift */; };
 		AD94896628D5831E00BAC3B8 /* CustomCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896528D5831E00BAC3B8 /* CustomCallout.swift */; };
 		AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */; };
@@ -81,10 +80,12 @@
 		ADCFAA8D28D066630027656F /* CompanionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8C28D066630027656F /* CompanionsViewController.swift */; };
 		ADCFAA8F28D069260027656F /* CompanionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8E28D069260027656F /* CompanionsView.swift */; };
 		ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9128D069EB0027656F /* SettingsViewController.swift */; };
-		ADCFAA9428D069F70027656F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9328D069F70027656F /* SettingsView.swift */; };
 		ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */; };
 		ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */; };
 		ADDFB9B428E306B900F223E8 /* RecommendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */; };
+		ADEEE90828EB553F008F9BB1 /* AcknowList in Frameworks */ = {isa = PBXBuildFile; productRef = ADEEE90728EB553F008F9BB1 /* AcknowList */; };
+		ADEEE90A28EB5699008F9BB1 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEE90928EB5699008F9BB1 /* SettingViewModel.swift */; };
+		ADEEE90C28EB5DFF008F9BB1 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEE90B28EB5DFF008F9BB1 /* FileManagerHelper.swift */; };
 		ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */; };
 		ADF1D5B428DB680600DDB171 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B328DB680600DDB171 /* CircleButton.swift */; };
 		ADF1D5B628DB730400DDB171 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1D5B528DB730400DDB171 /* CustomStackView.swift */; };
@@ -121,7 +122,6 @@
 		AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TouristAttractions+Repository.swift"; sourceTree = "<group>"; };
 		AD93E66B28D092B700680F3A /* HistoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewController.swift; sourceTree = "<group>"; };
 		AD93E66D28D092D000680F3A /* HistoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesView.swift; sourceTree = "<group>"; };
-		AD93E66F28D0936400680F3A /* TabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarImages.swift; sourceTree = "<group>"; };
 		AD94896328D5825E00BAC3B8 /* AnnotationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationData.swift; sourceTree = "<group>"; };
 		AD94896528D5831E00BAC3B8 /* CustomCallout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCallout.swift; sourceTree = "<group>"; };
 		AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -165,10 +165,11 @@
 		ADCFAA8C28D066630027656F /* CompanionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsViewController.swift; sourceTree = "<group>"; };
 		ADCFAA8E28D069260027656F /* CompanionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsView.swift; sourceTree = "<group>"; };
 		ADCFAA9128D069EB0027656F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		ADCFAA9328D069F70027656F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTitles.swift; sourceTree = "<group>"; };
 		ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationTableViewCell.swift; sourceTree = "<group>"; };
+		ADEEE90928EB5699008F9BB1 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		ADEEE90B28EB5DFF008F9BB1 /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		ADF1D5B328DB680600DDB171 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		ADF1D5B528DB730400DDB171 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 				AD5039B028DC33AE004E328E /* PanModal in Frameworks */,
 				AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */,
 				ADCFAA7728D060410027656F /* SnapKit in Frameworks */,
+				ADEEE90828EB553F008F9BB1 /* AcknowList in Frameworks */,
 				AD9B72B028DC308B00EBE70A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,9 +224,9 @@
 			children = (
 				AD93E66B28D092B700680F3A /* HistoriesViewController.swift */,
 				AD93E66D28D092D000680F3A /* HistoriesView.swift */,
+				ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */,
 				AD67483528DCCB3800E68F20 /* DetailHistoriesViewController.swift */,
 				AD67483728DCD4E700E68F20 /* DetailHistoriesView.swift */,
-				ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */,
 			);
 			path = Histories;
 			sourceTree = "<group>";
@@ -273,6 +275,7 @@
 			children = (
 				ADC7566928D9A51400A2B41C /* UserDefaultsHelper.swift */,
 				AD67DF1228D46B85004A2734 /* LocationHelper.swift */,
+				ADEEE90B28EB5DFF008F9BB1 /* FileManagerHelper.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
 				ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */,
 				ADA6707E28EA096200F2F170 /* DetailHistoriesViewModel.swift */,
+				ADEEE90928EB5699008F9BB1 /* SettingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -404,7 +408,6 @@
 			isa = PBXGroup;
 			children = (
 				ADCFAA9128D069EB0027656F /* SettingsViewController.swift */,
-				ADCFAA9328D069F70027656F /* SettingsView.swift */,
 				ADC20A5528D0DC99004F94F4 /* SettingsTableViewCell.swift */,
 				AD02F96A28E4926300323E4A /* BackupViewController.swift */,
 				AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */,
@@ -416,7 +419,6 @@
 			isa = PBXGroup;
 			children = (
 				ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */,
-				AD93E66F28D0936400680F3A /* TabBarImages.swift */,
 				ADC20A5B28D0E140004F94F4 /* SettingsLabelTexts.swift */,
 			);
 			path = Enums;
@@ -457,6 +459,7 @@
 				AD9B72B128DC308B00EBE70A /* RealmSwift */,
 				AD5039AF28DC33AE004E328E /* PanModal */,
 				AD02F96828E4847B00323E4A /* Zip */,
+				ADEEE90728EB553F008F9BB1 /* AcknowList */,
 			);
 			productName = ShareMyTrip;
 			productReference = ADCFAA4E28D058640027656F /* ShareMyTrip.app */;
@@ -492,6 +495,7 @@
 				AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */,
 				AD5039AE28DC33AE004E328E /* XCRemoteSwiftPackageReference "PanModal" */,
 				AD02F96728E4847B00323E4A /* XCRemoteSwiftPackageReference "Zip" */,
+				ADEEE90628EB553F008F9BB1 /* XCRemoteSwiftPackageReference "AcknowList" */,
 			);
 			productRefGroup = ADCFAA4F28D058640027656F /* Products */;
 			projectDirPath = "";
@@ -523,7 +527,6 @@
 			files = (
 				ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */,
 				ADBE769E28D84D6F00B1579E /* CurrentTrip+Realm.swift in Sources */,
-				ADCFAA9428D069F70027656F /* SettingsView.swift in Sources */,
 				ADA6706928E9952A00F2F170 /* SearchAPIManager.swift in Sources */,
 				AD94896A28D58AB100BAC3B8 /* BaseLabel.swift in Sources */,
 				ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */,
@@ -572,10 +575,12 @@
 				AD67483628DCCB3800E68F20 /* DetailHistoriesViewController.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
 				AD02F96B28E4926300323E4A /* BackupViewController.swift in Sources */,
+				ADEEE90C28EB5DFF008F9BB1 /* FileManagerHelper.swift in Sources */,
 				AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */,
 				AD67483828DCD4E700E68F20 /* DetailHistoriesView.swift in Sources */,
 				ADCFAA5228D058640027656F /* AppDelegate.swift in Sources */,
 				ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */,
+				ADEEE90A28EB5699008F9BB1 /* SettingViewModel.swift in Sources */,
 				AD87227728E198C30048700A /* URLSession+Extension.swift in Sources */,
 				ADCFAA6D28D05F460027656F /* BaseView.swift in Sources */,
 				ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */,
@@ -589,7 +594,6 @@
 				ADCFAA6828D05E980027656F /* MapViewController.swift in Sources */,
 				ADC20A5428D0DB0C004F94F4 /* BaseTableViewCell.swift in Sources */,
 				ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */,
-				AD93E67028D0936400680F3A /* TabBarImages.swift in Sources */,
 				ADAA1D4B28D5D14100A60C61 /* HistoriesViewModel.swift in Sources */,
 				AD67483A28DCE05500E68F20 /* AlertLocation+Extension.swift in Sources */,
 				ADF6166F28DAD42A00151B6E /* DestinationsView.swift in Sources */,
@@ -867,6 +871,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		ADEEE90628EB553F008F9BB1 /* XCRemoteSwiftPackageReference "AcknowList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vtourraine/AcknowList.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -899,6 +911,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ADCFAA7528D060410027656F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		ADEEE90728EB553F008F9BB1 /* AcknowList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADEEE90628EB553F008F9BB1 /* XCRemoteSwiftPackageReference "AcknowList" */;
+			productName = AcknowList;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
