@@ -29,8 +29,9 @@ final class DetailHistoriesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         TripHistoryRepository.standard.fetchRealmData()
-        detailHistoriesView.tableView.reloadData()
         detailHistoriesView.tableView.isHidden = TripHistoryRepository.standard.tasks[detailHistoriesView.index].companions.isEmpty ? true : false
+        detailHistoriesView.tableView.reloadData()
+        LocationHelper.standard.loadAnnotations(detailHistoriesView.mapView, index: detailHistoriesView.index, status: .past)
     }
 
 }
