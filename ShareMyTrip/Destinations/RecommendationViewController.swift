@@ -23,6 +23,7 @@ final class RecommendationViewController: BaseViewController {
     
     private let titleLabel: BaseLabel = {
         let label = BaseLabel(boldStyle: .bold, fontSize: 20, text: "목적지 근처 추천 관광지", textAlignment: .center)
+        label.textColor = UIColor(red: 24/255, green: 111/255, blue: 174/255, alpha: 1)
         return label
     }()
     
@@ -63,7 +64,7 @@ final class RecommendationViewController: BaseViewController {
         view.backgroundColor = .white
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         [characterImageView, bubbleLabel, titleLabel, tableView].forEach { view.addSubview($0) }
         
         characterImageView.snp.makeConstraints { make in

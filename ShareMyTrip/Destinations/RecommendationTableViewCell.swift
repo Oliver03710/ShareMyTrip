@@ -15,7 +15,7 @@ final class RecommendationTableViewCell: BaseTableViewCell {
     
     private let nameLabel: BaseLabel = {
         let label = BaseLabel(boldStyle: .semibold, fontSize: 16, text: nil, textAlignment: .center)
-        label.textColor = #colorLiteral(red: 0.3490196078, green: 0.2431372549, blue: 0.1647058824, alpha: 1)
+        label.textColor = UIColor(red: 24/255, green: 137/255, blue: 208/255, alpha: 1)
         return label
     }()
     
@@ -37,7 +37,7 @@ final class RecommendationTableViewCell: BaseTableViewCell {
     }()
     
     private let lineView: LineView = {
-        let view = LineView(backgroundColor: #colorLiteral(red: 0.3490196078, green: 0.2431372549, blue: 0.1647058824, alpha: 1))
+        let view = LineView(backgroundColor: UIColor(red: 24/255, green: 137/255, blue: 208/255, alpha: 1))
         return view
     }()
     
@@ -64,8 +64,7 @@ final class RecommendationTableViewCell: BaseTableViewCell {
     
     private override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = #colorLiteral(red: 1, green: 0.9450980392, blue: 0.8431372549, alpha: 1)
-        
+        backgroundColor = UIColor(red: 227/255, green: 247/255, blue: 253/255, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
