@@ -49,9 +49,9 @@ final class CompanionsViewController: BaseViewController {
     }
     
     private func setNaviButtons() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addCompanions))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.minus"), style: .plain, target: self, action: #selector(deleteAllCompanions))
-        navigationController?.navigationBar.tintColor = .systemBrown
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addCompanions))
+        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.minus"), style: .plain, target: self, action: #selector(deleteAllCompanions))
+        navigationItem.rightBarButtonItems = [addButton, deleteButton]
     }
 
 }
