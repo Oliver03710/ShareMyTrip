@@ -34,15 +34,11 @@ final class MapViewController: BaseViewController {
         return lm
     }()
     
-    private lazy var deleteButton: CircleButton = {
-        let btn = CircleButton(backgroundColor: .red, titleOrImage: "trash", hasTitle: false, componentColor: .white, addTarget: self, action: #selector(deleteButtonTapped))
-        return btn
-    }()
-    
-    lazy var finishTripButton: BaseButton = {
-        let btn = BaseButton(backgroundColor: .systemBrown, titleOrImage: "여행종료", hasTitle: true, componentColor: .white, addTarget: self, action: #selector(finishTripButtonTapped))
-        btn.layer.masksToBounds = true
-        btn.layer.cornerRadius = 12
+    lazy var finishTripButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: finishButtonImage.untapped.rawValue), for: .normal)
+        btn.setImage(UIImage(named: finishButtonImage.tapped.rawValue), for: .highlighted)
+        btn.addTarget(self, action: #selector(finishTripButtonTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -92,25 +88,19 @@ final class MapViewController: BaseViewController {
         delegate?.passMapView(self.mapView)
     }
     
-    override func setContraints() {
+    override func setConstraints() {
         view.addSubview(mapView)
-        [deleteButton, finishTripButton].forEach { mapView.addSubview($0) }
+        [finishTripButton].forEach { mapView.addSubview($0) }
         
         mapView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        deleteButton.snp.makeConstraints { make in
-            make.leading.equalTo(mapView.snp.leading).inset(20)
-            make.bottom.equalTo(mapView.snp.bottom).inset(20)
-            make.height.width.equalTo(44)
-        }
-        
         finishTripButton.snp.makeConstraints { make in
             make.trailing.equalTo(mapView.snp.trailing).inset(20)
             make.bottom.equalTo(mapView.snp.bottom).inset(20)
-            make.height.equalTo(44)
-            make.width.equalTo(finishTripButton.snp.height).multipliedBy(2)
+            make.height.equalTo(49)
+            make.width.equalTo(finishTripButton.snp.height).multipliedBy(2.5)
         }
         
     }
@@ -118,9 +108,10 @@ final class MapViewController: BaseViewController {
     private func setNaviButtons() {
         let searchBarButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
         let routeBarButton = UIBarButtonItem(title: "경로보기", style: .plain, target: self, action: #selector(createPathButtonTapped))
+        let deleteButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteButtonTapped))
+        
         navigationItem.leftBarButtonItem = routeBarButton
-        navigationItem.rightBarButtonItem = searchBarButton
-        navigationController?.navigationBar.tintColor = .systemBrown
+        navigationItem.rightBarButtonItems = [deleteButton, searchBarButton]
     }
     
 }
