@@ -7,7 +7,25 @@
 
 import Foundation
 
-enum SettingsLabelTexts: String, CaseIterable {
-    case backUp = "백업 및 복구"
-    case version = "버전 정보"
+enum SettingsHeaderTexts: String, CaseIterable {
+    case data = "데이터"
+    case toDev = "개발자에게"
+    case version = "정보"
 }
+
+enum SettingsDataTexts: String, CaseIterable {
+    case backUp = "백업"
+    case resotore = "복구"
+}
+
+enum SettingsToDevTexts: String, CaseIterable {
+    case enquire = "문의하기"
+    case estimate = "평가하기"
+}
+
+enum SettingsInfoTexts: String, CaseIterable {
+    case source = "오픈소스"
+    case version = "버전"
+}
+
+
