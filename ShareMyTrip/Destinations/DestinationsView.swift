@@ -15,7 +15,8 @@ final class DestinationsView: BaseView {
     // MARK: - Init
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: DestinationsTableViewCell.self, forCellReuseIdentifier: DestinationsTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .insetGrouped, cellClass: DestinationsTableViewCell.self, forCellReuseIdentifier: DestinationsTableViewCell.reuseIdentifier, delegate: self)
+        tv.backgroundColor = .white
         return tv
     }()
     
@@ -77,7 +78,8 @@ final class DestinationsView: BaseView {
 extension DestinationsView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        return currentTrip[0].trips.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,7 +88,15 @@ extension DestinationsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        transitionVC?(indexPath.row)
+        transitionVC?(indexPath.section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
 }
@@ -97,16 +107,15 @@ extension DestinationsView: UITableViewDelegate {
 extension DestinationsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
-        return currentTrip[0].trips.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationsTableViewCell.reuseIdentifier, for: indexPath) as? DestinationsTableViewCell else { return UITableViewCell() }
         
         let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
-        cell.nameLabel.text = "\(indexPath.row + 1). \(currentTrip[0].trips[indexPath.row].name)"
-        cell.addressLabel.text = "\(currentTrip[0].trips[indexPath.row].address)"
+        cell.nameLabel.text = "\(indexPath.section + 1). \(currentTrip[0].trips[indexPath.section].name)"
+        cell.addressLabel.text = "\(currentTrip[0].trips[indexPath.section].address)"
         
         return cell
     }

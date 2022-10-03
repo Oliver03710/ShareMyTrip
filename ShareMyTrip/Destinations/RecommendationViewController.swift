@@ -14,13 +14,15 @@ final class RecommendationViewController: BaseViewController {
 
     // MARK: - Properties
 
-    private lazy var collectionView: CustomCollectionView = {
-        let cv = CustomCollectionView(frame: .zero, collectionViewLayout: collectionViewLayout(itemWidth: view.bounds.size.width / 1.5, itemHeight: view.bounds.height / 3, minimumLineSpacing: 16, minimumInteritemSpacing: 16, sectionInsetTop: 24, sectionInsetLeft: 16, sectionInsetBottom: 16, sectionInsetRight: 16), cellClass: RecommendationCollectionViewCell.self, forCellReuseIdentifier: RecommendationCollectionViewCell.reuseIdentifier, delegate: self)
-        return cv
+    lazy var tableView: BaseTableView = {
+        let tv = BaseTableView(frame: .zero, style: .insetGrouped, cellClass: RecommendationTableViewCell.self, forCellReuseIdentifier: RecommendationTableViewCell.reuseIdentifier, delegate: self)
+        tv.backgroundColor = .white
+        tv.estimatedRowHeight = 300
+        return tv
     }()
     
     private let titleLabel: BaseLabel = {
-        let label = BaseLabel(boldStyle: .bold, fontSize: 28, text: "목적지 근처 추천 관광지", textAlignment: .center)
+        let label = BaseLabel(boldStyle: .bold, fontSize: 20, text: "목적지 근처 추천 관광지", textAlignment: .center)
         return label
     }()
     
@@ -49,7 +51,7 @@ final class RecommendationViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.isHidden = viewModel.touristAttractionsAnno.value.isEmpty ? true : false
+        tableView.isHidden = viewModel.touristAttractionsAnno.value.isEmpty ? true : false
     }
     
     
@@ -58,11 +60,11 @@ final class RecommendationViewController: BaseViewController {
     override func configureUI() {
         viewModel.regionContainsAnno(index: index)
         setConstraints()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
     }
     
     func setConstraints() {
-        [characterImageView, bubbleLabel, titleLabel, collectionView].forEach { view.addSubview($0) }
+        [characterImageView, bubbleLabel, titleLabel, tableView].forEach { view.addSubview($0) }
         
         characterImageView.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
@@ -83,53 +85,55 @@ final class RecommendationViewController: BaseViewController {
             make.height.equalTo(30)
         }
         
-        collectionView.snp.makeConstraints { make in
-            make.directionalHorizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        tableView.snp.makeConstraints { make in
+            make.directionalHorizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
         }
         
     }
-    
-    func collectionViewLayout(itemWidth: CGFloat, itemHeight: CGFloat, minimumLineSpacing: CGFloat, minimumInteritemSpacing: CGFloat, sectionInsetTop: CGFloat, sectionInsetLeft: CGFloat, sectionInsetBottom: CGFloat, sectionInsetRight: CGFloat) -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.minimumLineSpacing = minimumLineSpacing
-        layout.minimumInteritemSpacing = minimumInteritemSpacing
-        layout.sectionInset = UIEdgeInsets(top: sectionInsetTop, left: sectionInsetLeft, bottom: sectionInsetBottom, right: sectionInsetRight)
-        return layout
-    }
 
 }
 
 
-// MARK: - Extension: UICollectionViewDelegate
+// MARK: - Extension: UITableViewDelegate
 
-extension RecommendationViewController: UICollectionViewDelegate {
+extension RecommendationViewController: UITableViewDelegate {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    
-}
-
-
-// MARK: - Extension: UICollectionViewDataSource
-
-extension RecommendationViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.touristAttractionsAnno.value.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCollectionViewCell.reuseIdentifier, for: indexPath) as? RecommendationCollectionViewCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+}
 
-        cell.setLabels(nameText: viewModel.touristAttractionsAnno.value[indexPath.item].name, addressText: viewModel.touristAttractionsAnno.value[indexPath.item].address, introductionText: viewModel.touristAttractionsAnno.value[indexPath.item].introduction, adminText: viewModel.touristAttractionsAnno.value[indexPath.item].admin, phoneNumText: viewModel.touristAttractionsAnno.value[indexPath.item].phoneNumber)
+
+// MARK: - Extension: UITableViewDataSource
+
+extension RecommendationViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendationTableViewCell.reuseIdentifier, for: indexPath) as? RecommendationTableViewCell else { return UITableViewCell() }
+        
+        cell.setLabels(nameText: viewModel.touristAttractionsAnno.value[indexPath.section].name, addressText: viewModel.touristAttractionsAnno.value[indexPath.section].address, introductionText: viewModel.touristAttractionsAnno.value[indexPath.section].introduction, phoneNumText: viewModel.touristAttractionsAnno.value[indexPath.section].phoneNumber)
 
         return cell
     }
