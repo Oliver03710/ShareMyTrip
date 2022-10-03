@@ -22,14 +22,14 @@ extension UISwipeActionsConfiguration {
             switch viewControllerCase {
                 
             case .companion:
-                let task = currentTrip[0].companions[indexPath.row]
+                let task = currentTrip[0].companions[indexPath.section]
                 TripHistoryRepository.standard.deleteCompanionItem(item: task)
                 currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
                 tableView.reloadData()
                 tableView.isHidden = currentTrip[0].companions.isEmpty ? true : false
                 
             case .history:
-                let task = TripHistoryRepository.standard.tasks[indexPath.row]
+                let task = TripHistoryRepository.standard.tasks[indexPath.section]
                 TripHistoryRepository.standard.deleteItem(item: task)
                 TripHistoryRepository.standard.fetchRealmData()
                 tableView.reloadData()
