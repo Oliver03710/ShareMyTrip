@@ -14,21 +14,14 @@ final class HistoriesView: BaseView {
     // MARK: - Init
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: HistoriesTableViewCell.self, forCellReuseIdentifier: HistoriesTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .insetGrouped, cellClass: HistoriesTableViewCell.self, forCellReuseIdentifier: HistoriesTableViewCell.reuseIdentifier, delegate: self)
+        tv.backgroundColor = .white
         return tv
     }()
     
     private let characterImageView: CharacterImageView = {
-        let iv = CharacterImageView(.zero, image: CharacterImage.smile.rawValue, contentMode: .scaleAspectFit)
-        iv.alpha = 0.5
+        let iv = CharacterImageView(.zero, image: CharacterImage.tripHistoryImage.rawValue, contentMode: .scaleAspectFit)
         return iv
-    }()
-    
-    private let bubbleLabel: BaseLabel = {
-        let label = BaseLabel(boldStyle: .heavy, fontSize: 20, text: "여행가자곰과 더 여행해보세요!")
-        label.textAlignment = .center
-        label.textColor = .gray
-        return label
     }()
     
     var transitionVC: ((Int) -> Void)?
@@ -52,23 +45,14 @@ final class HistoriesView: BaseView {
     }
     
     override func setConstraints() {
-        [characterImageView, bubbleLabel, tableView].forEach { self.addSubview($0) }
+        [characterImageView, tableView].forEach { self.addSubview($0) }
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
         characterImageView.snp.makeConstraints { make in
-            make.centerX.equalTo(self.snp.centerX)
-            make.centerY.equalTo(self.snp.centerY).multipliedBy(1)
-            make.height.width.equalTo(200)
-        }
-        
-        bubbleLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(self.snp.centerX)
-            make.centerY.equalTo(self.snp.centerY).multipliedBy(0.7)
-            make.height.equalTo(20)
-            make.width.equalTo(self.snp.width)
+            make.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
     }
@@ -81,7 +65,8 @@ final class HistoriesView: BaseView {
 extension HistoriesView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        return tripHistory.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -95,7 +80,15 @@ extension HistoriesView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        transitionVC?(indexPath.row)
+        transitionVC?(indexPath.section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
 }
@@ -106,15 +99,14 @@ extension HistoriesView: UITableViewDelegate {
 extension HistoriesView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
-        return tripHistory.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
         
         let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
-        cell.nameLabel.text = "\(indexPath.row + 1). \(tripHistory[indexPath.row].tripName)"
+        cell.nameLabel.text = "\(indexPath.section + 1). \(tripHistory[indexPath.section].tripName)"
         
         return cell
     }
