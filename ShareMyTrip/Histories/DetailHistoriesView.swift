@@ -15,7 +15,8 @@ final class DetailHistoriesView: BaseView {
     // MARK: - Properties
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .plain, cellClass: CompanionsTableViewCell.self, forCellReuseIdentifier: CompanionsTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .insetGrouped, cellClass: CompanionsTableViewCell.self, forCellReuseIdentifier: CompanionsTableViewCell.reuseIdentifier, delegate: self)
+        tv.backgroundColor = .white
         return tv
     }()
     
@@ -44,7 +45,6 @@ final class DetailHistoriesView: BaseView {
     
     override func configureUI() {
         TripHistoryRepository.standard.fetchRealmData()
-        showAnno()
     }
     
     override func setConstraints() {
@@ -60,10 +60,6 @@ final class DetailHistoriesView: BaseView {
             make.directionalHorizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
-    }
-    
-    func showAnno() {
-        LocationHelper.standard.loadAnnotations(mapView, index: index, status: .past)
     }
     
 }
@@ -83,6 +79,14 @@ extension DetailHistoriesView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
 }
@@ -131,6 +135,8 @@ extension DetailHistoriesView: MKMapViewDelegate {
         }
         
         let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        print("trip history count: \(tripHistory.count)")
+        print("trip history last one count: \(tripHistory[index].trips.count)")
         viewModel.showCustomAnno(identifier: annotation.identifier, taskOrder: tripHistory[index].trips.count - 1, annotationView: annotationView, annotation: annotation, index: index)
 
         return annotationView
