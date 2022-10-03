@@ -23,14 +23,9 @@ final class BackupViewController: BaseViewController {
         return tv
     }()
     
-    private lazy var backupButton: BaseButton = {
-        let btn = BaseButton(buttonTitle: "백업하기", textColor: .white, backgroundColor: .systemBrown, cornerRadius: 12)
-        btn.addTarget(self, action: #selector(backupButtonClicked), for: .touchUpInside)
-        return btn
-    }()
-    
-    private lazy var restoreButton: BaseButton = {
-        let btn = BaseButton(buttonTitle: "복구하기", textColor: .white, backgroundColor: .systemBrown, cornerRadius: 12)
+    private lazy var restoreButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: restoreButtonImage.fetchFileImage.rawValue), for: .normal)
         btn.addTarget(self, action: #selector(restoreButtonClicked), for: .touchUpInside)
         return btn
     }()
@@ -54,32 +49,12 @@ final class BackupViewController: BaseViewController {
     
     // MARK: - Selectors
     
-    @objc func backupButtonClicked() {
-        do {
-            try TripHistoryRepository.standard.saveEncodedDataToDocument(vc: self)
-            let backupFilePath = try self.createBackupFile()
-            
-            let vc = UIActivityViewController(activityItems: [backupFilePath], applicationActivities: [])
-            present(vc, animated: true)
-            do {
-                zipFiles = try self.fetchDocumentZipFile()
-            }
-            catch {
-                print(#function, "실패")
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
     @objc func restoreButtonClicked() {
         showAlertMessage(title: "복구를 시작합니다. 기존 데이터는 모두 삭제됩니다.") {
-            
             let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.archive], asCopy: true)
             documentPicker.delegate = self
             documentPicker.allowsMultipleSelection = false
             self.present(documentPicker, animated: true)
-            
         }
     }
     
@@ -88,25 +63,16 @@ final class BackupViewController: BaseViewController {
     
     override func configureUI() {
         setConstraints()
-        view.backgroundColor = .systemBackground
-        
     }
     
-    func setConstraints() {
-        [restoreButton, backupButton, tableView].forEach { view.addSubview($0) }
+    override func setConstraints() {
+        [restoreButton, tableView].forEach { view.addSubview($0) }
         
         restoreButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-            make.centerX.equalTo(view.snp.centerX).multipliedBy(0.7)
-            make.height.equalTo(44)
-            make.width.equalTo(restoreButton.snp.height).multipliedBy(2)
-        }
-        
-        backupButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-            make.leading.equalTo(restoreButton.snp.trailing).offset(16)
-            make.height.equalTo(restoreButton.snp.height)
-            make.width.equalTo(restoreButton.snp.width)
+            make.centerX.equalTo(view.snp.centerX)
+            make.height.equalTo(50)
+            make.width.equalTo(restoreButton.snp.height).multipliedBy(2.5)
         }
         
         tableView.snp.makeConstraints { make in
