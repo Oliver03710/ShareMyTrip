@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setContraints()
+        setConstraints()
         view.backgroundColor = .systemBackground
     }
     
@@ -22,6 +22,6 @@ class BaseViewController: UIViewController {
     // MARK: - Helper Functions
     
     func configureUI() { }
-    func setContraints() { }
+    func setConstraints() { }
 
 }

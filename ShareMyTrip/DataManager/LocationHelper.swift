@@ -135,6 +135,7 @@ final class LocationHelper: LocationHelperType {
             historyAnnotations.removeAll()
             let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
             guard let index = index else { return }
+            
             tripHistory[index].trips.forEach {
                 setAnnotation(mapView, lat: $0.latitude, lon: $0.longitude, turn: $0.turn, index: index, status: .past)
             }
@@ -145,6 +146,7 @@ final class LocationHelper: LocationHelperType {
             mapView.addAnnotations(self.historyAnnotations)
         }
         mapView.showAnnotations(mapView.annotations, animated: true)
+        print(historyAnnotations)
     }
     
     func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees, turn: Int, status: TripStatus) {
@@ -218,6 +220,7 @@ final class LocationHelper: LocationHelperType {
         case .past:
             let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
             guard let index = index else { return }
+            
             if identifier == tripHistory[index].trips[taskOrder].turn {
                 annotationView?.image = UIImage(named: "customAnno\(CustomAnnotations.allCases[taskOrder].rawValue)")
                 annotationView?.annotation = LocationHelper.standard.historyAnnotations[taskOrder]

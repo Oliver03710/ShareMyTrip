@@ -30,8 +30,8 @@ final class DestinationsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
-        destinationsView.tableView.reloadData()
         destinationsView.tableView.isHidden = currentTrip[0].trips.isEmpty ? true : false
+        destinationsView.tableView.reloadData()
     }
     
     

@@ -70,7 +70,7 @@ final class StartingViewController: BaseViewController {
         
     }
     
-    override func setContraints() {
+    override func setConstraints() {
         [characterImageView, loadingLabel, startButton].forEach { view.addSubview($0) }
         
         characterImageView.snp.makeConstraints { make in
