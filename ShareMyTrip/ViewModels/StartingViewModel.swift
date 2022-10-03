@@ -9,7 +9,19 @@ import UIKit
 
 final class StartingViewModel {
     
+    // MARK: - Properties
+    
+    var isFinished: Observable<Bool> = Observable(false)
+    
+    
     // MARK: - Helper Functions
+    
+    func bindingIsFinished(_ label: UILabel, button: UIButton) {
+        isFinished.bind { bool in
+            label.isHidden = bool
+            button.isHidden = !bool
+        }
+    }
     
     func TransitionAfterRequestAPI() {
         
@@ -29,14 +41,9 @@ final class StartingViewModel {
             }
             
         }
-        
+//        self.isFinished.value = true
         group.notify(queue: .main) {
-            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            let sceneDelegate = windowScene?.delegate as? SceneDelegate
-            let vc = MainTapBarController()
-            
-            sceneDelegate?.window?.rootViewController = vc
-            sceneDelegate?.window?.makeKeyAndVisible()
+            self.isFinished.value = true
         }
         
     }
