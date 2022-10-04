@@ -14,6 +14,7 @@
 		AD02F97128E49AF500323E4A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02F97028E49AF500323E4A /* Date+Extension.swift */; };
 		AD08D71628DA1A6F00AB0156 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */; };
 		AD17DF2128EBCAB1009BBE7D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17DF2028EBCAB1009BBE7D /* CustomTabBar.swift */; };
+		AD17DF2328EBDF51009BBE7D /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = AD17DF2228EBDF51009BBE7D /* Package.resolved */; };
 		AD3FD2A728EAE62400D66F7E /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FD2A628EAE62400D66F7E /* LineView.swift */; };
 		AD3FD2A928EAEB8100D66F7E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FD2A828EAEB8100D66F7E /* UILabel+Extension.swift */; };
 		AD4D8D8128D306DF00CD2740 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */; };
@@ -103,6 +104,7 @@
 		AD02F97028E49AF500323E4A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		AD17DF2028EBCAB1009BBE7D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		AD17DF2228EBDF51009BBE7D /* Package.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Package.resolved; path = ShareMyTrip.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		AD3FD2A628EAE62400D66F7E /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		AD3FD2A828EAEB8100D66F7E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		ADCFAA4528D058640027656F = {
 			isa = PBXGroup;
 			children = (
+				AD17DF2228EBDF51009BBE7D /* Package.resolved */,
 				AD87226C28E196D60048700A /* .gitignore */,
 				ADCFAA5028D058640027656F /* ShareMyTrip */,
 				ADCFAA4F28D058640027656F /* Products */,
@@ -515,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD87226D28E196D60048700A /* .gitignore in Resources */,
+				AD17DF2328EBDF51009BBE7D /* Package.resolved in Resources */,
 				ADCFAA5E28D058670027656F /* LaunchScreen.storyboard in Resources */,
 				ADCFAA5B28D058670027656F /* Assets.xcassets in Resources */,
 				ADCFAA5928D058640027656F /* Main.storyboard in Resources */,
