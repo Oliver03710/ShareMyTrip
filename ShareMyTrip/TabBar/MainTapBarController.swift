@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MapKit
 
 final class MainTapBarController: UITabBarController {
     
@@ -17,6 +16,15 @@ final class MainTapBarController: UITabBarController {
         view.backgroundColor = .systemBackground
         self.modalPresentationStyle = .fullScreen
         configureTabBars()
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        object_setClass(self.tabBar, CustomTabBar.self)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -44,7 +52,7 @@ final class MainTapBarController: UITabBarController {
         navController.navigationBar.tintColor = .white
         navController.tabBarItem.image = image
         navController.tabBarItem.selectedImage = imageTapped
-        navController.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
+        navController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         
         rootViewController.navigationItem.title = title
         
