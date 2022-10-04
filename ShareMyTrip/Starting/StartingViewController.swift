@@ -8,7 +8,6 @@
 import UIKit
 
 import SnapKit
-import IQKeyboardManagerSwift
 
 final class StartingViewController: BaseViewController {
     
