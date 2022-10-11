@@ -28,8 +28,7 @@ final class HistoriesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
-        historiesView.tableView.isHidden = tripHistory.isEmpty ? true : false
+        historiesView.viewModel.checkEmpty(tableView: historiesView.tableView)
         historiesView.tableView.reloadData()
     }
     

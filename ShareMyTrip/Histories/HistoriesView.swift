@@ -25,6 +25,7 @@ final class HistoriesView: BaseView {
     }()
     
     var transitionVC: ((Int) -> Void)?
+    let viewModel = HistoriesViewModel()
     
     
     // MARK: - Init

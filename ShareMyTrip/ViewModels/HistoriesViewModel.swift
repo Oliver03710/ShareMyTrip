@@ -5,15 +5,15 @@
 //  Created by Junhee Yoon on 2022/09/17.
 //
 
-import Foundation
+import UIKit
 
 final class HistoriesViewModel {
-    
-    // MARK: - Properties
-    
-    var trips: Observable<[CurrentTrip]> = Observable([])
-    
-    
+  
     // MARK: - Helper Functions
+    
+    func checkEmpty(tableView: UITableView) {
+        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        tableView.isHidden = tripHistory.isEmpty ? true : false
+    }
     
 }
