@@ -55,6 +55,10 @@
 		ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */; };
 		ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */; };
 		ADAA1D4B28D5D14100A60C61 /* HistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */; };
+		ADBDE5FE28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDE5FD28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		ADBDE60028F54C1D00745991 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDE5FF28F54C1D00745991 /* FirebaseCrashlytics */; };
+		ADBDE60228F54C1D00745991 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDE60128F54C1D00745991 /* FirebaseMessaging */; };
+		ADBDE60628F5670400745991 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADBDE60528F5670300745991 /* GoogleService-Info.plist */; };
 		ADBE769E28D84D6F00B1579E /* CurrentTrip+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */; };
 		ADBE76A028D84D8200B1579E /* TripHistory+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */; };
 		ADBE76A428D858C900B1579E /* TripHistory+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */; };
@@ -141,6 +145,8 @@
 		ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesTableViewCell.swift; sourceTree = "<group>"; };
 		ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewModel.swift; sourceTree = "<group>"; };
+		ADBDE60428F5578100745991 /* ShareMyTrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareMyTrip.entitlements; sourceTree = "<group>"; };
+		ADBDE60528F5670300745991 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADBE769D28D84D6F00B1579E /* CurrentTrip+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentTrip+Realm.swift"; sourceTree = "<group>"; };
 		ADBE769F28D84D8200B1579E /* TripHistory+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TripHistory+Realm.swift"; sourceTree = "<group>"; };
 		ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TripHistory+Repository.swift"; sourceTree = "<group>"; };
@@ -190,11 +196,14 @@
 			files = (
 				AD02F96928E4847B00323E4A /* Zip in Frameworks */,
 				AD9B72B228DC308B00EBE70A /* RealmSwift in Frameworks */,
+				ADBDE60228F54C1D00745991 /* FirebaseMessaging in Frameworks */,
 				AD5039B028DC33AE004E328E /* PanModal in Frameworks */,
 				AD4D8D8A28D3163200CD2740 /* Toast in Frameworks */,
 				ADCFAA7728D060410027656F /* SnapKit in Frameworks */,
 				ADEEE90828EB553F008F9BB1 /* AcknowList in Frameworks */,
+				ADBDE60028F54C1D00745991 /* FirebaseCrashlytics in Frameworks */,
 				AD9B72B028DC308B00EBE70A /* Realm in Frameworks */,
+				ADBDE5FE28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				AD17DF2228EBDF51009BBE7D /* Package.resolved */,
+				ADBDE60528F5670300745991 /* GoogleService-Info.plist */,
 				AD87226C28E196D60048700A /* .gitignore */,
 				ADCFAA5028D058640027656F /* ShareMyTrip */,
 				ADCFAA4F28D058640027656F /* Products */,
@@ -305,6 +315,7 @@
 		ADCFAA5028D058640027656F /* ShareMyTrip */ = {
 			isa = PBXGroup;
 			children = (
+				ADBDE60428F5578100745991 /* ShareMyTrip.entitlements */,
 				ADCFAA5128D058640027656F /* AppDelegate.swift */,
 				ADCFAA5328D058640027656F /* SceneDelegate.swift */,
 				AD87226B28E1969F0048700A /* APIManagers */,
@@ -452,6 +463,7 @@
 				ADCFAA4A28D058640027656F /* Sources */,
 				ADCFAA4B28D058640027656F /* Frameworks */,
 				ADCFAA4C28D058640027656F /* Resources */,
+				ADBDE60328F5520C00745991 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -466,6 +478,9 @@
 				AD5039AF28DC33AE004E328E /* PanModal */,
 				AD02F96828E4847B00323E4A /* Zip */,
 				ADEEE90728EB553F008F9BB1 /* AcknowList */,
+				ADBDE5FD28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				ADBDE5FF28F54C1D00745991 /* FirebaseCrashlytics */,
+				ADBDE60128F54C1D00745991 /* FirebaseMessaging */,
 			);
 			productName = ShareMyTrip;
 			productReference = ADCFAA4E28D058640027656F /* ShareMyTrip.app */;
@@ -502,6 +517,7 @@
 				AD5039AE28DC33AE004E328E /* XCRemoteSwiftPackageReference "PanModal" */,
 				AD02F96728E4847B00323E4A /* XCRemoteSwiftPackageReference "Zip" */,
 				ADEEE90628EB553F008F9BB1 /* XCRemoteSwiftPackageReference "AcknowList" */,
+				ADBDE5FC28F54C1D00745991 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = ADCFAA4F28D058640027656F /* Products */;
 			projectDirPath = "";
@@ -522,10 +538,33 @@
 				ADCFAA5E28D058670027656F /* LaunchScreen.storyboard in Resources */,
 				ADCFAA5B28D058670027656F /* Assets.xcassets in Resources */,
 				ADCFAA5928D058640027656F /* Main.storyboard in Resources */,
+				ADBDE60628F5670400745991 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADBDE60328F5520C00745991 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ADCFAA4A28D058640027656F /* Sources */ = {
@@ -752,8 +791,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShareMyTrip/ShareMyTrip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DLA597KS3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareMyTrip/Info.plist;
@@ -764,6 +805,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -786,6 +828,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShareMyTrip/ShareMyTrip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DLA597KS3F;
@@ -798,6 +841,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -871,6 +915,14 @@
 				version = 10.30.0;
 			};
 		};
+		ADBDE5FC28F54C1D00745991 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		ADCFAA7528D060410027656F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -914,6 +966,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD9B72AE28DC308B00EBE70A /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		ADBDE5FD28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADBDE5FC28F54C1D00745991 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		ADBDE5FF28F54C1D00745991 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADBDE5FC28F54C1D00745991 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		ADBDE60128F54C1D00745991 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADBDE5FC28F54C1D00745991 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		ADCFAA7628D060410027656F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 
+import FirebaseAnalytics
 import PanModal
 import Toast
 
@@ -154,6 +155,18 @@ final class MapViewModel {
             
         }
         
+    }
+    
+    func firebaseAnalytics() {
+        Analytics.logEvent("tracking", parameters: [
+            "name": "Tracking Test",
+            "full_text": "Tracking합니다.",
+        ])
+        
+        Analytics.setDefaultEventParameters([
+          "level_name": "Caverns01",
+          "level_difficulty": 4
+        ])
     }
     
 }

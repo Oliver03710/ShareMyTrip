@@ -50,7 +50,6 @@ final class MapViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
@@ -86,6 +85,7 @@ final class MapViewController: BaseViewController {
         }
         LocationHelper.standard.loadAnnotations(mapView, index: nil, status: .current)
         delegate?.passMapView(self.mapView)
+        viewModel.firebaseAnalytics()
     }
     
     override func setConstraints() {
