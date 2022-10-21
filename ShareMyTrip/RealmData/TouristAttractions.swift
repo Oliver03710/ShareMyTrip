@@ -1,5 +1,5 @@
 //
-//  TouristAttractions+Realm.swift
+//  TouristAttractions.swift
 //  ShareMyTrip
 //
 //  Created by Junhee Yoon on 2022/09/26.

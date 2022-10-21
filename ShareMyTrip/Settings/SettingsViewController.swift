@@ -125,7 +125,7 @@ extension SettingsViewController : MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.setToRecipients(["jhee2619@icloud.com"])
-            mail.setSubject("여행하자곰 문의사항 - ")
+            mail.setSubject("여행가자곰 문의사항 - ")
             mail.mailComposeDelegate = self
             self.present(mail, animated: true)
         } else {

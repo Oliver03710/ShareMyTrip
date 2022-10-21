@@ -20,14 +20,17 @@ private protocol TripHistoryRepositoryType: AnyObject {
 
 final class TripHistoryRepository: TripHistoryRepositoryType {
 
-    private init() { }
+    // MARK: - Properties
     
     static let standard = TripHistoryRepository()
     
-    // MARK: - Init
-    
     let localRealm = try! Realm()
     var tasks: Results<TripHistory>!
+    
+    
+    // MARK: - Init
+    
+    private init() { }
     
     
     // MARK: - Helper Functions

@@ -1,5 +1,5 @@
 //
-//  CurrentTrip+Realm.swift
+//  CurrentTrip.swift
 //  ShareMyTrip
 //
 //  Created by Junhee Yoon on 2022/09/19.
