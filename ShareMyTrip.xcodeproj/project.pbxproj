@@ -55,6 +55,7 @@
 		ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */; };
 		ADAA1D4728D5D04300A60C61 /* HistoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */; };
 		ADAA1D4B28D5D14100A60C61 /* HistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */; };
+		ADB6C17F2907B74200C727F6 /* CompanionsWithCVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6C17E2907B74200C727F6 /* CompanionsWithCVViewController.swift */; };
 		ADBDE5FE28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDE5FD28F54C1D00745991 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		ADBDE60028F54C1D00745991 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDE5FF28F54C1D00745991 /* FirebaseCrashlytics */; };
 		ADBDE60228F54C1D00745991 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = ADBDE60128F54C1D00745991 /* FirebaseMessaging */; };
@@ -145,6 +146,7 @@
 		ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesTableViewCell.swift; sourceTree = "<group>"; };
 		ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewModel.swift; sourceTree = "<group>"; };
+		ADB6C17E2907B74200C727F6 /* CompanionsWithCVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsWithCVViewController.swift; sourceTree = "<group>"; };
 		ADBDE60428F5578100745991 /* ShareMyTrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareMyTrip.entitlements; sourceTree = "<group>"; };
 		ADBDE60528F5670300745991 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADBE769D28D84D6F00B1579E /* CurrentTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrip.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				ADCFAA8C28D066630027656F /* CompanionsViewController.swift */,
 				ADCFAA8E28D069260027656F /* CompanionsView.swift */,
 				AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */,
+				ADB6C17E2907B74200C727F6 /* CompanionsWithCVViewController.swift */,
 			);
 			path = Companions;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				ADBE769E28D84D6F00B1579E /* CurrentTrip.swift in Sources */,
 				ADA6706928E9952A00F2F170 /* SearchAPIManager.swift in Sources */,
 				AD94896A28D58AB100BAC3B8 /* BaseLabel.swift in Sources */,
+				ADB6C17F2907B74200C727F6 /* CompanionsWithCVViewController.swift in Sources */,
 				ADF1D5B228DB5DF800DDB171 /* BaseTextField.swift in Sources */,
 				ADC20A5C28D0E140004F94F4 /* SettingsLabelTexts.swift in Sources */,
 				AD94896628D5831E00BAC3B8 /* CustomCallout.swift in Sources */,
