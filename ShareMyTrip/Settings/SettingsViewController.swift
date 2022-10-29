@@ -110,7 +110,7 @@ extension SettingsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseIdentifier, for: indexPath) as? SettingsTableViewCell else { return UITableViewCell() }
 
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        cell.setCellComponents(indexPath: indexPath)
+        cell.setCellComponents(indexPath: indexPath, version: viewModel.versionData())
         
         return cell
     }

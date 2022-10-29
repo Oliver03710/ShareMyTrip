@@ -67,7 +67,7 @@ final class SettingsTableViewCell: BaseTableViewCell {
         
     }
     
-    func setCellComponents(indexPath: IndexPath, isText: Bool = false) {
+    func setCellComponents(indexPath: IndexPath, isText: Bool = false, version: String?) {
         versionLabel.isHidden = !isText
         nextImageView.isHidden = isText
         switch indexPath {
@@ -85,7 +85,7 @@ final class SettingsTableViewCell: BaseTableViewCell {
             settingLabel.text = SettingsInfoTexts.allCases[indexPath.row].rawValue
             versionLabel.isHidden = isText
             nextImageView.isHidden = !isText
-            versionLabel.text = "1.0.0"
+            versionLabel.text = version
         default:
             break
         }
