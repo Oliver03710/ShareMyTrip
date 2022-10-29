@@ -41,6 +41,32 @@ extension UIViewController {
         
     }
     
+    func showAlertMessage(buttonText: String, alertTitle: String?, collectionView: UICollectionView, buttonType: ButtonType, viewModel: CompanionViewModel) {
+        
+        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
+        if buttonType == .addButton {
+            alert.addTextField { textField in
+                textField.attributedPlaceholder = NSAttributedString(string: "너! 내 동료가 돼라!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            }
+        }
+        
+        let confirm = UIAlertAction(title: buttonText, style: buttonType == .addButton ? .default : .destructive) { _ in
+            if buttonType == .addButton {
+                guard let text = alert.textFields?.first?.text else { return }
+                TripHistoryRepository.standard.updateItem(text: text)
+                viewModel.companions.value = TripHistoryRepository.standard.fetchTrips(.current)[0].companions
+            } else {
+                TripHistoryRepository.standard.deleteAllCompanionItem()
+                viewModel.companions.value = TripHistoryRepository.standard.fetchTrips(.current)[0].companions
+            }
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        [cancel, confirm].forEach { alert.addAction($0) }
+        self.present(alert, animated: true)
+        
+    }
+    
     func showAlertMessage(deleteLast: @escaping () -> Void, deleteAllItem: @escaping () -> Void, deleteAllWithTransition: @escaping () -> Void) {
         
         let alert = UIAlertController(title: "삭제할 내용을 선택해주세요.", message: nil, preferredStyle: .actionSheet)
@@ -73,7 +99,7 @@ extension UIViewController {
         
         let finishTrip = UIAlertAction(title: "네", style: .default) { _ in
             guard let text = alert.textFields?.first?.text else { return }
-            let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+            let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
             
             if text.isEmpty {
                 TripHistoryRepository.standard.updateTripName(text: "나의 여행 \(tripHistory.count + 1)")
