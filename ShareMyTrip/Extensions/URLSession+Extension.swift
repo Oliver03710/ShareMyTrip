@@ -19,7 +19,7 @@ extension URLSession {
         return task
     }
     
-    static func request<T: Codable>(_ session: URLSession = .shared, endpoint: URLRequest, completion: @escaping (T?, APIError?) -> Void) {
+    static func request<T: Codable>(_ codable: T.Type = T.self, _ session: URLSession = .shared, endpoint: URLRequest, completion: @escaping (T?, APIError?) -> Void) {
         
         session.customDataTask(endpoint) { data, response, error in
             
