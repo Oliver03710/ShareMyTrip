@@ -17,14 +17,16 @@ private protocol TouristAttractionsRepositoryType: AnyObject {
 
 final class TouristAttractionsRepository: TouristAttractionsRepositoryType {
 
-    private init() { }
+    // MARK: - Properties
     
     static let standard = TouristAttractionsRepository()
     
-    // MARK: - Init
-    
     let localRealm = try! Realm()
     var tasks: Results<TouristAttractions>!
+    
+    // MARK: - Init
+    
+    private init() { }
     
     
     // MARK: - Helper Functions

@@ -23,7 +23,7 @@ final class MapViewModel {
     
     func searchTableViewRowSelected(_ mapView: MKMapView) {
         
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         
         LocationHelper.standard.setRegion(mapView, lat: currentTrip[0].trips.last?.latitude, lon: currentTrip[0].trips.last?.longitude)
         LocationHelper.standard.setAnnotation(mapView, lat: currentTrip[0].trips.last?.latitude, lon: currentTrip[0].trips.last?.longitude)
@@ -41,7 +41,7 @@ final class MapViewModel {
     }
     
     func deleteButtonClicked(_ mapView: MKMapView, vc: UIViewController) {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         
         vc.showAlertMessage {
             
@@ -131,7 +131,7 @@ final class MapViewModel {
     
     func finishTripButtonTapped(_ mapView: MKMapView, vc: UIViewController) {
         
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         
         if currentTrip[0].trips.isEmpty {
             vc.showAlertMessage(title: "여행을 종료하시려면 목적지를 최소 1개 설정해주세요.")

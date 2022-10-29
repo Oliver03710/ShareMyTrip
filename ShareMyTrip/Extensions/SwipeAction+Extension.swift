@@ -15,8 +15,8 @@ extension UISwipeActionsConfiguration {
     
     func trailingDeleteAction(indexPath: IndexPath, viewControllerCase: ViewConCase, tableView: UITableView) -> UISwipeActionsConfiguration {
         
-        var currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
-        var tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        var currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
+        var tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         
         let delete = UIContextualAction(style: .destructive, title: nil) { action, view, completionHandler in
             
@@ -25,14 +25,14 @@ extension UISwipeActionsConfiguration {
             case .companion:
                 let task = currentTrip[0].companions[indexPath.section]
                 TripHistoryRepository.standard.deleteCompanionItem(item: task)
-                currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+                currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
                 tableView.reloadData()
                 tableView.isHidden = currentTrip[0].companions.isEmpty ? true : false
                 
             case .history:
                 let task = tripHistory[indexPath.section]
                 TripHistoryRepository.standard.deleteItem(item: task)
-                tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+                tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
                 tableView.reloadData()
                 tableView.isHidden = tripHistory.isEmpty ? true : false
             }

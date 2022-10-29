@@ -19,7 +19,7 @@ final class DetailHistoriesViewModel {
     
     func deleteSpecificTrip(_ mapView: MKMapView, index: Int, vc: UIViewController) {
         
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         
         LocationHelper.standard.removeAnnotations(mapView, status: .past)
         mapView.removeOverlays(mapView.overlays)
@@ -28,7 +28,7 @@ final class DetailHistoriesViewModel {
     
     func showCustomAnno(identifier: Int, taskOrder: Int, annotationView: MKAnnotationView?, annotation: MKAnnotation, index: Int) {
         
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         if tripHistory[index].trips.count > 1 {
             LocationHelper.standard.historyAnnotations.forEach {
                 LocationHelper.standard.showAnnotations(identifier: identifier, taskOrder: $0.identifier - 1, annotationView: annotationView, annotation: annotation, index: index, status: .past)

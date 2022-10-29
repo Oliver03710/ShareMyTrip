@@ -64,7 +64,7 @@ final class CompanionsView: BaseView {
 extension CompanionsView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         return currentTrip[0].companions.count
     }
     
@@ -99,7 +99,7 @@ extension CompanionsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanionsTableViewCell.reuseIdentifier, for: indexPath) as? CompanionsTableViewCell else { return UITableViewCell() }
         
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         cell.nameLabel.text = currentTrip[0].companions[indexPath.section].companion
         
         return cell

@@ -134,7 +134,7 @@ extension DetailHistoriesView: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         print("trip history count: \(tripHistory.count)")
         print("trip history last one count: \(tripHistory[index].trips.count)")
         viewModel.showCustomAnno(identifier: annotation.identifier, taskOrder: tripHistory[index].trips.count - 1, annotationView: annotationView, annotation: annotation, index: index)

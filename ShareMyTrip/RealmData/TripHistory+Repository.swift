@@ -11,15 +11,25 @@ import RealmSwift
 
 private protocol TripHistoryRepositoryType: AnyObject {
     func addItem(tripName: String, trips: [CurrentTrip], companions: [Companions])
+    func updateItem(text: String)
+    func updateItem(trip: CurrentTrip)
+    func updateTripName(text: String)
+    func finishTrip()
     func deleteDestinationItem(item: CurrentTrip)
     func deleteItem(item: TripHistory)
     func fetchRealmData()
-    func fetchCurrentTrip() -> Results<TripHistory>
-    func fetchTripHistory() -> Results<TripHistory>
+    func fetchTrips(_ state: TripHistoryRepository.TripStates) -> Results<TripHistory>
 }
 
 final class TripHistoryRepository: TripHistoryRepositoryType {
 
+    // MARK: - enum
+    
+    enum TripStates {
+        case current, history, total
+    }
+    
+    
     // MARK: - Properties
     
     static let standard = TripHistoryRepository()
@@ -47,11 +57,10 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     }
     
     func updateItem(text: String) {
-        let currentTrip = fetchCurrentTrip()
         do {
             try localRealm.write {
                 let companion = Companions(companion: text)
-                currentTrip.first?.companions.append(companion)
+                fetchTrips(.current).first?.companions.append(companion)
             }
         } catch let error {
             print(error)
@@ -59,10 +68,9 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     }
     
     func updateItem(trip: CurrentTrip) {
-        let currentTrip = fetchCurrentTrip()
         do {
             try localRealm.write {
-                currentTrip.first?.trips.append(trip)
+                fetchTrips(.current).first?.trips.append(trip)
             }
         } catch let error {
             print(error)
@@ -70,10 +78,9 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     }
     
     func updateTripName(text: String) {
-        let currentTrip = fetchCurrentTrip()
         do {
             try localRealm.write {
-                currentTrip[0].tripName = text
+                fetchTrips(.current).first?.tripName = text
             }
         } catch let error {
             print(error)
@@ -81,10 +88,9 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     }
     
     func finishTrip() {
-        let currentTrip = fetchCurrentTrip()
         do {
             try localRealm.write {
-                currentTrip.first?.isTraveling = false
+                fetchTrips(.current).first?.isTraveling = false
             }
         } catch let error {
             print(error)
@@ -132,29 +138,31 @@ final class TripHistoryRepository: TripHistoryRepositoryType {
     }
     
     func deleteAllCompanionItem() {
-        let currentTrip = fetchCurrentTrip()
         do {
             try localRealm.write {
-                currentTrip[0].companions.removeAll()
+                fetchTrips(.current)[0].companions.removeAll()
             }
         } catch let error {
             print(error)
         }
     }
-
     
     func fetchRealmData() {
         tasks = localRealm.objects(TripHistory.self)
     }
     
-    func fetchCurrentTrip() -> Results<TripHistory> {
-        tasks = localRealm.objects(TripHistory.self)
-        return tasks.where { $0.isTraveling == true }
-    }
-    
-    func fetchTripHistory() -> Results<TripHistory> {
-        tasks = localRealm.objects(TripHistory.self)
-        return tasks.where { $0.isTraveling == false }
+    func fetchTrips(_ state: TripHistoryRepository.TripStates) -> Results<TripHistory> {
+        switch state {
+        case .current:
+            tasks = localRealm.objects(TripHistory.self)
+            return tasks.where { $0.isTraveling == true }
+        case .history:
+            tasks = localRealm.objects(TripHistory.self)
+            return tasks.where { $0.isTraveling == false }
+        case .total:
+            tasks = localRealm.objects(TripHistory.self)
+            return tasks
+        }
     }
     
     func saveEncodedDataToDocument(vc: UIViewController) throws {

@@ -71,7 +71,7 @@ final class LocationHelper: LocationHelperType {
         guard let lat = lat, let lon = lon else { return }
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         
         let annotation = Annotation(currentTrip[0].trips[currentTrip[0].trips.count - 1].turn)
         annotation.coordinate = center
@@ -90,7 +90,7 @@ final class LocationHelper: LocationHelperType {
         switch status {
         case .current:
             
-            let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+            let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
             
             let annotation = Annotation(currentTrip[0].trips[turn - 1].turn)
             annotation.coordinate = center
@@ -100,7 +100,7 @@ final class LocationHelper: LocationHelperType {
             
         case .past:
             
-            let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+            let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
             guard let index = index else { return }
             
             let annotation = Annotation(tripHistory[index].trips[turn - 1].turn)
@@ -117,7 +117,7 @@ final class LocationHelper: LocationHelperType {
         
         switch status {
         case .current:
-            let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+            let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
             
             currentTrip[0].trips.forEach {
                 setAnnotation(mapView, lat: $0.latitude, lon: $0.longitude, turn: $0.turn, index: index, status: .current)
@@ -133,7 +133,7 @@ final class LocationHelper: LocationHelperType {
         case .past:
             
             historyAnnotations.removeAll()
-            let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+            let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
             guard let index = index else { return }
             
             tripHistory[index].trips.forEach {
@@ -209,7 +209,7 @@ final class LocationHelper: LocationHelperType {
         
         switch status {
         case .current:
-            let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+            let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
             
             if identifier == currentTrip[0].trips[taskOrder].turn {
                 annotationView?.image = UIImage(named: "customAnno\(CustomAnnotations.allCases[taskOrder].rawValue)")
@@ -218,7 +218,7 @@ final class LocationHelper: LocationHelperType {
                 annotationView?.detailCalloutAccessoryView = Callout(annotation: annotation)
             }
         case .past:
-            let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+            let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
             guard let index = index else { return }
             
             if identifier == tripHistory[index].trips[taskOrder].turn {

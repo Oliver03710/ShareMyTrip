@@ -61,7 +61,7 @@ final class DestinationsView: BaseView {
 extension DestinationsView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         return currentTrip[0].trips.count
     }
     
@@ -96,7 +96,7 @@ extension DestinationsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationsTableViewCell.reuseIdentifier, for: indexPath) as? DestinationsTableViewCell else { return UITableViewCell() }
         
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         cell.nameLabel.text = "\(indexPath.section + 1). \(currentTrip[0].trips[indexPath.section].name)"
         cell.addressLabel.text = "\(currentTrip[0].trips[indexPath.section].address)"
         

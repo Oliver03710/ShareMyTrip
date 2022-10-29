@@ -18,7 +18,7 @@ final class RecommendationsViewModel {
     // MARK: - Helper Functions
     
     func regionContainsAnno(index: Int) {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         touristAttractionsAnno.value.removeAll()
         let center = CLLocationCoordinate2D(latitude: currentTrip[0].trips[index].latitude, longitude: currentTrip[0].trips[index].longitude)
         

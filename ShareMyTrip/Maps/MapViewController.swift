@@ -80,7 +80,7 @@ final class MapViewController: BaseViewController {
         
         TouristAttractionsRepository.standard.fetchRealmData()
         TripHistoryRepository.standard.fetchRealmData()
-        if TripHistoryRepository.standard.fetchCurrentTrip().isEmpty {
+        if TripHistoryRepository.standard.fetchTrips(.current).isEmpty {
             TripHistoryRepository.standard.addItem(tripName: "", trips: [], companions: [])
         }
         LocationHelper.standard.loadAnnotations(mapView, index: nil, status: .current)
@@ -201,7 +201,7 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         
         viewModel.isExecutedFunc(identifier: annotation.identifier, taskOrder: currentTrip[0].trips.count - 1, annotationView: annotationView, annotation: annotation)
 

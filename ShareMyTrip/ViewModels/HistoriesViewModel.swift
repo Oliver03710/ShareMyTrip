@@ -12,7 +12,7 @@ final class HistoriesViewModel {
     // MARK: - Helper Functions
     
     func checkEmpty(tableView: UITableView) {
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         tableView.isHidden = tripHistory.isEmpty ? true : false
     }
     

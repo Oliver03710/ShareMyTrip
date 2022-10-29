@@ -11,8 +11,15 @@ import RealmSwift
 
 final class CompanionViewModel {
     
+    // MARK: - Properties
+    
+    var companions: Observable<List<Companions>> = Observable(List())
+    
+    
+    // MARK: - Helper Functions
+    
     func checkEmpty(tableView: UITableView) {
-        let currentTrip = TripHistoryRepository.standard.fetchCurrentTrip()
+        let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
         tableView.isHidden = currentTrip[0].companions.isEmpty ? true : false
     }
     

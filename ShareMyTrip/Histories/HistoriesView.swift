@@ -66,7 +66,7 @@ final class HistoriesView: BaseView {
 extension HistoriesView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         return tripHistory.count
     }
     
@@ -106,7 +106,7 @@ extension HistoriesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
         
-        let tripHistory = TripHistoryRepository.standard.fetchTripHistory()
+        let tripHistory = TripHistoryRepository.standard.fetchTrips(.history)
         cell.nameLabel.text = "\(indexPath.section + 1). \(tripHistory[indexPath.section].tripName)"
         
         return cell
