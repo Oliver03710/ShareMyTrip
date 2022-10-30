@@ -24,7 +24,6 @@ final class CompanionsCollectionViewCell: UICollectionViewCell {
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 1, green: 0.9450980392, blue: 0.8431372549, alpha: 1)
         setConstraints()
     }
     

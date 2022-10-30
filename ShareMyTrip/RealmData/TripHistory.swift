@@ -37,7 +37,7 @@ final class TripHistory: Object, Codable {
     }
 
     private enum CompanionsCodingKeys: String, CodingKey {
-        case companion
+        case companion, isBeingDeleted
     }
     
     func encode(to encoder: Encoder) throws {
@@ -62,14 +62,16 @@ final class TripHistory: Object, Codable {
         
         var companiesContainer = try container.nestedUnkeyedContainer(forKey: .companions)
         
-        var compArray = [String]()
+        var compArray = [(companion: String, isBeingDeleted: Bool)]()
         while !companiesContainer.isAtEnd {
             let itemCountContainer = try companiesContainer.nestedContainer(keyedBy: CompanionsCodingKeys.self)
-            compArray.append(try itemCountContainer.decode(String.self, forKey: .companion))
+            let companion = try itemCountContainer.decode(String.self, forKey: .companion)
+            let isBeingDeleted = try itemCountContainer.decode(Bool.self, forKey: .isBeingDeleted)
+            compArray.append((companion, isBeingDeleted))
         }
         
         compArray.forEach {
-            self.companions.append(Companions(companion: $0))
+            self.companions.append(Companions(companion: $0.companion, isbeingDeleted: $0.isBeingDeleted))
         }
         
         var tripsContainer = try container.nestedUnkeyedContainer(forKey: .trips)

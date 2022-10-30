@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RealmSwift
 import SnapKit
 
 final class CompanionsWithCVView: BaseView {
@@ -18,10 +19,8 @@ final class CompanionsWithCVView: BaseView {
         return iv
     }()
     
-    let collectionView: UICollectionView = {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    lazy var collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         return cv
     }()
     
@@ -61,7 +60,9 @@ final class CompanionsWithCVView: BaseView {
     }
     
     func initialFetchData() {
-        viewModel.companions.value = TripHistoryRepository.standard.fetchTrips(.current)[0].companions
+        if let data = TripHistoryRepository.standard.fetchTrips(.current).first?.companions {
+            viewModel.companions.value = data
+        }
     }
 }
 
@@ -70,15 +71,29 @@ final class CompanionsWithCVView: BaseView {
 
 extension CompanionsWithCVView {
     
+    private func createLayout() -> UICollectionViewLayout {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.trailingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
+            guard let self = self else { return UISwipeActionsConfiguration() }
+            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return UISwipeActionsConfiguration() }
+            return self.trailingSwipeActionConfigurationForListCellItem(item)
+        }
+        configuration.backgroundColor = .white
+        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        return layout
+    }
+    
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<CompanionsCollectionViewCell, Companions> { cell, indexPath, itemIdentifier in
             
             var content = UIListContentConfiguration.valueCell()
             content.text = itemIdentifier.companion
-            content.textProperties.font = .preferredFont(forTextStyle: .title3)
+            content.textProperties.font = .preferredFont(forTextStyle: .body)
             cell.contentConfiguration = content
             
-            cell.backgroundConfiguration = UIBackgroundConfiguration.listPlainCell()
+            var background = UIBackgroundConfiguration.listPlainCell()
+            background.backgroundColor = #colorLiteral(red: 1, green: 0.9450980392, blue: 0.8431372549, alpha: 1)
+            cell.backgroundConfiguration = background
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -87,16 +102,34 @@ extension CompanionsWithCVView {
         })
     }
     
+    func trailingSwipeActionConfigurationForListCellItem(_ item: Companions) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) {
+            [weak self] (_, _, _) in
+            guard let self = self else { return }
+            
+            TripHistoryRepository.standard.willDeleteItem(item: item)
+            guard let data = TripHistoryRepository.standard.fetchTrips(.current).first?.companions else { return }
+            self.viewModel.companions.value = data
+        }
+        
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
     func bindData() {
-        viewModel.companions.bind { [unowned self] companion in
-            let companions = companion.toArray()
+        viewModel.companions.bind { [weak self] companion in
+            let companions = companion.where { $0.isbeingDeleted == false }.toArray()
             var snapshot = NSDiffableDataSourceSnapshot<Int, Companions>()
             snapshot.appendSections([0])
             snapshot.appendItems(companions)
-            self.dataSource.apply(snapshot, animatingDifferences: true)
+            self?.dataSource.apply(snapshot, animatingDifferences: true)
+            if !companion.where({ $0.isbeingDeleted == true }).isEmpty {
+                companion.where { $0.isbeingDeleted == true }.forEach { TripHistoryRepository.standard.deleteCompanionItem(item: $0) }
+            }
             
-            let currentTrip = TripHistoryRepository.standard.fetchTrips(.current)
-            self.collectionView.isHidden = companion.isEmpty ? true : false
+            self?.collectionView.isHidden = companion.isEmpty ? true : false
         }
     }
 }

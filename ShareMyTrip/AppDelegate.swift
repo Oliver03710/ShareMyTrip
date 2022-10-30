@@ -9,6 +9,7 @@ import UIKit
 
 import FirebaseCore
 import FirebaseMessaging
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        aboutRealmMigration()
         
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
@@ -115,4 +117,21 @@ extension AppDelegate: MessagingDelegate {
       // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
     
+}
+
+
+// MARK: - Extension: Realm Migration
+
+extension AppDelegate {
+    func aboutRealmMigration() {
+        
+        let config = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
+            
+            // Companions에 Bool 타입 추가 -> 데이터 snapshot 적용 후 데이터 삭제용
+            if oldSchemaVersion < 1 { }
+            
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
+    }
 }

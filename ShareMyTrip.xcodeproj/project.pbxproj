@@ -40,7 +40,6 @@
 		AD93E66E28D092D000680F3A /* HistoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93E66D28D092D000680F3A /* HistoriesView.swift */; };
 		AD94896428D5825E00BAC3B8 /* AnnotationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896328D5825E00BAC3B8 /* AnnotationData.swift */; };
 		AD94896628D5831E00BAC3B8 /* CustomCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896528D5831E00BAC3B8 /* CustomCallout.swift */; };
-		AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */; };
 		AD94896A28D58AB100BAC3B8 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896928D58AB100BAC3B8 /* BaseLabel.swift */; };
 		AD94896E28D58C6D00BAC3B8 /* CompanionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */; };
 		AD9B72B028DC308B00EBE70A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AD9B72AF28DC308B00EBE70A /* Realm */; };
@@ -88,8 +87,6 @@
 		ADCFAA6D28D05F460027656F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA6C28D05F460027656F /* BaseView.swift */; };
 		ADCFAA7728D060410027656F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFAA7628D060410027656F /* SnapKit */; };
 		ADCFAA8028D063720027656F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA7F28D063720027656F /* Observable.swift */; };
-		ADCFAA8D28D066630027656F /* CompanionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8C28D066630027656F /* CompanionsViewController.swift */; };
-		ADCFAA8F28D069260027656F /* CompanionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA8E28D069260027656F /* CompanionsView.swift */; };
 		ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9128D069EB0027656F /* SettingsViewController.swift */; };
 		ADCFAA9C28D0781C0027656F /* TabBarTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */; };
 		ADDFB9B028E3045E00F223E8 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */; };
@@ -137,7 +134,6 @@
 		AD93E66D28D092D000680F3A /* HistoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesView.swift; sourceTree = "<group>"; };
 		AD94896328D5825E00BAC3B8 /* AnnotationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationData.swift; sourceTree = "<group>"; };
 		AD94896528D5831E00BAC3B8 /* CustomCallout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCallout.swift; sourceTree = "<group>"; };
-		AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsTableViewCell.swift; sourceTree = "<group>"; };
 		AD94896928D58AB100BAC3B8 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionViewModel.swift; sourceTree = "<group>"; };
 		ADA6706828E9952A00F2F170 /* SearchAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIManager.swift; sourceTree = "<group>"; };
@@ -182,8 +178,6 @@
 		ADCFAA6A28D05ED00027656F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ADCFAA6C28D05F460027656F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ADCFAA7F28D063720027656F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		ADCFAA8C28D066630027656F /* CompanionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsViewController.swift; sourceTree = "<group>"; };
-		ADCFAA8E28D069260027656F /* CompanionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionsView.swift; sourceTree = "<group>"; };
 		ADCFAA9128D069EB0027656F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ADCFAA9B28D0781C0027656F /* TabBarTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTitles.swift; sourceTree = "<group>"; };
 		ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
@@ -426,9 +420,6 @@
 		ADCFAA8B28D066440027656F /* Companions */ = {
 			isa = PBXGroup;
 			children = (
-				ADCFAA8C28D066630027656F /* CompanionsViewController.swift */,
-				ADCFAA8E28D069260027656F /* CompanionsView.swift */,
-				AD94896728D58A4F00BAC3B8 /* CompanionsTableViewCell.swift */,
 				ADB6C17E2907B74200C727F6 /* CompanionsWithCVViewController.swift */,
 				ADB6C1802907BD3400C727F6 /* CompanionsWithCVView.swift */,
 				ADB6C1822907BFFC00C727F6 /* CompanionsCollectionViewCell.swift */,
@@ -636,7 +627,6 @@
 				ADC7566C28D9B3FA00A2B41C /* StartingViewModel.swift in Sources */,
 				ADC20A5228D0DAE2004F94F4 /* Reusable+Protocol.swift in Sources */,
 				ADCFAA6B28D05ED00027656F /* BaseViewController.swift in Sources */,
-				AD94896828D58A4F00BAC3B8 /* CompanionsTableViewCell.swift in Sources */,
 				AD87227B28E1DD350048700A /* TouristAttractions+Repository.swift in Sources */,
 				AD67483628DCCB3800E68F20 /* DetailHistoriesViewController.swift in Sources */,
 				ADCFAA6628D05C9C0027656F /* MainTapBarController.swift in Sources */,
@@ -650,14 +640,12 @@
 				AD87227728E198C30048700A /* URLSession+Extension.swift in Sources */,
 				ADCFAA6D28D05F460027656F /* BaseView.swift in Sources */,
 				ADAA1D4128D5987C00A60C61 /* AlertMessage+Extension.swift in Sources */,
-				ADCFAA8F28D069260027656F /* CompanionsView.swift in Sources */,
 				ADA6707428E9BAFE00F2F170 /* String+Extension.swift in Sources */,
 				AD87226F28E197290048700A /* APIKeys.swift in Sources */,
 				ADB6C1832907BFFC00C727F6 /* CompanionsCollectionViewCell.swift in Sources */,
 				ADCFAA9228D069EB0027656F /* SettingsViewController.swift in Sources */,
 				ADCFAA5428D058640027656F /* SceneDelegate.swift in Sources */,
 				ADBE76A428D858C900B1579E /* TripHistory+Repository.swift in Sources */,
-				ADCFAA8D28D066630027656F /* CompanionsViewController.swift in Sources */,
 				ADCFAA6828D05E980027656F /* MapViewController.swift in Sources */,
 				ADC20A5428D0DB0C004F94F4 /* BaseTableViewCell.swift in Sources */,
 				ADAA1D4328D5B5C000A60C61 /* BaseButton.swift in Sources */,
