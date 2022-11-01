@@ -54,6 +54,9 @@ final class StartingViewController: BaseViewController {
     
     @objc func startButtonTapped() {
         viewModel.isFinished.value = false
+        if TripHistoryRepository.standard.fetchTrips(.current).isEmpty {
+            TripHistoryRepository.standard.addItem(tripName: "", trips: [], companions: [])
+        }
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let vc = MainTapBarController()

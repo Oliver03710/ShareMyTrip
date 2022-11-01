@@ -7,39 +7,14 @@
 
 import UIKit
 
+import RealmSwift
+import Toast
+
 enum ButtonType {
     case addButton, deleteButton
 }
 
 extension UIViewController {
-    
-    func showAlertMessage(buttonText: String, alertTitle: String?, tableView: UITableView, buttonType: ButtonType, viewModel: CompanionViewModel) {
-        
-        let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
-        if buttonType == .addButton {
-            alert.addTextField { textField in
-                textField.attributedPlaceholder = NSAttributedString(string: "너! 내 동료가 돼라!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            }
-        }
-        
-        let confirm = UIAlertAction(title: buttonText, style: buttonType == .addButton ? .default : .destructive) { _ in
-            if buttonType == .addButton {
-                guard let text = alert.textFields?.first?.text else { return }
-                TripHistoryRepository.standard.updateItem(text: text)
-            } else {
-                TripHistoryRepository.standard.deleteAllCompanionItem()
-                print("Delete All Action")
-            }
-            
-            viewModel.checkEmpty(tableView: tableView)
-            tableView.reloadData()
-        }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        
-        [cancel, confirm].forEach { alert.addAction($0) }
-        self.present(alert, animated: true)
-        
-    }
     
     func showAlertMessage(buttonText: String, alertTitle: String?, collectionView: UICollectionView, buttonType: ButtonType, viewModel: CompanionViewModel) {
         
@@ -53,7 +28,30 @@ extension UIViewController {
         let confirm = UIAlertAction(title: buttonText, style: buttonType == .addButton ? .default : .destructive) { _ in
             if buttonType == .addButton {
                 guard let text = alert.textFields?.first?.text else { return }
-                TripHistoryRepository.standard.updateItem(text: text)
+                TripHistoryRepository.standard.fetchCompanionsRealmData()
+                
+                var checkData = Array<String>()
+                var checkCurrentData = Array<String>()
+                let splitStr = text.split(separator: " ").joined()
+
+                TripHistoryRepository.standard.companionsTasks.forEach { checkData.append($0.companion.split(separator: " ").joined()) }
+                viewModel.companions.value.forEach { checkCurrentData.append($0.companion.split(separator: " ").joined()) }
+
+                if checkCurrentData.contains(splitStr) {
+                    self.view.makeToast("이미 친구 목록에 포함되어 있습니다.")
+                } else if checkData.contains(splitStr) {
+                    var item = Companions(companion: "")
+                    TripHistoryRepository.standard.companionsTasks.forEach { companion in
+                        if companion.companion.split(separator: " ").joined() == splitStr {
+                            item = companion
+                        }
+                    }
+                    TripHistoryRepository.standard.updateItem(text: text, isContained: item)
+                    
+                } else  {
+                    TripHistoryRepository.standard.updateItem(text: text)
+                }
+                
                 viewModel.companions.value = TripHistoryRepository.standard.fetchTrips(.current)[0].companions
             } else {
                 TripHistoryRepository.standard.deleteAllCompanionItem()

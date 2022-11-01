@@ -29,6 +29,8 @@ final class CompanionsWithCVViewController: BaseViewController {
     
     @objc private func addCompanions() {
         showAlertMessage(buttonText: "추가하기", alertTitle: "여행 동료 추가하기", collectionView: companionsView.collectionView, buttonType: .addButton, viewModel: companionsView.viewModel)
+//        let vc = SearchCompanionsViewController()
+//        self.presentPanModal(vc)
     }
     
     @objc private func deleteAllCompanions() {

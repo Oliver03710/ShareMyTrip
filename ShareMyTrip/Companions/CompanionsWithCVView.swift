@@ -108,7 +108,14 @@ extension CompanionsWithCVView {
             [weak self] (_, _, _) in
             guard let self = self else { return }
             
-            TripHistoryRepository.standard.willDeleteItem(item: item)
+            TripHistoryRepository.standard.fetchRealmData()
+            var check = Array<Companions>()
+            TripHistoryRepository.standard.fetchTrips(.history).forEach { $0.companions.contains(item) ? check.append(item) : nil }
+            if !check.isEmpty {
+                TripHistoryRepository.standard.deleteCompanionItem(item: item, isContained: item)
+            } else {
+                TripHistoryRepository.standard.willDeleteItem(item: item)
+            }
             guard let data = TripHistoryRepository.standard.fetchTrips(.current).first?.companions else { return }
             self.viewModel.companions.value = data
         }

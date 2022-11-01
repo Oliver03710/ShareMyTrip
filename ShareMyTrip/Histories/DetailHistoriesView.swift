@@ -15,7 +15,7 @@ final class DetailHistoriesView: BaseView {
     // MARK: - Properties
     
     lazy var tableView: BaseTableView = {
-        let tv = BaseTableView(frame: .zero, style: .insetGrouped, cellClass: CompanionsTableViewCell.self, forCellReuseIdentifier: CompanionsTableViewCell.reuseIdentifier, delegate: self)
+        let tv = BaseTableView(frame: .zero, style: .insetGrouped, cellClass: HistoriesTableViewCell.self, forCellReuseIdentifier: HistoriesTableViewCell.reuseIdentifier, delegate: self)
         tv.backgroundColor = .white
         return tv
     }()
@@ -101,7 +101,7 @@ extension DetailHistoriesView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CompanionsTableViewCell.reuseIdentifier, for: indexPath) as? CompanionsTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoriesTableViewCell.reuseIdentifier, for: indexPath) as? HistoriesTableViewCell else { return UITableViewCell() }
         
         cell.nameLabel.text = TripHistoryRepository.standard.tasks[index].companions[indexPath.row].companion
         
