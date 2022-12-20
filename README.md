@@ -1,4 +1,13 @@
 # 여행가자곰 (앱 출시 완료)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105812328/208724326-d5a7dd71-5d55-4727-b049-27b47f492c6b.PNG" width="15%" height="30%">
+<img src="https://user-images.githubusercontent.com/105812328/208724349-95ff1d04-1aa5-4c2e-84d1-c955e18447ed.PNG" width="15%" height="30%">
+<img src="https://user-images.githubusercontent.com/105812328/208724532-a9bc7d4d-e903-4100-8fa1-e9c18740f298.PNG" width="15%" height="30%">
+<img src="https://user-images.githubusercontent.com/105812328/208724663-ff03fa2b-e36d-48f1-b089-1a4065258389.PNG" width="15%" height="30%">
+<img src="https://user-images.githubusercontent.com/105812328/208724740-04763d2c-7cae-49c2-b941-ed85a696de37.PNG" width="15%" height="30%">
+<img src="https://user-images.githubusercontent.com/105812328/208724779-4b7df0f0-8d82-441e-9638-7ce36d565c0f.PNG" width="15%" height="30%">
+</p>
+
 <https://apps.apple.com/kr/app/%EC%97%AC%ED%96%89%EA%B0%80%EC%9E%90%EA%B3%B0/id6443563655>
 
 ## 앱 소개
@@ -32,9 +41,13 @@
 |  |  | | Zip |
 
 ## 트러블슈팅
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105812328/208724532-a9bc7d4d-e903-4100-8fa1-e9c18740f298.PNG" width="30%" height="40%">
+</p>
+
 - 커스텀 어노테이션 이미지의 재사용 문제
-1~50까지의 Int값을 가진 이미지를 어노테이션을 생성하며 해당 목적지 순번에 맞게 mapView에 AddOverlay했지만,
-mapView의 region을 이동시켰다가 다시 어노테이션 있는 곳으로 region을 이동시킬 경우, 모두 같은 Int값을 가지는 이미지로 교체되는 문제 발생
+1~50까지의 Int값을 가진 이미지를 어노테이션을 생성하며 해당 목적지 순번에 맞게 mapView에 AddOverlay했지만, mapView의 region을 이동시켰다가 다시 어노테이션 있는 곳으로 region을 이동시킬 경우, 모두 같은 Int값을 가지는 이미지로 교체되는 문제 발생
+
 <br/>
 
 \-> 커스텀 어노테이션을 만들고 각 이미지마다 Int타입의 ID를 생성, 해당 ID마다 같은 Int값을 가지는 이미지 할당
@@ -131,6 +144,11 @@ Realm Object를 json으로 Encoding하여 외부로 Export할 때는 Realm의 Li
     }
 ```
 <br/>
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105812328/208724532-a9bc7d4d-e903-4100-8fa1-e9c18740f298.PNG" width="30%" height="40%">
+<img src="https://user-images.githubusercontent.com/105812328/208724779-4b7df0f0-8d82-441e-9638-7ce36d565c0f.PNG" width="30%" height="40%">
+</p>
 
 - 데이터 복구하는 과정에서 기존 데이터 삭제시, mapView에 add된 데이터 삭제 순서에 따른 오류    
 더보기 탭에서 복구셀을 tap했을 때, 기존에 mapView에 올라간 overlay들을 모두 삭제하고 외부에 저장한 json 백업 파일을 덮어써야 했습니다.
