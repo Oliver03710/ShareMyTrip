@@ -1,5 +1,13 @@
 # 여행가자곰 (앱 출시 완료)
-<p align="center">
+[여행가자곰 앱스토어 링크](https://apps.apple.com/kr/app/%EC%97%AC%ED%96%89%EA%B0%80%EC%9E%90%EA%B3%B0/id6443563655)
+<br/>
+
+- **앱 시연**
+<img src="https://user-images.githubusercontent.com/105812328/209107683-c3af9a50-522c-451b-848f-9c2838257389.gif" width="30%" height="40%">
+<br/>
+
+- **앱 이미지**
+<p align="left">
 <img src="https://user-images.githubusercontent.com/105812328/208724326-d5a7dd71-5d55-4727-b049-27b47f492c6b.PNG" width="15%" height="30%">
 <img src="https://user-images.githubusercontent.com/105812328/208724349-95ff1d04-1aa5-4c2e-84d1-c955e18447ed.PNG" width="15%" height="30%">
 <img src="https://user-images.githubusercontent.com/105812328/208724532-a9bc7d4d-e903-4100-8fa1-e9c18740f298.PNG" width="15%" height="30%">
@@ -7,11 +15,11 @@
 <img src="https://user-images.githubusercontent.com/105812328/208724740-04763d2c-7cae-49c2-b941-ed85a696de37.PNG" width="15%" height="30%">
 <img src="https://user-images.githubusercontent.com/105812328/208724779-4b7df0f0-8d82-441e-9638-7ce36d565c0f.PNG" width="15%" height="30%">
 </p>
-
-[여행가자곰 앱스토어 링크](https://apps.apple.com/kr/app/%EC%97%AC%ED%96%89%EA%B0%80%EC%9E%90%EA%B3%B0/id6443563655)
+<br/>
 
 ## 앱 소개
 - 내가 가고 싶은 목적지를 검색 및 등록하고, 목적지간 경로를 한눈에 확인할 수 있는 여행 플래너   
+<br/>
 
 ## 앱의 주요 기능
 - 카카오의 키워드 검색 API활용하여 내가 가고 싶은 목적지를 검색하는 기능
@@ -22,10 +30,12 @@
 - Realm Object의 PK를 통해 중복되는 데이터를 관리
 - superEncoder / nestedContainer를 활용한 json 백업 및 복구 기능
 - MessageUI 프레임워크와 MFMailComposeViewController 인스턴스를 통해 문의 사항 제출 기능
+<br/>
 
 ## 프로젝트 진행기간
 - 22\. 09. 13. ~ 22. 10. 02. (약 3주)
 - 지속적으로 업데이트 중
+<br/>
 
 ## 프로젝트에 사용한 기술스택
 | 카테고리 | 내용 |
@@ -42,6 +52,7 @@
 |  | UITableViewDataSourcePrefetching, UNUserNotificationCenter, URLSession, UserDefaults |
 | 기타 툴 | Jandi, Postman |
 | 소스관리 | Git, GitHub |
+<br/>
 
 ## 트러블슈팅
 <p align="center">
