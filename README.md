@@ -28,17 +28,16 @@
 - 지속적으로 업데이트 중
 
 ## 프로젝트에 사용한 기술스택
-| 애플 프레임워크 | 디자인 | 디자인패턴 | 오픈 라이브러리 |
-| :----: | :----: | :----: | :----: |
-| CoreLocation | AutoLayout | Delegate | AcknowList |
-| Foundation |  | MVC | FirebaseAnalyticsWithADidSupport |
-| MapKit |  | MVVM | FirebaseCrashlytics |
-| MessageUI |  | Repository | FirebaseMessaging |
-| UIKit |  | Singleton | PanModal |
-|  |  | | Realm |
-|  |  | | SnapKit |
-|  |  | | Toast |
-|  |  | | Zip |
+| 카테고리 | 내용 |
+| :----: | ---- |
+| 개발 언어 | Swift | 
+| 애플 프레임워크 | CoreLocation, Foundation, MapKit, MessageUI,  UIKit |
+| 디자인 | AutoLayout |
+| 디자인 패턴 | Delegate, MVC, MVVM, Repository, Singleton |
+| 오픈 라이브러리 | AcknowList, FirebaseAnalyticsWithoutADidSupport, FirebaseCrashlytics, FirebaseMessaging, PanModal, Realm, SnapKit, Toast, Zip |
+| 기타 | ATSSettings, Calendar, CaseIterable, CGAffineTransform, CompositionalLayout, CustomView, Date, DateFormatter, DiffableDataSource, DispatchQueue, Hashable, JSONDecoder, JSONEncoder, Locale, NumberFormatter, NSAttributedString, NSMutableParagraphStyle, TimeZone, UITableViewDataSourcePrefetching, UNUserNotificationCenter, URLSession, UserDefaults |
+| 기타 툴 | Jandi, Postman |
+| 소스관리 | Git, GitHub |
 
 ## 트러블슈팅
 <p align="center">
