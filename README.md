@@ -228,7 +228,7 @@ extension BackupViewController: TransferMapViewDelegate {
 <br/>
 
 ## 회고
-- **상기한 기술을 사용하 이유**   
+- **상기한 기술을 사용한 이유**   
 ㅁㅇㄴ리ㅏㅁㄴㅇ림ㄴㅇ륌ㄴ우라ㅣㅁㄴㅇㄹ
 <br/>
 
