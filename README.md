@@ -15,7 +15,7 @@
 <img src="https://user-images.githubusercontent.com/105812328/208724740-04763d2c-7cae-49c2-b941-ed85a696de37.PNG" width="15%" height="30%">
 <img src="https://user-images.githubusercontent.com/105812328/208724779-4b7df0f0-8d82-441e-9638-7ce36d565c0f.PNG" width="15%" height="30%">
 </p>
-<br/>
+<br/> 
 
 ## 앱 소개
 - 내가 가고 싶은 목적지를 검색 및 등록하고, 목적지간 경로를 한눈에 확인할 수 있는 여행 플래너   
@@ -225,3 +225,13 @@ extension BackupViewController: TransferMapViewDelegate {
     }
 }
 ```
+<br/>
+
+## 회고
+- **상기한 기술을 사용하 이유**   
+ㅁㅇㄴ리ㅏㅁㄴㅇ림ㄴㅇ륌ㄴ우라ㅣㅁㄴㅇㄹ
+<br/>
+
+- **느낀 점**   
+ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹ
+<br/>
