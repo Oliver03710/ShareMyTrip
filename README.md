@@ -8,7 +8,7 @@
 <img src="https://user-images.githubusercontent.com/105812328/208724779-4b7df0f0-8d82-441e-9638-7ce36d565c0f.PNG" width="15%" height="30%">
 </p>
 
-<https://apps.apple.com/kr/app/%EC%97%AC%ED%96%89%EA%B0%80%EC%9E%90%EA%B3%B0/id6443563655>
+[여행가자곰 앱스토어 링크](https://apps.apple.com/kr/app/%EC%97%AC%ED%96%89%EA%B0%80%EC%9E%90%EA%B3%B0/id6443563655)
 
 ## 앱 소개
 - 내가 가고 싶은 목적지를 검색 및 등록하고, 목적지간 경로를 한눈에 확인할 수 있는 여행 플래너   
