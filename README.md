@@ -2,10 +2,6 @@
 [여행가자곰 앱스토어 링크](https://apps.apple.com/kr/app/%EC%97%AC%ED%96%89%EA%B0%80%EC%9E%90%EA%B3%B0/id6443563655)
 <br/>
 
-- **앱 시연**
-<img src="https://user-images.githubusercontent.com/105812328/209107683-c3af9a50-522c-451b-848f-9c2838257389.gif" width="30%" height="40%">
-<br/>
-
 - **앱 이미지**
 <p align="left">
 <img src="https://user-images.githubusercontent.com/105812328/208724326-d5a7dd71-5d55-4727-b049-27b47f492c6b.PNG" width="15%" height="30%">
@@ -39,17 +35,19 @@
 
 ## 프로젝트에 사용한 기술스택
 | 카테고리 | 내용 |
-| ----- | ----- |
+| :---: | ----- |
 | 개발 언어 | Swift | 
 | 애플 프레임워크 | CoreLocation, Foundation, MapKit, MessageUI,  UIKit |
+| 의존성 관리 도구 | Swift Pakage Manager |
 | 디자인 | AutoLayout |
 | 디자인 패턴 | Delegate, MVC, MVVM, Repository, Singleton |
+| 네트워크 | URLSession |
 | 오픈 라이브러리 | AcknowList, FirebaseAnalyticsWithoutADidSupport, FirebaseCrashlytics, FirebaseMessaging, |
 |  | PanModal, Realm, SnapKit, Toast, Zip |
-| 기타 | ATSSettings, Calendar, CaseIterable, CGAffineTransform, CompositionalLayout, CustomView, Date, |
-|  | DateFormatter, DiffableDataSource, DispatchQueue, Hashable, JSONDecoder, JSONEncoder, Locale, |
-|  | NumberFormatter, NSAttributedString, NSMutableParagraphStyle, TimeZone, |
-|  | UITableViewDataSourcePrefetching, UNUserNotificationCenter, URLSession, UserDefaults |
+| 기타 | ATSSettings, CGAffineTransform, CompositionalLayout, CustomView, |
+|  | DiffableDataSource, DispatchQueue, FileManager, Hashable, JSONDecoder, JSONEncoder, |
+|  | NSAttributedString, NSMutableParagraphStyle, UITableViewDataSourcePrefetching, |
+|  | UNUserNotificationCenter, UserDefaults, 백업 및 복구 |
 | 기타 툴 | Jandi, Postman |
 | 소스관리 | Git, GitHub |
 <br/>
@@ -59,12 +57,11 @@
 <img src="https://user-images.githubusercontent.com/105812328/208724532-a9bc7d4d-e903-4100-8fa1-e9c18740f298.PNG" width="30%" height="40%">
 </p>
 
-- 커스텀 어노테이션 이미지의 재사용 문제
-1~50까지의 Int값을 가진 이미지를 어노테이션을 생성하며 해당 목적지 순번에 맞게 mapView에 AddOverlay했지만, mapView의 region을 이동시켰다가 다시 어노테이션 있는 곳으로 region을 이동시킬 경우, 모두 같은 Int값을 가지는 이미지로 교체되는 문제 발생
+- **커스텀 어노테이션 이미지의 재사용 문제**
+  * 1~50까지의 Int값을 가진 이미지를 어노테이션을 생성하며 해당 목적지 순번에 맞게 mapView에 AddOverlay했지만, mapView의 region을 이동시켰다가 다시 어노테이션 있는 곳으로 region을 이동시킬 경우, 모두 같은 Int값을 가지는 이미지로 교체되는 문제 발생
 
-<br/>
-
-\-> 커스텀 어노테이션을 만들고 각 이미지마다 Int타입의 ID를 생성, 해당 ID마다 같은 Int값을 가지는 이미지 할당
+### 해결 방안
+> 커스텀 어노테이션을 만들고 각 이미지마다 Int타입의 ID를 생성, 해당 ID마다 같은 Int값을 가지는 이미지 할당
 ```swift
 // 커스텀 어노테이션 생성
 final class Annotation: MKPointAnnotation {
@@ -93,11 +90,12 @@ func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnota
     }
 ```
 <br/>
-
-- 경로를 계산하고 배열에 담는 과정에서 배열의 순번이 꼬여 mapView에 addOverlay했을 때, 목적지 간의 경로가 뒤엉키는 문제
 <br/>
 
-\-> 경로를 딕셔너리 타입으로 변경 후, Key값에 목적지 순번을, Value값에 경로를 배치하여 맵뷰에 addOverlay시 경로 순서가 꼬이지 않도록 수정
+- **경로를 계산하고 배열에 담는 과정에서 배열의 순번이 꼬여 mapView에 addOverlay했을 때, 목적지 간의 경로가 뒤엉키는 문제**
+
+### 해결 방안
+> 경로를 딕셔너리 타입으로 변경 후, Key값에 목적지 순번을, Value값에 경로를 배치하여 맵뷰에 addOverlay시 경로 순서가 꼬이지 않도록 수정
 ```swift
 func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: CLLocationDegrees, destinationLat: CLLocationDegrees, destinationLon: CLLocationDegrees, turn: Int, status: TripStatus) {
 	    // 여행 경로를 계산
@@ -121,12 +119,13 @@ func createPath(_ mapView: MKMapView, sourceLat: CLLocationDegrees, sourceLon: C
     }
 ```
 <br/>
-
-- 배열을 가지고 있는 Realm 데이터를 json으로 변환하여 데이터 백업 및 복구 기능 구현 문제
-Realm Object를 json으로 Encoding하여 외부로 Export할 때는 Realm의 List타입을 Array나 Dictionary처럼 애플 Framework에 있는 Collection타입으로 변경하고 json으로 Encoding해야 하는 것으로 잘못이해
 <br/>
 
-\-> superEncoder 및 nestedContainer 키워드를 사용하여 json으로 내보내고 복구하는 기능 구현
+- **배열을 가지고 있는 Realm 데이터를 json으로 변환하여 데이터 백업 및 복구 기능 구현 문제**
+  * Realm Object를 json으로 Encoding하여 외부로 Export할 때는 Realm의 List타입을 Array나 Dictionary처럼 애플 Framework에 있는 Collection타입으로 변경하고 json으로 Encoding해야 하는 것으로 잘못이해
+
+### 해결 방안
+> superEncoder 및 nestedContainer 키워드를 사용하여 json으로 내보내고 복구하는 기능 구현
 ```swift
     // 데이터를 json 인코딩해서 외부로 내보낼 때 superEncoder 활용
     func encode(to encoder: Encoder) throws {
@@ -158,19 +157,22 @@ Realm Object를 json으로 Encoding하여 외부로 Export할 때는 Realm의 Li
     }
 ```
 <br/>
+<br/>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105812328/208724532-a9bc7d4d-e903-4100-8fa1-e9c18740f298.PNG" width="30%" height="40%">
 <img src="https://user-images.githubusercontent.com/105812328/208724779-4b7df0f0-8d82-441e-9638-7ce36d565c0f.PNG" width="30%" height="40%">
 </p>
 
-- 데이터 복구하는 과정에서 기존 데이터 삭제시, mapView에 add된 데이터 삭제 순서에 따른 오류    
-더보기 탭에서 복구셀을 tap했을 때, 기존에 mapView에 올라간 overlay들을 모두 삭제하고 외부에 저장한 json 백업 파일을 덮어써야 했습니다.
-이 과정에서 mapView 인스턴스를 전달하여 더보기 탭에서 mapView Overlay데이터를 삭제해야 하는데, 인스턴스를 성공적으로 전달하기 위해서는 반드시 맵뷰가 있는 뷰컨트롤러의 transition이 필요하여 복구기능이 부자연스럽게 진행되었습니다.
-NotificationCenter를 활용해보았지만, 유저가 앱을 최초에 실행하고 바로 더보기 탭으로 이동할 경우 Notification Center에 인스턴스가 전달되지 않았습니다. 반드시 지도 탭을 클릭했을 때, 인스턴스가 전달하는 것을 확인했습니다.
-<br/>
+- **데이터 복구하는 과정에서 기존 데이터 삭제시, mapView에 add된 데이터 삭제 순서에 따른 오류**    
+  * 더보기 탭에서 복구셀을 tap했을 때, 기존에 mapView에 올라간 overlay들을 모두 삭제하고 외부에 저장한 json 백업 파일을 덮어써야 했음.
+  * 이 과정에서 mapView 인스턴스를 전달하여 더보기 탭에서 mapView Overlay데이터를 삭제 필요.
+  * 인스턴스를 성공적으로 전달하기 위해서는 반드시 맵뷰가 있는 뷰컨트롤러의 transition이 필요하여 복구기능이 부자연스럽게 진행되는 문제 발생.
+  * NotificationCenter를 활용해보았으나, 유저가 앱을 최초에 실행하고 바로 더보기 탭으로 이동할 경우 Notification Center에 인스턴스가 전달되지 않는 문제 발견.
+  * 반드시 지도 탭을 클릭했을 때, 인스턴스가 전달하는 것 확인.
 
-\-> Delegate와 PanModal 라이브러리를 활용하여 인스턴스를 전달하고 뷰를 transition할 때, safeArea 바깥쪽으로 Present하도록하여 뷰 컨트롤러가 화면에 보이지 않게 하면서 인스턴스를 전달하여 해결했습니다.
+### 해결 방안
+> Delegate와 PanModal 라이브러리를 활용하여 인스턴스를 전달하고 뷰를 transition할 때, safeArea 바깥쪽으로 Present하도록하여 뷰 컨트롤러가 화면에 보이지 않게 하면서 인스턴스를 전달하여 해결
 ```swift
 // Delegate패턴을 활용하여 mapView Instance 전달
 protocol TransferMapViewDelegate: AnyObject {
@@ -227,11 +229,23 @@ extension BackupViewController: TransferMapViewDelegate {
 ```
 <br/>
 
-## 회고
+## 회고   
+[여행하자곰에 대한 상세 회고록 보기](https://jjhios.tistory.com/17)   
 - **상기한 기술을 사용한 이유**   
-ㅁㅇㄴ리ㅏㅁㄴㅇ림ㄴㅇ륌ㄴ우라ㅣㅁㄴㅇㄹ
+  - FirebaseAnalyticsWithoutADidSupport & FirebaseCrashlytics
+    > FirebaseAnalyticsWithoutADidSupport를 통해 사용자의 민감한 정보는 제외한 이용정보를 수집하여 통계를 보기 위해 해당 기술을 사용하였습니다. 마찬가지로 FirebaseCrashlytics를 이용하여 여행가자곰에서 발생하는 crash에 대해 즉각 대응하기 위한 모니터링 수단으로 구현하였습니다.
+  - 백업 및 복구
+    > Realm의 Data를 json으로 백업 및 복구르 적용했는데, 실 사용자 입장에서 앱을 삭제해도 나의 여행기록을 불러와서 그대로 이어서 작성할 수 있도록 해당 기능을 구현하였습니다.
 <br/>
 
-- **느낀 점**   
-ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹ
+- **느낀 점**    
+  &nbsp;여행하자곰을 개발하면서 처음으로 개인 앱을 출시해 보 경험이었습니다. 출시를 진행하면서 개인정보에 관련된 사항과 앱에 선정성 및 폭력성 등 사용자에게 부정적인 영향을 끼칠 수 있는 앱인지에 대해 신중하게 작성해야 한다는 것을 느꼈습니다. 그리고 개발일지([여행가자곰 개발일지 상세보기](https://fluffy-comte-126.notion.site/9fbdc10d4244491aa8c281501ce9dc78?v=1b644af5941247ac8d9b1fe0f16a410a))를 통해서 어떤 기능을 구현하는데 내가 몇시간 정도 소비를 할지 객관적으로 알 수 있어서 좋은 경험이었습니다. 
+  <br/>
+  <br/>
+&nbsp;아쉬운 지점은 구현에 급급하여 코드의 기능별 구분을 처리하지 못한 점이 상당히 아쉽게 느껴졌습니다. 항상 기능별로 코드를 분리해보고 중복되는 코드를 줄이고, 리팩토링할 때를 위해 코드를 용이하게 구성해보자고 다짐하지만 시간에 쫓기다보니 잘 되지 않는 것 같았습니다. 그리고 무리하게 코드를 줄이려고 하다보니 뷰 객체를 뷰모델의 파라미터로 전달하는 등 기본적인 룰을 깨는 코드르 작성하게 되었습니다.
+  <br/>
+  <br/>
+&nbsp;여행하자곰은 저의 첫 개인 출시 앱인만큼 지속적으로 업데이트하여 코드를 효율적으로 개선해나가도록 할 예정입니다. 그리고 다양한 기능도 추가하여 이용자의 편의를 생각하느 앱으로 만들어 나가겠습니다.
+<br/>
+
 <br/>
