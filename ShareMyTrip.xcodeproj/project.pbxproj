@@ -214,51 +214,264 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AD4D8D7F28D306C400CD2740 /* SearchResults */ = {
+		AD0B62B1295C1E1B00A76C7B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */,
-				AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */,
+				ADC7565E28D97E3800A2B41C /* Starting */,
+				ADCFAA8228D063C80027656F /* TabBar */,
+				ADCFAA8128D063A10027656F /* Maps */,
+				ADF6166B28DAD35C00151B6E /* Destinations */,
+				ADCFAA8B28D066440027656F /* Companions */,
+				AD93E66A28D0928D00680F3A /* Histories */,
+				ADCFAA9028D069CC0027656F /* Settings */,
 			);
-			path = SearchResults;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		AD87226B28E1969F0048700A /* APIManagers */ = {
+		AD0B62B2295C1E2200A76C7B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62B5295C200400A76C7B /* Images */,
+				ADC20A6528D0E4F4004F94F4 /* AnnotationImages */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AD0B62B4295C1E3000A76C7B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C793295C3CAA009C345B /* Constraints */,
+				ADCFAA6928D05EA00027656F /* Customs */,
+				ADCFAA9A28D078090027656F /* Enums */,
+				ADCFAA8528D064B90027656F /* Extensions */,
+				ADC20A5028D0DACA004F94F4 /* Protocols */,
+				AD0B62C3295C253500A76C7B /* Database */,
+				AD0B62BC295C230B00A76C7B /* Networks */,
+				ADC7566828D9A50300A2B41C /* Helpers */,
+				ADCFAA7F28D063720027656F /* Observable.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AD0B62B5295C200400A76C7B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				ADC7566328D9822600A2B41C /* ImageData.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		AD0B62B6295C206500A76C7B /* BaseComponents */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFAA6A28D05ED00027656F /* BaseViewController.swift */,
+				ADCFAA6C28D05F460027656F /* BaseView.swift */,
+			);
+			path = BaseComponents;
+			sourceTree = "<group>";
+		};
+		AD0B62B7295C212A00A76C7B /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62B8295C224100A76C7B /* Buttons */,
+				AD94896328D5825E00BAC3B8 /* AnnotationData.swift */,
+				AD94896528D5831E00BAC3B8 /* CustomCallout.swift */,
+				AD17DF2028EBCAB1009BBE7D /* CustomTabBar.swift */,
+				ADC20A6828D0F317004F94F4 /* BaseTableView.swift */,
+				ADC20A5328D0DB0C004F94F4 /* BaseTableViewCell.swift */,
+				ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */,
+				AD94896928D58AB100BAC3B8 /* BaseLabel.swift */,
+				ADF1D5B528DB730400DDB171 /* CustomStackView.swift */,
+				AD5039B128DC6882004E328E /* CharacterImageView.swift */,
+				AD3FD2A628EAE62400D66F7E /* LineView.swift */,
+			);
+			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		AD0B62B8295C224100A76C7B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */,
+				ADF1D5B328DB680600DDB171 /* CircleButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		AD0B62BA295C22EA00A76C7B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62BE295C235F00A76C7B /* TouristAttractions */,
+				AD0B62BD295C235100A76C7B /* Search */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AD0B62BB295C22F000A76C7B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62C0295C237E00A76C7B /* TouristAttractions */,
+				AD0B62BF295C237600A76C7B /* Search */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AD0B62BC295C230B00A76C7B /* Networks */ = {
 			isa = PBXGroup;
 			children = (
 				AD87226E28E197290048700A /* APIKeys.swift */,
 				AD87227028E197AD0048700A /* Endpoints.swift */,
-				AD87227228E1980C0048700A /* TouristAttractionsAPIManager.swift */,
-				AD87227428E198540048700A /* TouristAttractionsData.swift */,
-				ADA6706828E9952A00F2F170 /* SearchAPIManager.swift */,
-				ADA6706A28E99C8700F2F170 /* SearchData.swift */,
+				AD0B62BB295C22F000A76C7B /* Models */,
+				AD0B62BA295C22EA00A76C7B /* Managers */,
 			);
-			path = APIManagers;
+			path = Networks;
 			sourceTree = "<group>";
 		};
-		AD93E66A28D0928D00680F3A /* Histories */ = {
+		AD0B62BD295C235100A76C7B /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				AD93E66B28D092B700680F3A /* HistoriesViewController.swift */,
-				AD93E66D28D092D000680F3A /* HistoriesView.swift */,
-				ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */,
-				AD67483528DCCB3800E68F20 /* DetailHistoriesViewController.swift */,
-				AD67483728DCD4E700E68F20 /* DetailHistoriesView.swift */,
+				ADA6706828E9952A00F2F170 /* SearchAPIManager.swift */,
 			);
-			path = Histories;
+			path = Search;
 			sourceTree = "<group>";
 		};
-		ADBE769628D8451100B1579E /* RealmData */ = {
+		AD0B62BE295C235F00A76C7B /* TouristAttractions */ = {
+			isa = PBXGroup;
+			children = (
+				AD87227228E1980C0048700A /* TouristAttractionsAPIManager.swift */,
+			);
+			path = TouristAttractions;
+			sourceTree = "<group>";
+		};
+		AD0B62BF295C237600A76C7B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				ADA6706A28E99C8700F2F170 /* SearchData.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		AD0B62C0295C237E00A76C7B /* TouristAttractions */ = {
+			isa = PBXGroup;
+			children = (
+				AD87227428E198540048700A /* TouristAttractionsData.swift */,
+			);
+			path = TouristAttractions;
+			sourceTree = "<group>";
+		};
+		AD0B62C2295C243000A76C7B /* Realm */ = {
 			isa = PBXGroup;
 			children = (
 				ADBE769D28D84D6F00B1579E /* CurrentTrip.swift */,
 				ADF6167828DAE93900151B6E /* Companions.swift */,
 				ADBE769F28D84D8200B1579E /* TripHistory.swift */,
 				AD87227828E1C0680048700A /* TouristAttractions.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		AD0B62C3295C253500A76C7B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62C4295C254600A76C7B /* Models */,
+				AD0B62C5295C256500A76C7B /* Managers */,
+				ADBE769628D8451100B1579E /* Repositories */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		AD0B62C4295C254600A76C7B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62C2295C243000A76C7B /* Realm */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AD0B62C5295C256500A76C7B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ADEEE90B28EB5DFF008F9BB1 /* FileManagerHelper.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AD0B62C6295C2D1300A76C7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD4D8D8028D306DF00CD2740 /* SearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AD0B62C7295C2D1E00A76C7B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AD4D8D8428D30F7A00CD2740 /* SearchTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AD0B62C8295C2D3A00A76C7B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AD0B62C9295C2D5200A76C7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADC7565F28D97E5C00A2B41C /* StartingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AD0B62CA295C2D5E00A76C7B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AD0B62CB295C2DA900A76C7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFAA6728D05E980027656F /* MapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AD4D8D7F28D306C400CD2740 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				AD0B62C8295C2D3A00A76C7B /* ViewModels */,
+				AD0B62C6295C2D1300A76C7B /* ViewControllers */,
+				AD0B62C7295C2D1E00A76C7B /* Cells */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		AD93E66A28D0928D00680F3A /* Histories */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C79D295C406F009C345B /* ViewModels */,
+				ADD0C79C295C406B009C345B /* ViewControllers */,
+				ADD0C79B295C4067009C345B /* Views */,
+				ADD0C79A295C4064009C345B /* Cells */,
+				ADD0C79E295C408C009C345B /* Nested */,
+			);
+			path = Histories;
+			sourceTree = "<group>";
+		};
+		ADBE769628D8451100B1579E /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
 				ADBE76A328D858C900B1579E /* TripHistory+Repository.swift */,
 				AD87227A28E1DD350048700A /* TouristAttractions+Repository.swift */,
 			);
-			path = RealmData;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		ADC20A5028D0DACA004F94F4 /* Protocols */ = {
@@ -269,32 +482,30 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		ADC20A6528D0E4F4004F94F4 /* Data */ = {
+		ADC20A6528D0E4F4004F94F4 /* AnnotationImages */ = {
 			isa = PBXGroup;
 			children = (
-				ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */,
 				AD67DF1428D47307004A2734 /* CustomAnnotations.swift */,
-				ADC7566328D9822600A2B41C /* ImageData.swift */,
 			);
-			path = Data;
+			path = AnnotationImages;
 			sourceTree = "<group>";
 		};
 		ADC7565E28D97E3800A2B41C /* Starting */ = {
 			isa = PBXGroup;
 			children = (
-				ADC7565F28D97E5C00A2B41C /* StartingViewController.swift */,
+				AD0B62CA295C2D5E00A76C7B /* ViewModels */,
+				AD0B62C9295C2D5200A76C7B /* ViewControllers */,
 			);
 			path = Starting;
 			sourceTree = "<group>";
 		};
-		ADC7566828D9A50300A2B41C /* DataManager */ = {
+		ADC7566828D9A50300A2B41C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				ADC7566928D9A51400A2B41C /* UserDefaultsHelper.swift */,
 				AD67DF1228D46B85004A2734 /* LocationHelper.swift */,
-				ADEEE90B28EB5DFF008F9BB1 /* FileManagerHelper.swift */,
+				ADC7566928D9A51400A2B41C /* UserDefaultsHelper.swift */,
 			);
-			path = DataManager;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		ADCFAA4528D058640027656F = {
@@ -322,23 +533,9 @@
 				ADBDE60428F5578100745991 /* ShareMyTrip.entitlements */,
 				ADCFAA5128D058640027656F /* AppDelegate.swift */,
 				ADCFAA5328D058640027656F /* SceneDelegate.swift */,
-				AD87226B28E1969F0048700A /* APIManagers */,
-				ADBE769628D8451100B1579E /* RealmData */,
-				ADC20A6528D0E4F4004F94F4 /* Data */,
-				ADC7566828D9A50300A2B41C /* DataManager */,
-				ADC20A5028D0DACA004F94F4 /* Protocols */,
-				ADCFAA9A28D078090027656F /* Enums */,
-				ADCFAA8528D064B90027656F /* Extensions */,
-				ADCFAA7E28D063640027656F /* ViewModels */,
-				ADCFAA6928D05EA00027656F /* Customs */,
-				ADC7565E28D97E3800A2B41C /* Starting */,
-				ADCFAA8228D063C80027656F /* TabBar */,
-				ADCFAA8128D063A10027656F /* Maps */,
-				AD4D8D7F28D306C400CD2740 /* SearchResults */,
-				ADCFAA8B28D066440027656F /* Companions */,
-				ADF6166B28DAD35C00151B6E /* Destinations */,
-				AD93E66A28D0928D00680F3A /* Histories */,
-				ADCFAA9028D069CC0027656F /* Settings */,
+				AD0B62B2295C1E2200A76C7B /* Resources */,
+				AD0B62B4295C1E3000A76C7B /* Utilities */,
+				AD0B62B1295C1E1B00A76C7B /* Scenes */,
 				ADCFAA5728D058640027656F /* Main.storyboard */,
 				ADCFAA5A28D058670027656F /* Assets.xcassets */,
 				ADCFAA5C28D058670027656F /* LaunchScreen.storyboard */,
@@ -350,44 +547,18 @@
 		ADCFAA6928D05EA00027656F /* Customs */ = {
 			isa = PBXGroup;
 			children = (
-				AD94896328D5825E00BAC3B8 /* AnnotationData.swift */,
-				AD94896528D5831E00BAC3B8 /* CustomCallout.swift */,
-				AD17DF2028EBCAB1009BBE7D /* CustomTabBar.swift */,
-				ADCFAA6A28D05ED00027656F /* BaseViewController.swift */,
-				ADCFAA6C28D05F460027656F /* BaseView.swift */,
-				AD3FD2A628EAE62400D66F7E /* LineView.swift */,
-				ADC20A6828D0F317004F94F4 /* BaseTableView.swift */,
-				ADC20A5328D0DB0C004F94F4 /* BaseTableViewCell.swift */,
-				AD94896928D58AB100BAC3B8 /* BaseLabel.swift */,
-				ADF1D5B328DB680600DDB171 /* CircleButton.swift */,
-				ADAA1D4228D5B5C000A60C61 /* BaseButton.swift */,
-				ADF1D5B128DB5DF800DDB171 /* BaseTextField.swift */,
-				ADF1D5B528DB730400DDB171 /* CustomStackView.swift */,
-				AD5039B128DC6882004E328E /* CharacterImageView.swift */,
+				AD0B62B6295C206500A76C7B /* BaseComponents */,
+				AD0B62B7295C212A00A76C7B /* CustomComponents */,
 			);
 			path = Customs;
-			sourceTree = "<group>";
-		};
-		ADCFAA7E28D063640027656F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				ADCFAA7F28D063720027656F /* Observable.swift */,
-				ADC7566B28D9B3FA00A2B41C /* StartingViewModel.swift */,
-				ADA6706E28E9AD2400F2F170 /* SearchViewModel.swift */,
-				AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */,
-				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
-				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
-				ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */,
-				ADA6707E28EA096200F2F170 /* DetailHistoriesViewModel.swift */,
-				ADEEE90928EB5699008F9BB1 /* SettingViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		ADCFAA8128D063A10027656F /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				ADCFAA6728D05E980027656F /* MapViewController.swift */,
+				ADD0C795295C3FDE009C345B /* ViewModels */,
+				AD0B62CB295C2DA900A76C7B /* ViewControllers */,
+				ADD0C7B3295C4278009C345B /* Nested */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -420,9 +591,10 @@
 		ADCFAA8B28D066440027656F /* Companions */ = {
 			isa = PBXGroup;
 			children = (
-				ADB6C17E2907B74200C727F6 /* CompanionsWithCVViewController.swift */,
-				ADB6C1802907BD3400C727F6 /* CompanionsWithCVView.swift */,
-				ADB6C1822907BFFC00C727F6 /* CompanionsCollectionViewCell.swift */,
+				ADD0C796295C3FFB009C345B /* ViewModels */,
+				ADD0C797295C4028009C345B /* ViewControllers */,
+				ADD0C798295C4034009C345B /* Views */,
+				ADD0C799295C403E009C345B /* Cells */,
 			);
 			path = Companions;
 			sourceTree = "<group>";
@@ -430,10 +602,10 @@
 		ADCFAA9028D069CC0027656F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				ADCFAA9128D069EB0027656F /* SettingsViewController.swift */,
-				ADC20A5528D0DC99004F94F4 /* SettingsTableViewCell.swift */,
-				AD02F96A28E4926300323E4A /* BackupViewController.swift */,
-				AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */,
+				ADD0C7AF295C4207009C345B /* ViewModels */,
+				ADD0C7AE295C41AA009C345B /* ViewControllers */,
+				ADD0C7AD295C41A5009C345B /* Cells */,
+				ADD0C7AC295C419E009C345B /* Nested */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -447,14 +619,266 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		ADF6166B28DAD35C00151B6E /* Destinations */ = {
+		ADD0C793295C3CAA009C345B /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				ADC20A6628D0E506004F94F4 /* CustomCGFloats.swift */,
+			);
+			path = Constraints;
+			sourceTree = "<group>";
+		};
+		ADD0C795295C3FDE009C345B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AD08D71528DA1A6F00AB0156 /* MapViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ADD0C796295C3FFB009C345B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AD94896D28D58C6D00BAC3B8 /* CompanionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ADD0C797295C4028009C345B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADB6C17E2907B74200C727F6 /* CompanionsWithCVViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C798295C4034009C345B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ADB6C1802907BD3400C727F6 /* CompanionsWithCVView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ADD0C799295C403E009C345B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ADB6C1822907BFFC00C727F6 /* CompanionsCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADD0C79A295C4064009C345B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ADAA1D4628D5D04300A60C61 /* HistoriesTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADD0C79B295C4067009C345B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD93E66D28D092D000680F3A /* HistoriesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ADD0C79C295C406B009C345B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD93E66B28D092B700680F3A /* HistoriesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C79D295C406F009C345B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADAA1D4A28D5D14100A60C61 /* HistoriesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ADD0C79E295C408C009C345B /* Nested */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7A2295C40C4009C345B /* DetailHistories */,
+			);
+			path = Nested;
+			sourceTree = "<group>";
+		};
+		ADD0C79F295C4097009C345B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD67483728DCD4E700E68F20 /* DetailHistoriesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ADD0C7A0295C409B009C345B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD67483528DCCB3800E68F20 /* DetailHistoriesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C7A1295C40BC009C345B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADA6707E28EA096200F2F170 /* DetailHistoriesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ADD0C7A2295C40C4009C345B /* DetailHistories */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7A1295C40BC009C345B /* ViewModels */,
+				ADD0C7A0295C409B009C345B /* ViewControllers */,
+				ADD0C79F295C4097009C345B /* Views */,
+			);
+			path = DetailHistories;
+			sourceTree = "<group>";
+		};
+		ADD0C7A3295C4124009C345B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADD0C7A4295C4131009C345B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ADF6166E28DAD42A00151B6E /* DestinationsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ADD0C7A5295C413B009C345B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				ADF6166C28DAD3ED00151B6E /* DestinationsViewController.swift */,
-				ADF6166E28DAD42A00151B6E /* DestinationsView.swift */,
-				ADF6167028DAD4D600151B6E /* DestinationsTableViewCell.swift */,
-				ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C7A7295C4158009C345B /* Nested */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7AA295C417B009C345B /* Recommendation */,
+			);
+			path = Nested;
+			sourceTree = "<group>";
+		};
+		ADD0C7A8295C415C009C345B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				ADDFB9B328E306B900F223E8 /* RecommendationTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADD0C7A9295C4164009C345B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADDFB9AF28E3045E00F223E8 /* RecommendationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C7AA295C417B009C345B /* Recommendation */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7AB295C4190009C345B /* ViewModels */,
+				ADD0C7A9295C4164009C345B /* ViewControllers */,
+				ADD0C7A8295C415C009C345B /* Cells */,
+			);
+			path = Recommendation;
+			sourceTree = "<group>";
+		};
+		ADD0C7AB295C4190009C345B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADA6706C28E9A95C00F2F170 /* RecommendationsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ADD0C7AC295C419E009C345B /* Nested */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7B1295C422B009C345B /* Backup */,
+			);
+			path = Nested;
+			sourceTree = "<group>";
+		};
+		ADD0C7AD295C41A5009C345B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ADC20A5528D0DC99004F94F4 /* SettingsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADD0C7AE295C41AA009C345B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFAA9128D069EB0027656F /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C7AF295C4207009C345B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADEEE90928EB5699008F9BB1 /* SettingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ADD0C7B0295C4227009C345B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AD02F96E28E4931600323E4A /* BackupTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADD0C7B1295C422B009C345B /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7B2295C4233009C345B /* ViewControllers */,
+				ADD0C7B0295C4227009C345B /* Cells */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
+		ADD0C7B2295C4233009C345B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD02F96A28E4926300323E4A /* BackupViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADD0C7B3295C4278009C345B /* Nested */ = {
+			isa = PBXGroup;
+			children = (
+				AD4D8D7F28D306C400CD2740 /* Search */,
+			);
+			path = Nested;
+			sourceTree = "<group>";
+		};
+		ADF6166B28DAD35C00151B6E /* Destinations */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0C7A5295C413B009C345B /* ViewControllers */,
+				ADD0C7A4295C4131009C345B /* Views */,
+				ADD0C7A3295C4124009C345B /* Cells */,
+				ADD0C7A7295C4158009C345B /* Nested */,
 			);
 			path = Destinations;
 			sourceTree = "<group>";
@@ -819,7 +1243,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jhee.TripBear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -855,7 +1279,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jhee.TripBear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

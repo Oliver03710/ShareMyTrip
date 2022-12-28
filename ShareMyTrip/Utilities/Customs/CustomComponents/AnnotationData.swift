@@ -5,7 +5,6 @@
 //  Created by Junhee Yoon on 2022/09/17.
 //
 
-import Foundation
 import MapKit
 
 final class Annotation: MKPointAnnotation {
