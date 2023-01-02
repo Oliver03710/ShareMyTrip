@@ -18,11 +18,13 @@
 <br/>
 
 ## 앱의 주요 기능
-- 카카오의 키워드 검색 API활용하여 내가 가고 싶은 목적지를 검색하는 기능
+- 카카오의 키워드 검색 API와 pageNation을 이용하여 목적지 검색 기능 구현
+- 목적지 검색 시, Unique한 값인 PlaceURL을 이용하여 중복 데이터를 삭제하여 과도한 API 호출 방지
 - MKPointAnnotation과 MKAnnotationView로 Custom Annotation 이미지 생성하고 목적지에 표시
-- MKGradientPolylineRenderer를 통해 각 목적지 간의 경로 보기
+- MKGradientPolylineRenderer를 통해 각 목적지 간의 경로를 시작점과 종료점을 구분하여 생성
 - 전국관광지정보표준데이터 API와 CLCircularRegion을 활용하여 목적지 반경 10km 내 추천 관광지 표시
-- CompositionalLayout, DiffableDataSource를 기반으로 생성한 Collection View로 여행 동료 목록 관리
+- CompositionalLayout, DiffableDataSource 기반으로 생성한 Collection View로 여행동료 목록 관리
+- 여행목록간, 여행지 정보의 데이터 중복을 막기 위하여 EmbeddedObject를 활용하여 Table을 생성하지 않고 저장
 - Realm Object의 PK를 통해 중복되는 데이터를 관리
 - superEncoder / nestedContainer를 활용한 json 백업 및 복구 기능
 - MessageUI 프레임워크와 MFMailComposeViewController 인스턴스를 통해 문의 사항 제출 기능
