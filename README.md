@@ -38,20 +38,19 @@
 ## 프로젝트에 사용한 기술스택
 | 카테고리 | 내용 |
 | :---: | ----- |
-| 개발 언어 | Swift | 
-| 애플 프레임워크 | CoreLocation, Foundation, MapKit, MessageUI,  UIKit |
-| 의존성 관리 도구 | Swift Pakage Manager |
-| 디자인 | AutoLayout |
-| 디자인 패턴 | Delegate, MVC, MVVM, Repository, Singleton |
+| 개발 언어 | Swift |
+| 디자인 | AutoLayout, CodeBasedUI |
+| 디자인 패턴 | MVC, MVVM, Repository, Singleton, Delegate |
+| 애플 프레임워크 | UIKit, Foundation, StoreKit, MapKit, CoreLocation, MessageUI |
 | 네트워크 | URLSession |
-| 오픈 라이브러리 | AcknowList, FirebaseAnalyticsWithoutADidSupport, FirebaseCrashlytics, FirebaseMessaging, |
-|  | PanModal, Realm, SnapKit, Toast, Zip |
-| 기타 | ATSSettings, CGAffineTransform, CompositionalLayout, CustomView, |
-|  | DiffableDataSource, DispatchQueue, FileManager, Hashable, JSONDecoder, JSONEncoder, |
-|  | NSAttributedString, NSMutableParagraphStyle, UITableViewDataSourcePrefetching, |
-|  | UNUserNotificationCenter, UserDefaults, 백업 및 복구 |
-| 기타 툴 | Jandi, Postman |
-| 소스관리 | Git, GitHub |
+| 의존성 관리 도구 | Swift Pakage Manager |
+| 오픈 라이브러리 | SnapKit, FirebaseAnalyticsWithoutADidSupport, FirebaseCrashlytics, FirebaseMessaging, |
+|  | Realm, PanModal, Toast, Zip, AcknowList |
+| 기타 | DispatchQueue, CustomView, Codable, ATSSettings, 백업 및 복구, CompositionalLayout, |
+|  | DiffableDataSource, FileManager, Hashable, UITableViewDataSourcePrefetching, |
+|  | UserDefaults, UNUserNotificationCenter, CGAffineTransform |
+| 협업 툴 | Postman, Jandi |
+| 소스관리 | Git |
 <br/>
 
 ## 트러블슈팅
